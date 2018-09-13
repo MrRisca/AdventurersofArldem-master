@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".StatSelection">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click the plus and minus button to increase and decrease character stats" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="Strength" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/decreaseStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="decreaseStrength"
+                android:text="-"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+            <TextView
+                android:id="@+id/strength_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/increaseStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="increaseStrength"
+                android:text="+"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="Agility" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/decreaseAgility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseAgility"
+            android:text="-"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/agility_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:id="@+id/increaseAgility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseAgility"
+            android:text="+"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="Intellect" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/decreaseIntellect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseIntellect"
+            android:text="-"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/intellect_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/increaseIntellect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseIntellect"
+            android:text="+"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="Hit Points" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/decreaseHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseHP"
+            android:text="-"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/hp_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/increaseHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseHP"
+            android:text="+"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:text="Mana" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/decreaseMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="decreaseMP"
+            android:text="-"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/mp_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/increaseMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="increaseMP"
+            android:text="+"
+            android:minHeight="0dp"
+            android:minWidth="0dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="18dp"
+        android:paddingTop="18dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ff0000"
+            android:gravity="center"
+            android:text="Confirm"
+            android:padding="6dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:id="@+id/confirm"
+            android:minHeight="50dp"
+            android:minWidth="0dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+
