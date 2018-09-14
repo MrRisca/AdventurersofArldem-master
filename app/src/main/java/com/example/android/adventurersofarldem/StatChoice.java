@@ -21,6 +21,7 @@ public class StatChoice extends AppCompatActivity {
     public int minIntellect;
     public int minMaxHP;
     public int minMaxMP;
+    public int statsAvailable = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +59,21 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseStrength(View view) {
+        if (statsAvailable > 0) {
         strength += 1;
-
-        strengthDisplay(strength);
+        statsAvailable -= 1;
+        strengthDisplay(strength); }
     }
 
     public void decreaseStrength(View view) {
         if (strength > minStrength) {
-            strength -= 1;
 
-            strengthDisplay(strength); }
+            if (statsAvailable < 6) {
+
+                strength -= 1;
+                statsAvailable +=1;
+
+            strengthDisplay(strength); } }
     }
 
     public void agilityDisplay(int stat) {
@@ -76,16 +82,19 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseAgility(View view) {
-        agility += 1;
+        if (statsAvailable > 0) {
 
-        agilityDisplay(agility);
+            agility += 1;
+            statsAvailable -= 1;
+        agilityDisplay(agility); }
     }
 
     public void decreaseAgility(View view) {
         if (agility > minAgility) {
+            if (statsAvailable < 6) {
             agility -= 1;
-
-            agilityDisplay(agility); }
+            statsAvailable += 1;
+            agilityDisplay(agility); } }
     }
 
     public void intellectDisplay(int stat) {
@@ -94,16 +103,19 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseIntellect(View view) {
-        intellect += 1;
+        if (statsAvailable > 0) {
 
-        intellectDisplay(intellect);
+            intellect += 1;
+            statsAvailable -= 1;
+        intellectDisplay(intellect); }
     }
 
     public void decreaseIntellect(View view) {
         if (intellect > minIntellect) {
+            if (statsAvailable < 6) {
             intellect -= 1;
-
-            intellectDisplay(intellect); }
+            statsAvailable += 1;
+            intellectDisplay(intellect); } }
     }
 
     public void maxHPDisplay(int stat) {
@@ -112,16 +124,19 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseHP(View view) {
-        maxHP += 1;
+        if (statsAvailable > 0) {
 
-        maxHPDisplay(maxHP);
+            maxHP += 1;
+            statsAvailable -= 1;
+        maxHPDisplay(maxHP); }
     }
 
     public void decreaseHP(View view) {
         if (maxHP > minMaxHP) {
+            if (statsAvailable < 6) {
             maxHP -= 1;
-
-            maxHPDisplay(maxHP); }
+            statsAvailable += 1;
+            maxHPDisplay(maxHP); } }
     }
 
     public void maxMPDisplay(int stat) {
@@ -130,16 +145,19 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseMP(View view) {
-        maxMP += 1;
+        if (statsAvailable > 0) {
 
-        maxMPDisplay(maxMP);
+            maxMP += 1;
+            statsAvailable -= 1;
+        maxMPDisplay(maxMP); }
     }
 
     public void decreaseMP(View view) {
         if (maxMP > minMaxMP) {
+            if (statsAvailable < 6) {
             maxMP -= 1;
-
-            maxMPDisplay(maxMP); }
+            statsAvailable += 1;
+            maxMPDisplay(maxMP); } }
     }
 }
 
