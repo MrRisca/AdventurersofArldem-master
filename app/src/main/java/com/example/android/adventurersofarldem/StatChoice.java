@@ -16,6 +16,11 @@ public class StatChoice extends AppCompatActivity {
     public int maxMP;
     public int playerCurrentHP;
     public int playerCurrentMP;
+    public int minStrength;
+    public int minAgility;
+    public int minIntellect;
+    public int minMaxHP;
+    public int minMaxMP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,11 @@ public class StatChoice extends AppCompatActivity {
         intellect = playerIntellect;
         maxHP = playerMaxHP;
         maxMP = playerMaxMP;
+        minStrength = playerStrength;
+        minAgility = playerAgility;
+        minIntellect = playerIntellect;
+        minMaxHP = playerMaxHP;
+        minMaxMP = playerMaxMP;
     }
 
     public void strengthDisplay(int stat) {
@@ -54,9 +64,10 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void decreaseStrength(View view) {
-        strength -= 1;
+        if (strength > minStrength) {
+            strength -= 1;
 
-        strengthDisplay(strength);
+            strengthDisplay(strength); }
     }
 
     public void agilityDisplay(int stat) {
@@ -71,9 +82,10 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void decreaseAgility(View view) {
-        agility -= 1;
+        if (agility > minAgility) {
+            agility -= 1;
 
-        agilityDisplay(agility);
+            agilityDisplay(agility); }
     }
 
     public void intellectDisplay(int stat) {
@@ -88,9 +100,10 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void decreaseIntellect(View view) {
-        intellect -= 1;
+        if (intellect > minIntellect) {
+            intellect -= 1;
 
-        intellectDisplay(intellect);
+            intellectDisplay(intellect); }
     }
 
     public void maxHPDisplay(int stat) {
@@ -105,9 +118,10 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void decreaseHP(View view) {
-        maxHP -= 1;
+        if (maxHP > minMaxHP) {
+            maxHP -= 1;
 
-        maxHPDisplay(maxHP);
+            maxHPDisplay(maxHP); }
     }
 
     public void maxMPDisplay(int stat) {
@@ -122,9 +136,10 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void decreaseMP(View view) {
-        maxMP -= 1;
+        if (maxMP > minMaxMP) {
+            maxMP -= 1;
 
-        maxMPDisplay(maxMP);
+            maxMPDisplay(maxMP); }
     }
 }
 
