@@ -9,11 +9,11 @@ public class StatChoice extends AppCompatActivity {
 
     public String playerName;
     public String playerClass;
-    public int playerStrength;
-    public int playerAgility;
-    public int playerIntellect;
-    public int playerMaxHP;
-    public int playerMaxMP;
+    public int strength;
+    public int agility;
+    public int intellect;
+    public int maxHP;
+    public int maxMP;
     public int playerCurrentHP;
     public int playerCurrentMP;
 
@@ -35,6 +35,11 @@ public class StatChoice extends AppCompatActivity {
         intellectDisplay(playerIntellect);
         maxHPDisplay(playerMaxHP);
         maxMPDisplay(playerMaxMP);
+        strength = playerStrength;
+        agility = playerAgility;
+        intellect = playerIntellect;
+        maxHP = playerMaxHP;
+        maxMP = playerMaxMP;
     }
 
     public void strengthDisplay(int stat) {
@@ -43,15 +48,15 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseStrength(View view) {
-        playerStrength += 1;
+        strength += 1;
 
-        strengthDisplay(playerStrength);
+        strengthDisplay(strength);
     }
 
     public void decreaseStrength(View view) {
-        playerStrength -= 1;
+        strength -= 1;
 
-        strengthDisplay(playerStrength);
+        strengthDisplay(strength);
     }
 
     public void agilityDisplay(int stat) {
@@ -60,15 +65,15 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseAgility(View view) {
-        playerAgility += 1;
+        agility += 1;
 
-        agilityDisplay(playerAgility);
+        agilityDisplay(agility);
     }
 
     public void decreaseAgility(View view) {
-        playerAgility -= 1;
+        agility -= 1;
 
-        agilityDisplay(playerAgility);
+        agilityDisplay(agility);
     }
 
     public void intellectDisplay(int stat) {
@@ -77,15 +82,15 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseIntellect(View view) {
-        playerIntellect += 1;
+        intellect += 1;
 
-        intellectDisplay(playerIntellect);
+        intellectDisplay(intellect);
     }
 
     public void decreaseIntellect(View view) {
-        playerIntellect -= 1;
+        intellect -= 1;
 
-        intellectDisplay(playerIntellect);
+        intellectDisplay(intellect);
     }
 
     public void maxHPDisplay(int stat) {
@@ -94,15 +99,15 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseHP(View view) {
-        playerMaxHP += 1;
+        maxHP += 1;
 
-        maxHPDisplay(playerMaxHP);
+        maxHPDisplay(maxHP);
     }
 
     public void decreaseHP(View view) {
-        playerMaxHP -= 1;
+        maxHP -= 1;
 
-        maxHPDisplay(playerMaxHP);
+        maxHPDisplay(maxHP);
     }
 
     public void maxMPDisplay(int stat) {
@@ -111,15 +116,15 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseMP(View view) {
-        playerMaxMP += 1;
+        maxMP += 1;
 
-        maxMPDisplay(playerMaxMP);
+        maxMPDisplay(maxMP);
     }
 
     public void decreaseMP(View view) {
-        playerMaxMP -= 1;
+        maxMP -= 1;
 
-        maxMPDisplay(playerMaxMP);
+        maxMPDisplay(maxMP);
     }
 }
 
