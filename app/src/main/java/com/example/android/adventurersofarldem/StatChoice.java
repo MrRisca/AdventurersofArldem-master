@@ -1,22 +1,26 @@
 package com.example.android.adventurersofarldem;
 
-
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StatSelection extends AppCompatActivity {
+public class StatChoice extends AppCompatActivity {
 
-
+    public String playerName;
+    public String playerClass;
+    public int playerStrength;
+    public int playerAgility;
+    public int playerIntellect;
+    public int playerMaxHP;
+    public int playerMaxMP;
+    public int playerCurrentHP;
+    public int playerCurrentMP;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_stat_choice);
         String playerName = getIntent().getStringExtra("playerName");
         String playerClass = getIntent().getStringExtra("playerClass");
         int playerStrength = getIntent().getIntExtra("playerSt", 0);
@@ -32,16 +36,6 @@ public class StatSelection extends AppCompatActivity {
         maxHPDisplay(playerMaxHP);
         maxMPDisplay(playerMaxMP);
     }
-
-    public String playerName;
-    public String playerClass;
-    public int playerStrength = getIntent().getIntExtra("playerSt", 0);
-    public int playerAgility = getIntent().getIntExtra("playerAg", 0);
-    public int playerIntellect = getIntent().getIntExtra("playerIn", 0);
-    public int playerMaxHP = getIntent().getIntExtra("playerMHP", 0);
-    public int playerMaxMP = getIntent().getIntExtra("playerMMP", 0);
-    public int playerCurrentHP;
-    public int playerCurrentMP;
 
     public void strengthDisplay(int stat) {
         TextView strengthView = (TextView) findViewById(R.id.strength_number);
@@ -128,3 +122,7 @@ public class StatSelection extends AppCompatActivity {
         maxMPDisplay(playerMaxMP);
     }
 }
+
+
+
+

@@ -35,7 +35,7 @@ public class CharacterSelection extends AppCompatActivity {
     public void submitPlayer(View view){
         EditText pName = (EditText) findViewById(R.id.addName);
         String playerName = pName.getText().toString();
-        Intent confirmIntent = new Intent(CharacterSelection.this, StatSelection.class);
+        Intent confirmIntent = new Intent(CharacterSelection.this, StatChoice.class);
         confirmIntent.putExtra("playerName", playerName);
         confirmIntent.putExtra("playerClass", playerClass);
         confirmIntent.putExtra("playerSt", playerSt);
