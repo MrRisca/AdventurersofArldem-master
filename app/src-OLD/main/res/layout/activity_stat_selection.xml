@@ -6,7 +6,7 @@
     android:layout_margin="16dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".StatChoice">
+    tools:context=".StatSelection">
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,37 +28,37 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/decreaseStrength"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="decreaseStrength"
-            android:text="-"
-            android:minHeight="0dp"
-            android:minWidth="0dp"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/strength_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/decreaseStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="decreaseStrength"
+                android:text="-"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
 
-        <Button
-            android:id="@+id/increaseStrength"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="increaseStrength"
-            android:text="+"
-            android:minHeight="0dp"
-            android:minWidth="0dp"/>
+            <TextView
+                android:id="@+id/strength_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/increaseStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="increaseStrength"
+                android:text="+"
+                android:minHeight="0dp"
+                android:minWidth="0dp"/>
+
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -245,25 +245,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stats Left"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/statCounter"
-            android:text="0"/>
-    </LinearLayout>
 
 
 
@@ -287,8 +269,7 @@
             android:textStyle="bold"
             android:id="@+id/confirm"
             android:minHeight="50dp"
-            android:minWidth="0dp"
-            android:onClick="submitStats"/>
+            android:minWidth="0dp"/>
     </LinearLayout>
 
 

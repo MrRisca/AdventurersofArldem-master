@@ -4,30 +4,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.content.Intent;
-
 
 public class StatChoice extends AppCompatActivity {
 
-    public String pName;
-    public String pClass;
+    public String playerName;
+    public String playerClass;
     public int strength;
     public int agility;
     public int intellect;
     public int maxHP;
     public int maxMP;
+    public int playerCurrentHP;
+    public int playerCurrentMP;
     public int minStrength;
     public int minAgility;
     public int minIntellect;
     public int minMaxHP;
     public int minMaxMP;
     public int statsAvailable = 6;
-    public int currentHP;
-    public int currentMP;
 
-
-    // Imports the characters existing stats which will be based on their class chosen, and then
-    // converts these into local variables to be edited by the methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,65 +51,19 @@ public class StatChoice extends AppCompatActivity {
         minIntellect = playerIntellect;
         minMaxHP = playerMaxHP;
         minMaxMP = playerMaxMP;
-        currentHP = playerCurrentHP;
-        currentMP = playerCurrentMP;
-        statsDisplay(statsAvailable);
-        pName = playerName;
-        pClass = playerClass;
-
     }
-
-    //Submits updated stats and existing name and class to the confirmation intent
-
-    public void submitStats(View view) {
-        //String pName = pName;
-        //String pClass = playerClass;
-        Intent confirmIntent = new Intent(StatChoice.this, playerConfirm.class);
-        confirmIntent.putExtra("playerStrength", strength);
-        confirmIntent.putExtra("playerAgility", agility);
-        confirmIntent.putExtra("playerIntellect", intellect);
-        confirmIntent.putExtra("playerMaxHP", maxHP);
-        confirmIntent.putExtra("playerMaxMP", maxMP);
-        confirmIntent.putExtra("playerCurrentHP", currentHP);
-        confirmIntent.putExtra("playerCurrentMP", currentMP);
-        confirmIntent.putExtra("playerClass", pClass);
-        confirmIntent.putExtra("playerName", pName);
-        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(confirmIntent); }
-
-
-    }
-
-    //statsDisplay shows how many stats the user has remaining to use. Currently they don't have
-    // to use any or all of them, this will be updated at later time.
-
-    public void statsDisplay(int stat) {
-        TextView statDisplay = (TextView) findViewById(R.id.statCounter);
-        statDisplay.setText(String.valueOf(stat));
-    }
-
-    //strengthDisplay updates the number in between the two buttons to show the value of Strength
 
     public void strengthDisplay(int stat) {
         TextView strengthView = (TextView) findViewById(R.id.strength_number);
         strengthView.setText(String.valueOf(stat));
     }
 
-    //increaseStrength checks if there are stats available, gives +1 to strength and takes an
-    // available stat away.
-
     public void increaseStrength(View view) {
         if (statsAvailable > 0) {
-            strength += 1;
-            statsAvailable -= 1;
-            strengthDisplay(strength);
-            statsDisplay(statsAvailable);
-        }
+        strength += 1;
+        statsAvailable -= 1;
+        strengthDisplay(strength); }
     }
-
-    //decreaseStrength checks if the use has less than 6 (the max stats available on creation)
-    // stats available, and if so will reduce strength by 1 and increase the number of stats
-    // available by 1
 
     public void decreaseStrength(View view) {
         if (strength > minStrength) {
@@ -122,15 +71,10 @@ public class StatChoice extends AppCompatActivity {
             if (statsAvailable < 6) {
 
                 strength -= 1;
-                statsAvailable += 1;
+                statsAvailable +=1;
 
-                strengthDisplay(strength);
-                statsDisplay(statsAvailable);
-            }
-        }
+            strengthDisplay(strength); } }
     }
-
-    //The above commands are then replicated below but for the different stats to be changed
 
     public void agilityDisplay(int stat) {
         TextView agilityView = (TextView) findViewById(R.id.agility_number);
@@ -142,20 +86,15 @@ public class StatChoice extends AppCompatActivity {
 
             agility += 1;
             statsAvailable -= 1;
-            agilityDisplay(agility);
-            statsDisplay(statsAvailable);
-        }
+        agilityDisplay(agility); }
     }
 
     public void decreaseAgility(View view) {
         if (agility > minAgility) {
             if (statsAvailable < 6) {
-                agility -= 1;
-                statsAvailable += 1;
-                agilityDisplay(agility);
-                statsDisplay(statsAvailable);
-            }
-        }
+            agility -= 1;
+            statsAvailable += 1;
+            agilityDisplay(agility); } }
     }
 
     public void intellectDisplay(int stat) {
@@ -168,20 +107,15 @@ public class StatChoice extends AppCompatActivity {
 
             intellect += 1;
             statsAvailable -= 1;
-            intellectDisplay(intellect);
-            statsDisplay(statsAvailable);
-        }
+        intellectDisplay(intellect); }
     }
 
     public void decreaseIntellect(View view) {
         if (intellect > minIntellect) {
             if (statsAvailable < 6) {
-                intellect -= 1;
-                statsAvailable += 1;
-                intellectDisplay(intellect);
-                statsDisplay(statsAvailable);
-            }
-        }
+            intellect -= 1;
+            statsAvailable += 1;
+            intellectDisplay(intellect); } }
     }
 
     public void maxHPDisplay(int stat) {
@@ -194,20 +128,15 @@ public class StatChoice extends AppCompatActivity {
 
             maxHP += 1;
             statsAvailable -= 1;
-            maxHPDisplay(maxHP);
-            statsDisplay(statsAvailable);
-        }
+        maxHPDisplay(maxHP); }
     }
 
     public void decreaseHP(View view) {
         if (maxHP > minMaxHP) {
             if (statsAvailable < 6) {
-                maxHP -= 1;
-                statsAvailable += 1;
-                maxHPDisplay(maxHP);
-            }
-            statsDisplay(statsAvailable);
-        }
+            maxHP -= 1;
+            statsAvailable += 1;
+            maxHPDisplay(maxHP); } }
     }
 
     public void maxMPDisplay(int stat) {
@@ -220,20 +149,15 @@ public class StatChoice extends AppCompatActivity {
 
             maxMP += 1;
             statsAvailable -= 1;
-            maxMPDisplay(maxMP);
-            statsDisplay(statsAvailable);
-        }
+        maxMPDisplay(maxMP); }
     }
 
     public void decreaseMP(View view) {
         if (maxMP > minMaxMP) {
             if (statsAvailable < 6) {
-                maxMP -= 1;
-                statsAvailable += 1;
-                maxMPDisplay(maxMP);
-                statsDisplay(statsAvailable);
-            }
-        }
+            maxMP -= 1;
+            statsAvailable += 1;
+            maxMPDisplay(maxMP); } }
     }
 }
 
