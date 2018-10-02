@@ -104,6 +104,7 @@
                 android:background="#ff0000"
                 android:gravity="center"
                 android:text="Confirm"
+                android:onClick="battle"
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:id="@+id/confirm"/>

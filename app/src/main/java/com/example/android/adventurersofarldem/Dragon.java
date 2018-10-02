@@ -38,4 +38,7 @@ public class Dragon extends Monster {
         return getBaseDamage();
     }
 
+    public int dragonHealth(){
+    return  getCurrentHealth();
+    }
 }

@@ -63,7 +63,14 @@ public class CharacterSelection extends AppCompatActivity {
             warriorClass = (ImageView) findViewById(R.id.Warrior);
             warriorClass.setImageResource(R.drawable.warrior);
 
-        //playerName = findViewById(R.id.addName).getText();
+        playerClass = "Wizard";
+        playerSt = 8;
+        playerAg = 8;
+        playerIn = 12;
+        playerMHP = 6;
+        playerCHP = 6;
+        playerMMP = 20;
+        playerCMP = 20;
 
     }
 
@@ -102,6 +109,16 @@ public class CharacterSelection extends AppCompatActivity {
         ImageView warriorClass;
             warriorClass = (ImageView) findViewById(R.id.Warrior);
             warriorClass.setImageResource(R.drawable.warrior);
+
+        playerClass = "Ranger";
+        playerSt = 8;
+        playerAg = 12;
+        playerIn = 8;
+        playerMHP = 7;
+        playerCHP = 7;
+        playerMMP = 4;
+        playerCMP = 4;
     }
+
 }
 
