@@ -20,6 +20,7 @@ public class Battle extends AppCompatActivity {
     public int pCurrentHealth;
     public int pCurrentMana;
     public String pClass;
+    public int pArmorClass = (10 + ((pAgility /2) -5));
 
     public Battle(int ps, int es, int ea, int emh, int emm, int ech, int ecm, int pa, int pi, int pmh, int pmm, int pch, int pcm, String pc) {
         pStrength = ps;
@@ -38,18 +39,6 @@ public class Battle extends AppCompatActivity {
         pClass = pc;
     }
 
-    //This is supposed to see if the player hit, do damage to the dragon if so, and then update the eCurrentHealth stat
-
-   // public int combatWarrior(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHP) {
-   //     int didIHit = chanceToHit(pStrength, pAgility);
-   //     int damage = calculateDamage(pClass, pStrength, pAgility);
-  //      if (didIHit > eArmorClass) {
-   //         eCurrentHP = eCurrentHP - damage;
-   //         eCurrentHealth = eCurrentHP;
-    //        return eCurrentHealth;
-    //    } else return eCurrentHealth;
-
-   // }
 
     public int combatWarrior(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
         int didIHit = chanceToHit(pStrength, pAgility);
@@ -57,9 +46,40 @@ public class Battle extends AppCompatActivity {
         if (didIHit > eArmorClass) {
 
             return damage;
-        } else return eCurrentHealth;
+        } else return 0;
 
     }
+
+    public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((20) +1) + 1;
+        int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+        int damage;
+        if (didIHit == 1){
+            damage = randomNum;
+            return damage;
+        }
+        else return 0;
+    }
+
+
+    public int enemyChanceToHit(int baseDamage, int pArmorClass){
+        int y = baseDamage - pArmorClass;
+        Random rand = new Random();
+        int randomNum = rand.nextInt((20) +1) + 1;
+        int roll = randomNum + y;
+        if (roll > pArmorClass){
+
+            int x = 1;
+            return x;
+        }
+        else{
+            int x = 0;
+            return x;
+        }
+
+    }
+
 
     //Long set of IF statements basically giving players additional bonuses to their roll and damage for having high stats.
 

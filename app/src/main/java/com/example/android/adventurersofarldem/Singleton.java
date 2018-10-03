@@ -31,11 +31,12 @@ public class Singleton extends AppCompatActivity
         return INSTANCE;
     }
 
-    public String receivePlayerData(String playerName, String playerClass, int playerStrength, int playerAgility, int playerIntellect, int playerMaxHP, int playerMaxMP, int playerCurrentHP, int playerCurrentMP){
+    public String receivePlayerData(String playerName, String playerClass, int playerStrength, int playerAgility, int playerIntellect, int playerMaxHP, int playerMaxMP, int playerCurrentHP, int playerCurrentMP, int playerAC){
         String playerData = "Player name is " + playerName + ", who is playing the " + playerClass + " class" + "\n Their Strength is " + playerStrength + "\n Their Agility is " + playerAgility;
         playerData += "\n Their Intellect is " + playerIntellect;
         playerData += "\n Their Max HP is " + playerMaxHP + " and their current HP is " + playerCurrentHP;
         playerData += "\n Their Max MP is " + playerMaxMP + " and their current MP is " + playerCurrentMP;
+        playerData += "\n Their Armor Class is " + playerAC;
         return playerData;
     }
 }

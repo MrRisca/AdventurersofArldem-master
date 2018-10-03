@@ -47,6 +47,10 @@ public interface PlayerInterface {
 
     public void setCurrentMana(int currentMana);
 
+    public int getArmorClass();
+
+    public void setArmorClass(int armorClass);
+
     //return a string representation of the player
     public String toString();
 

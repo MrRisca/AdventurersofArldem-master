@@ -11,7 +11,7 @@
             android:id="@+id/Enemy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.4"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -27,14 +27,16 @@
             android:layout_height="match_parent"
             android:id="@+id/DragonContainer"
             android:layout_weight="1"
-            android:scaleX="0.9"
-            android:scaleY="0.9">
+            android:scaleX="1"
+            android:scaleY="1">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/dnddragon"
                 android:id="@+id/Dragon"
                 android:scaleType="center"
+                android:scaleX="0.7"
+                android:scaleY="0.9"
                 />
         </LinearLayout>
         <LinearLayout
@@ -178,9 +180,55 @@
                         android:layout_weight="2"
                         android:id="@+id/playerCurrentIntellect"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Armor Class:"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:id="@+id/playerArmor"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:id="@+id/playerCurrentArmor"/>
+                </LinearLayout>
             </LinearLayout>
 
             </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            android:orientation="horizontal"
+            android:padding="4dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Attack"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Armor Class:"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/attackResults"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Run away"
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         </LinearLayout>
 

@@ -18,8 +18,9 @@ abstract class Player implements PlayerInterface{
     public int maximumMana;
     public int currentHealth;
     public int currentMana;
+    public int armorClass;
 
-    public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP) {
+    public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac) {
         name = n;
         strength = st;
         agility = ag;
@@ -28,6 +29,7 @@ abstract class Player implements PlayerInterface{
         maximumMana = maxMP;
         currentHealth = currentHP;
         currentMana = currentMP;
+        armorClass = ac;
     }
 
 
@@ -99,6 +101,15 @@ abstract class Player implements PlayerInterface{
 
     public int getCurrentMana() {
         return currentMana;
+    }
+
+    @Override
+    public void setArmorClass(int ac) {
+        armorClass = ac;
+    }
+
+    public int getArmorClass() {
+        return armorClass;
     }
 
 

@@ -91,8 +91,8 @@ public class CharacterSelection extends AppCompatActivity {
         playerSt = 12;
         playerAg = 8;
         playerIn = 8;
-        playerMHP = 8;
-        playerCHP = 8;
+        playerMHP = 800;
+        playerCHP = 800;
         playerMMP = 4;
         playerCMP = 4;
     }
