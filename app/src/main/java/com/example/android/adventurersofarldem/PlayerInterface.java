@@ -51,6 +51,14 @@ public interface PlayerInterface {
 
     public void setArmorClass(int armorClass);
 
+    public int getPlayerExperience();
+
+    public void setPlayerExperience(int playerExperience);
+
+    public int getPlayerLevel();
+
+    public void setPlayerLevel(int playerLevel);
+
     //return a string representation of the player
     public String toString();
 

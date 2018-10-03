@@ -50,9 +50,9 @@ public class Battle extends AppCompatActivity {
 
     }
 
-    public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth) {
+    public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth, int enemyRoll) {
         Random rand = new Random();
-        int randomNum = rand.nextInt((20) +1) + 1;
+        int randomNum = rand.nextInt((enemyRoll) +1) + 1;
         int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
         int damage;
         if (didIHit == 1){
@@ -64,10 +64,8 @@ public class Battle extends AppCompatActivity {
 
 
     public int enemyChanceToHit(int baseDamage, int pArmorClass){
-        int y = baseDamage - pArmorClass;
         Random rand = new Random();
-        int randomNum = rand.nextInt((20) +1) + 1;
-        int roll = randomNum + y;
+        int roll = rand.nextInt((20) +1) + 1;
         if (roll > pArmorClass){
 
             int x = 1;

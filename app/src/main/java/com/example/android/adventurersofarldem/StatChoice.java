@@ -24,6 +24,8 @@ public class StatChoice extends AppCompatActivity {
     public int statsAvailable = 6;
     public int currentHP;
     public int currentMP;
+    public int pExperience;
+    public int pLevel;
 
 
     // Imports the characters existing stats which will be based on their class chosen, and then
@@ -41,6 +43,8 @@ public class StatChoice extends AppCompatActivity {
         int playerMaxMP = getIntent().getIntExtra("playerMMP", 0);
         int playerCurrentHP = getIntent().getIntExtra("playerCHP", 0);
         int playerCurrentMP = getIntent().getIntExtra("playerCMP", 0);
+        int playerExperience = getIntent().getIntExtra("playerExperience", 0);
+        int playerLevel = getIntent().getIntExtra("playerLevel", 0);
         strengthDisplay(playerStrength);
         agilityDisplay(playerAgility);
         intellectDisplay(playerIntellect);
@@ -61,6 +65,8 @@ public class StatChoice extends AppCompatActivity {
         statsDisplay(statsAvailable);
         pName = playerName;
         pClass = playerClass;
+        pExperience = playerExperience;
+        pLevel = playerLevel;
 
     }
 
@@ -69,7 +75,7 @@ public class StatChoice extends AppCompatActivity {
     public void submitStats(View view) {
         //String pName = pName;
         //String pClass = playerClass;
-        Intent confirmIntent = new Intent(StatChoice.this, playerConfirm.class);
+        Intent confirmIntent = new Intent(StatChoice.this, level1.class);
         confirmIntent.putExtra("playerStrength", strength);
         confirmIntent.putExtra("playerAgility", agility);
         confirmIntent.putExtra("playerIntellect", intellect);
@@ -79,6 +85,8 @@ public class StatChoice extends AppCompatActivity {
         confirmIntent.putExtra("playerCurrentMP", currentMP);
         confirmIntent.putExtra("playerClass", pClass);
         confirmIntent.putExtra("playerName", pName);
+        confirmIntent.putExtra("playerExperience", pExperience);
+        confirmIntent.putExtra("playerLevel", pLevel);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
 
@@ -193,6 +201,7 @@ public class StatChoice extends AppCompatActivity {
         if (statsAvailable > 0) {
 
             maxHP += 1;
+            currentHP +=1;
             statsAvailable -= 1;
             maxHPDisplay(maxHP);
             statsDisplay(statsAvailable);
@@ -203,6 +212,7 @@ public class StatChoice extends AppCompatActivity {
         if (maxHP > minMaxHP) {
             if (statsAvailable < 6) {
                 maxHP -= 1;
+                currentHP -=1;
                 statsAvailable += 1;
                 maxHPDisplay(maxHP);
             }

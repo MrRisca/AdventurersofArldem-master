@@ -17,8 +17,9 @@ abstract class Monster implements MonsterInterface{
     public int maximumMana;
     public int currentHealth;
     public int currentMana;
+    public int experience;
 
-    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP) {
+    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
         monsterName = n;
         armorClass = ac;
         baseDamage = bd;
@@ -26,6 +27,7 @@ abstract class Monster implements MonsterInterface{
         maximumMana = maxMP;
         currentHealth = currentHP;
         currentMana = currentMP;
+        experience = xp;
     }
 
 
@@ -88,6 +90,14 @@ abstract class Monster implements MonsterInterface{
 
     public int getCurrentMana() {
         return currentMana;
+    }
+
+    public void setExperience(int xp) {
+        experience = xp;
+    }
+
+    public int getExperience() {
+        return experience;
     }
 
 

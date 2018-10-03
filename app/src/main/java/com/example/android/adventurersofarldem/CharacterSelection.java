@@ -30,6 +30,8 @@ public class CharacterSelection extends AppCompatActivity {
     int playerCHP = 0;
     int playerMMP = 0;
     int playerCMP = 0;
+    int playerExperience = 0;
+    int playerLevel = 0;
 
 
     public void submitPlayer(View view){
@@ -45,6 +47,8 @@ public class CharacterSelection extends AppCompatActivity {
         confirmIntent.putExtra("playerCHP", playerCHP);
         confirmIntent.putExtra("playerMMP", playerMMP);
         confirmIntent.putExtra("playerCMP", playerCMP);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent);
     }}
@@ -71,6 +75,8 @@ public class CharacterSelection extends AppCompatActivity {
         playerCHP = 6;
         playerMMP = 20;
         playerCMP = 20;
+        playerExperience = 1;
+        playerLevel = 1;
 
     }
 
@@ -91,10 +97,12 @@ public class CharacterSelection extends AppCompatActivity {
         playerSt = 12;
         playerAg = 8;
         playerIn = 8;
-        playerMHP = 800;
-        playerCHP = 800;
+        playerMHP = 8;
+        playerCHP = 8;
         playerMMP = 4;
         playerCMP = 4;
+        playerExperience = 1;
+        playerLevel = 1;
     }
 
     public void playerSelectedRanger(View view){
@@ -118,6 +126,8 @@ public class CharacterSelection extends AppCompatActivity {
         playerCHP = 7;
         playerMMP = 4;
         playerCMP = 4;
+        playerExperience = 1;
+        playerLevel = 1;
     }
 
 }

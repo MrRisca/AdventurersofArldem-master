@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Ranger extends Player {
-    public Ranger(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac) {
-        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac);
+    public Ranger(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
+        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac, pXP, level);
     }
 
 

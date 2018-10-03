@@ -41,6 +41,10 @@ public interface MonsterInterface {
 
     public void setCurrentMana(int currentMana);
 
+    public int getExperience();
+
+    public void setExperience(int experience);
+
     //return a string representation of the player
     public String toString();
 

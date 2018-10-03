@@ -19,8 +19,10 @@ abstract class Player implements PlayerInterface{
     public int currentHealth;
     public int currentMana;
     public int armorClass;
+    public int playerXP;
+    public int playerLevel;
 
-    public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac) {
+    public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
         name = n;
         strength = st;
         agility = ag;
@@ -30,6 +32,8 @@ abstract class Player implements PlayerInterface{
         currentHealth = currentHP;
         currentMana = currentMP;
         armorClass = ac;
+        playerXP = pXP;
+        playerLevel = level;
     }
 
 
@@ -112,6 +116,21 @@ abstract class Player implements PlayerInterface{
         return armorClass;
     }
 
+    public void setPlayerExperience(int pXP) {
+        playerXP = pXP;
+    }
+
+    public int getPlayerExperience() {
+        return playerXP;
+    }
+
+    public void setPlayerLevel(int level) {
+        playerLevel = level;
+    }
+
+    public int getPlayerLevel() {
+        return playerLevel;
+    }
 
     @Override
     public String toString() {

@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Dragon extends Monster {
-    public Dragon(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP) {
-        super(n, ac, bd, maxHP, maxMP, currentHP, currentMP);
+    public Dragon(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
+        super(n, ac, bd, maxHP, maxMP, currentHP, currentMP, xp);
     }
 
 
@@ -31,6 +31,7 @@ public class Dragon extends Monster {
         String dragonData = "Dragon name is " + monsterName + ", \n Their AC is " + armorClass + "\n Their Base Damage is " + baseDamage;
         dragonData += "\n Their Max HP is " + maximumHealth + " and their current HP is " + currentHealth;
         dragonData += "\n Their Max MP is " + maximumMana + " and their current MP is " + currentMana;
+        dragonData += "\n They are worth " + experience + " XP";
         return dragonData;
     }
 
@@ -41,4 +42,6 @@ public class Dragon extends Monster {
     public int dragonHealth(){
     return  getCurrentHealth();
     }
+
+    public int dragonExperience() {return getExperience();}
 }

@@ -1,9 +1,10 @@
 package com.example.android.adventurersofarldem;
 
 public class Warrior extends Player {
-    public Warrior(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac) {
-        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac);
+    public Warrior(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
+        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac, pXP, level);
     }
+
 
 
     @Override
