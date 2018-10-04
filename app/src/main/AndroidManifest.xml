@@ -20,7 +20,8 @@
         <activity android:name=".playerConfirm" />
         <activity android:name=".Singleton" />
         <activity android:name=".StatChoice" />
-        <activity android:name=".level1"></activity>
+        <activity android:name=".level1" />
+        <activity android:name=".youDead"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.android.adventurersofarldem;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +29,7 @@ public class level1 extends AppCompatActivity {
     public int playerLevel;
 
 
-    public Goblin goblin = new Goblin("Bob", 12, 2, 7, 0, 7 ,0, 5 );
+    public Goblin goblin = new Goblin("Bob", 12, 2, 7, 0, 7 ,0, 6);
     public String monsterName;
     public int armorClass;
     public int baseDamage;
@@ -104,6 +105,9 @@ public class level1 extends AppCompatActivity {
 
         TextView confirmPlayerArmorClass = (TextView) findViewById(R.id.playerCurrentArmor);
         confirmPlayerArmorClass.setText(String.valueOf(pArmorClass));
+
+        TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
+        confirmPlayerLevel.setText(String.valueOf(playerLevel));
     }
 
     //Perform battle to compare goblins' AC vs player's roll to see if damage is done.
@@ -125,8 +129,10 @@ public class level1 extends AppCompatActivity {
             int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, goblinRoll);
             playerCurrentHP = playerCurrentHP - y;
             if (playerCurrentHP < 1){
-                displayPlayerDead();
-                displayPlayerHealth();
+                Intent confirmIntent = new Intent(level1.this, youDead.class);
+
+                startActivity(confirmIntent);
+
             }
             else {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
@@ -146,9 +152,13 @@ public class level1 extends AppCompatActivity {
         TextView goblinHPTest = (TextView) findViewById(R.id.attackResults2);
         int goblinXP = goblin.getExperience();
         String x = "The Goblin's dead Dave. You gained " + String.valueOf(goblinXP) + " experience";
-        int xpGained = levelUp.xpGained(monsterExperience, playerExperience);
-        playerExperience += xpGained;
         goblinHPTest.setText(x);
+        int experienceNeeded = levelUp.experienceNeeded(playerLevel);
+
+        if ((goblinXP + playerExperience) > experienceNeeded ){
+            playerLevel +=1;
+            displayLevelUp();}
+        playerExperience += goblinXP;
     }
 
     public void displayGoblinDamage(String x){
@@ -173,6 +183,16 @@ public class level1 extends AppCompatActivity {
         confirmPlayerCurrentHP.setText(String.valueOf(playerCurrentHP));
     }
 
+    public void displayLevelUp() {
+        TextView confirmLevelUp = (TextView) findViewById(R.id.Enemy);
+        confirmLevelUp.setText("Level up!");
+        displayLevel();
+    }
+
+    public void displayLevel() {
+        TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
+        confirmPlayerLevel.setText(String.valueOf(playerLevel));
+    }
 
 
 }
