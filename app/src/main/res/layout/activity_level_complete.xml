@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/levelcomplete" />
+
+        <TextView
+            android:id="@+id/level_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginRight="35dp"
+            android:text="Level Complete"
+            app:layout_constraintBottom_toTopOf="@+id/lv_progress"
+            app:layout_constraintEnd_toEndOf="@+id/lv_progress" />
+
+        <ProgressBar
+            android:id="@+id/lv_progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="168dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/current_lv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/current_lv" />
+
+        <TextView
+            android:id="@+id/current_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="123dp"
+            android:text="LV.1"
+            app:layout_constraintEnd_toStartOf="@+id/lv_progress"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/next_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="1dp"
+            android:text="Lv.2"
+            app:layout_constraintStart_toEndOf="@+id/lv_progress"
+            app:layout_constraintTop_toTopOf="@+id/lv_progress" />
+
+        <TextView
+            android:id="@+id/ex_gained"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="21dp"
+            android:text="Ex. Gained"
+            app:layout_constraintStart_toEndOf="@+id/enemies_killed"
+            app:layout_constraintTop_toBottomOf="@+id/lv_progress" />
+
+        <TextView
+            android:id="@+id/enemies_killed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginEnd="119dp"
+            android:layout_marginRight="119dp"
+            android:layout_marginStart="59dp"
+            android:layout_marginLeft="119dp"
+            android:text="Enemies Killed"
+            app:layout_constraintBottom_toTopOf="@+id/secrets_found"
+            app:layout_constraintEnd_toStartOf="@+id/kill_count"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/secrets_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Secrets Found"
+            app:layout_constraintBottom_toTopOf="@+id/gold_earned"
+            app:layout_constraintStart_toStartOf="@+id/enemies_killed" />
+
+        <TextView
+            android:id="@+id/kill_count"
+            android:layout_width="0dp"
+            android:layout_height="17dp"
+            android:layout_marginBottom="88dp"
+            android:layout_marginEnd="92dp"
+            android:layout_marginRight="29dp"
+            android:layout_marginTop="89dp"
+            android:text="3"
+            app:layout_constraintBottom_toTopOf="@+id/continue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/enemies_killed"
+            app:layout_constraintTop_toTopOf="@+id/next_lv" />
+
+        <TextView
+            android:id="@+id/secret_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="3/3"
+            app:layout_constraintEnd_toEndOf="@+id/kill_count"
+            app:layout_constraintTop_toBottomOf="@+id/kill_count" />
+
+        <TextView
+            android:id="@+id/gold_earned"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Gold Earned"
+            app:layout_constraintBottom_toBottomOf="@+id/gold_count"
+            app:layout_constraintStart_toStartOf="@+id/secrets_found"
+            app:layout_constraintTop_toTopOf="@+id/gold_count" />
+
+        <TextView
+            android:id="@+id/gold_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="20"
+            app:layout_constraintEnd_toEndOf="@+id/secret_count"
+            app:layout_constraintStart_toStartOf="@+id/secret_count"
+            app:layout_constraintTop_toBottomOf="@+id/secret_count" />
+
+        <Button
+            android:id="@+id/return_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="29dp"
+            android:text="Return"
+            app:layout_constraintBaseline_toBaselineOf="@+id/continue_button"
+            app:layout_constraintStart_toStartOf="@+id/gold_earned" />
+
+        <Button
+            android:id="@+id/continue_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="129dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginLeft="29dp"
+            android:text="Continue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/return_button" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
