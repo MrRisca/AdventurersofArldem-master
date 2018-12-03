@@ -29,7 +29,8 @@ public class level1 extends AppCompatActivity {
     public int playerLevel;
 
 
-    public Goblin goblin = new Goblin("Bob", 12, 2, 7, 0, 7 ,0, 6);
+    public Goblin goblin = new Goblin();
+            //("Bob", 12, 2, 7, 0, 7 ,0, 6);
     public String monsterName;
     public int armorClass;
     public int baseDamage;
