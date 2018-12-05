@@ -9,8 +9,8 @@ package com.example.android.adventurersofarldem;
 
 
 public class Orc extends Monster {
-    public Orc(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super(n, ac, bd, maxHP, maxMP, currentHP, currentMP, xp);
+    public Orc() {
+        super("Orc", 13, 8, 20, 5, 20, 5, 10);
     }
 
 

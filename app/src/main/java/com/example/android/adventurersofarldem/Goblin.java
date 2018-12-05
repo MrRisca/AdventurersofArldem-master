@@ -11,7 +11,7 @@ import android.widget.ImageView;
 public class Goblin extends Monster {
     public Goblin() {
     //public Goblin(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super("Bob", 12, 8, 15, 10, 15, 10, 10);
+        super("Bob", 12, 6, 15, 10, 15, 10, 5);
     }
 
 

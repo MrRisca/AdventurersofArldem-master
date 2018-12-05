@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Dragon extends Monster {
-    public Dragon(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super(n, ac, bd, maxHP, maxMP, currentHP, currentMP, xp);
+    public Dragon() {
+        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500);
     }
 
 
