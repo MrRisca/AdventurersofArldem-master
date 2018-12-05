@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/scroll"
-            android:src="@drawable/levelcomplete"
+            android:src="@drawable/levelcomplete2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
