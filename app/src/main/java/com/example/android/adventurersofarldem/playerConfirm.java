@@ -22,7 +22,7 @@ public class playerConfirm extends AppCompatActivity {
     public int playerLevel;
 
 
-    public Dragon dragon = new Dragon("Bob", 15, 5, 2000, 20, 10000 ,20, 1000 );
+    public Dragon dragon = new Dragon();
     public String monsterName;
     public int armorClass;
     public int baseDamage;

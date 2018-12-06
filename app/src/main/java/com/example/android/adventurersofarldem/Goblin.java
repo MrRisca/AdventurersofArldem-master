@@ -9,8 +9,9 @@ import android.widget.ImageView;
 
 
 public class Goblin extends Monster {
-    public Goblin(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super(n, ac, bd, maxHP, maxMP, currentHP, currentMP, xp);
+    public Goblin() {
+    //public Goblin(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
+        super("Bob", 12, 2, 7, 0, 7, 0, 6);
     }
 
 
@@ -27,6 +28,8 @@ public class Goblin extends Monster {
                 '}';
 
     }
+
+
 
     public String GoblinData(String monsterName, int armorClass, int baseDamage, int maximumHealth, int maximumMana, int currentHealth, int currentMana){
         String GoblinData = "Goblin name is " + monsterName + ", \n Their AC is " + armorClass + "\n Their Base Damage is " + baseDamage;
