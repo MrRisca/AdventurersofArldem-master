@@ -133,6 +133,9 @@ public class level1 extends AppCompatActivity {
             int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, goblinRoll);
             playerCurrentHP = playerCurrentHP - y;
             if (playerCurrentHP < 1){
+                {String goblinMessage = "You did " + String.valueOf(damageDone) + " damage to the Goblin";
+                    goblinMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
+                    displayGoblinHealth(goblinMessage); }
                 Intent confirmIntent = new Intent(level1.this, youDead.class);
 
                 startActivity(confirmIntent);
@@ -217,6 +220,29 @@ public class level1 extends AppCompatActivity {
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(confirmIntent); }
         }
+
+
+
+    }
+
+    public void completeLevel(View view) {
+        if (levelComplete == 1){
+            Intent confirmIntent = new Intent(level1.this, levelComplete.class);
+            confirmIntent.putExtra("playerStrength", playerStrength);
+            confirmIntent.putExtra("playerAgility", playerAgility);
+            confirmIntent.putExtra("playerIntellect", playerIntellect);
+            confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+            confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+            confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+            confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+            confirmIntent.putExtra("playerClass", playerClass);
+            confirmIntent.putExtra("playerName", playerName);
+            confirmIntent.putExtra("playerExperience", playerExperience);
+            confirmIntent.putExtra("playerLevel", playerLevel);
+            if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(confirmIntent); }
+        }
+
     }
 
 
