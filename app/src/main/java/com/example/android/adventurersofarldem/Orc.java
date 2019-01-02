@@ -10,7 +10,7 @@ package com.example.android.adventurersofarldem;
 
 public class Orc extends Monster {
     public Orc() {
-        super("Orc", 13, 8, 20, 5, 20, 5, 10);
+        super("Orc", 13, 8, 20, 5, 20, 5, 10, 10);
     }
 
 

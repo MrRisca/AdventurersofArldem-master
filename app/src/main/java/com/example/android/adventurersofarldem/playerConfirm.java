@@ -20,6 +20,7 @@ public class playerConfirm extends AppCompatActivity {
     public int pArmorClass = 10;
     public int playerExperience;
     public int playerLevel;
+    public int playerGold;
 
 
     public Dragon dragon = new Dragon();
@@ -63,7 +64,7 @@ public class playerConfirm extends AppCompatActivity {
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
         setContentView(R.layout.activity_player_confirm);
-        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel);
+        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel, playerGold);
         String dragonInfo = dragon.dragonData(monsterName, armorClass, baseDamage, maximumHealth, maximumMana, currentHealth, currentMana);
 
         //Update playerData textview to pump out test result. Works fine.
