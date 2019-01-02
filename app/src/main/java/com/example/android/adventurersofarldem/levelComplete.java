@@ -2,28 +2,13 @@ package com.example.android.adventurersofarldem;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 public class levelComplete extends AppCompatActivity {
-
-    public String playerName;
-    public String playerClass;
-    public int playerStrength;
-    public int playerAgility;
-    public int playerIntellect;
-    public int playerMaxHP;
-    public int playerMaxMP;
-    public int playerCurrentMP;
-    public int playerCurrentHP;
-    public int pArmorClass;
-    public int playerExperience;
-    public int playerLevel;
-    public int playerGold = 1;
-    public int levelComplete = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         setContentView(R.layout.activity_level_complete);
         playerName = getIntent().getStringExtra("playerName");
         playerClass = getIntent().getStringExtra("playerClass");
@@ -42,4 +27,8 @@ public class levelComplete extends AppCompatActivity {
         confirmPlayerGold.setText(String.valueOf(playerGold));
     }
 
+=======
+       setContentView(R.layout.activity_level_complete);
+    }
+>>>>>>> parent of 0a0fdf8... Updated gold system
 }

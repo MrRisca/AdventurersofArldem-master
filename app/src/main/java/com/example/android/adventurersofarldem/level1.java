@@ -28,7 +28,6 @@ public class level1 extends AppCompatActivity {
     public int pArmorClass;
     public int playerExperience;
     public int playerLevel;
-    public int playerGold;
     public int levelComplete = 0;
 
     public Goblin goblin = new Goblin();
@@ -79,7 +78,7 @@ public class level1 extends AppCompatActivity {
         monsterExperience = goblin.getExperience();
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
-        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel, playerGold);
+        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel);
 
         //Update playerData textview to pump out test result. Works fine.
         TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
@@ -118,6 +117,7 @@ public class level1 extends AppCompatActivity {
         if (currentHealth < 1){
 
             displayGoblinDefinitelydead();
+            endLevel();
         }
         else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, armorClass, currentHealth);
             int damageDone = x;
@@ -155,7 +155,7 @@ public class level1 extends AppCompatActivity {
     public void displayGoblinDead(){
         TextView goblinHPTest = (TextView) findViewById(R.id.attackResults2);
         int goblinXP = goblin.getExperience();
-        String x = "The Goblin's dead Dave. You gained " + String.valueOf(goblinXP) + " experience and " +String.valueOf(goblin.getGold() + " gold");
+        String x = "The Goblin's dead Dave. You gained " + String.valueOf(goblinXP) + " experience";
         goblinHPTest.setText(x);
         int experienceNeeded = levelUp.experienceNeeded(playerLevel);
 
@@ -163,8 +163,6 @@ public class level1 extends AppCompatActivity {
             playerLevel +=1;
             displayLevelUp();}
         playerExperience += goblinXP;
-        playerGold += Integer.valueOf(goblin.getGold());
-
     }
 
     public void displayGoblinDamage(String x){
@@ -202,7 +200,7 @@ public class level1 extends AppCompatActivity {
         confirmPlayerLevel.setText(String.valueOf(playerLevel));
     }
 
-    public void finishLevel(View view) {
+    public void endLevel() {
         if (levelComplete == 1){
             Intent confirmIntent = new Intent(level1.this, levelComplete.class);
             confirmIntent.putExtra("playerStrength", playerStrength);
@@ -216,7 +214,6 @@ public class level1 extends AppCompatActivity {
             confirmIntent.putExtra("playerName", playerName);
             confirmIntent.putExtra("playerExperience", playerExperience);
             confirmIntent.putExtra("playerLevel", playerLevel);
-            confirmIntent.putExtra("playerGold", playerGold);
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(confirmIntent); }
         }

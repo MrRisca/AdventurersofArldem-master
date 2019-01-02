@@ -272,7 +272,11 @@
                 android:text="COMPLETE LEVEL"
                 android:layout_weight="1"
                 android:id="@+id/completeLevel"
+<<<<<<< HEAD
                 android:onClick="completeLevel"/>
+=======
+                android:onClick="endLevel"/>
+>>>>>>> parent of 0a0fdf8... Updated gold system
         </LinearLayout>
 
     </LinearLayout>
