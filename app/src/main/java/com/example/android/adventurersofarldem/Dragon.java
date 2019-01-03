@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class Dragon extends Monster {
     public Dragon() {
-        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500);
+        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500, 100);
     }
 
 
