@@ -41,6 +41,7 @@ public class level1 extends AppCompatActivity {
     public int currentHealth;
     public int currentMana;
     public int monsterExperience;
+    public int playerOldExperience;
     public int goblinRoll = 4;
     Battle battle = new Battle(playerStrength, baseDamage, pArmorClass, maximumHealth, maximumMana, currentHealth, currentMana, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
     levelUp levelUp = new levelUp(monsterExperience, playerExperience, playerLevel);
@@ -162,6 +163,7 @@ public class level1 extends AppCompatActivity {
         if ((goblinXP + playerExperience) > experienceNeeded ){
             playerLevel +=1;
             displayLevelUp();}
+        playerOldExperience = playerExperience;
         playerExperience += goblinXP;
         playerGold += Integer.valueOf(goblin.getGold());
 
@@ -214,6 +216,7 @@ public class level1 extends AppCompatActivity {
             confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
             confirmIntent.putExtra("playerClass", playerClass);
             confirmIntent.putExtra("playerName", playerName);
+            confirmIntent.putExtra("playerOldExperience", playerOldExperience);
             confirmIntent.putExtra("playerExperience", playerExperience);
             confirmIntent.putExtra("playerLevel", playerLevel);
             confirmIntent.putExtra("playerGold", playerGold);
