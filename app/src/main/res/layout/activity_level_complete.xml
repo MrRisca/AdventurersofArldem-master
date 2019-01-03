@@ -116,11 +116,11 @@
             app:layout_constraintTop_toTopOf="@+id/next_lv" />
 
         <TextView
-            android:id="@+id/secret_count"
+            android:id="@+id/experience_gained"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="3/3"
+            android:text="0"
             app:layout_constraintEnd_toEndOf="@+id/kill_count"
             app:layout_constraintTop_toBottomOf="@+id/kill_count" />
 
@@ -138,10 +138,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="20"
-            app:layout_constraintEnd_toEndOf="@+id/secret_count"
-            app:layout_constraintStart_toStartOf="@+id/secret_count"
-            app:layout_constraintTop_toBottomOf="@+id/secret_count" />
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/experience_gained"
+            app:layout_constraintStart_toStartOf="@+id/experience_gained"
+            app:layout_constraintTop_toBottomOf="@+id/experience_gained" />
 
         <Button
             android:id="@+id/return_button"
@@ -163,6 +163,7 @@
             android:layout_marginStart="29dp"
             android:layout_marginLeft="29dp"
             android:text="Continue"
+            android:onClick="continueGame"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/return_button" />
 
