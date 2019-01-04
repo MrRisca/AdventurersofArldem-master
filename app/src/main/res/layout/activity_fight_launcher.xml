@@ -17,7 +17,6 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="decreaseStrength"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:text="FIGHT ORC"/>
@@ -25,7 +24,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="decreaseStrength"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:text="FIGHT GOBLIN"/>
@@ -33,7 +31,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="decreaseStrength"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:text="FIGHT DRAGON"/>
@@ -234,26 +231,26 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
+                    android:onClick="heal"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="Full Heal (1GP)"/>
+                    android:text="Full Heal (3GP)"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+5 HP (1GP)"/>
+                    android:onClick="addFiveHealth"
+                    android:text="+5 HP (5GP)"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+10 HP (2GP)"/>
+                    android:onClick="addTenHealth"
+                    android:text="+10 HP (8GP)"/>
             </LinearLayout>
 
             <LinearLayout
@@ -263,27 +260,32 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
+                    android:onClick="addOneStrength"
                     android:text="+1 STR (10GP)"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
+                    android:onClick="addOneAgility"
                     android:text="+1 AGI (10GP)"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="decreaseStrength"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
+                    android:onClick="addOneIntellect"
                     android:text="+1 INT (10GP)"/>
             </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        android:text="Status of update will post here"/>
 
 </LinearLayout>
