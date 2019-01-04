@@ -30,7 +30,11 @@ public class level1 extends AppCompatActivity {
     public int playerLevel;
     public int levelComplete = 0;
     public int playerGold = 0;
+    public String enemyChoice = "Goblin";
 
+
+
+    public Dragon dragon = new Dragon();
     public Goblin goblin = new Goblin();
     //("Bob", 12, 2, 7, 0, 7 ,0, 6);
     public String monsterName;
@@ -68,6 +72,20 @@ public class level1 extends AppCompatActivity {
         pArmorClass  = ((10 +(playerAgility / 2)) - 5);
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
+        enemyChoice = getIntent().getStringExtra("enemyChoice");
+        if (enemyChoice == "Orc") {
+            Orc orc = new Orc();
+        }
+        else {
+                if (enemyChoice == "Dragon") {
+                    Dragon dragon = new Dragon();
+                }
+                else {
+                    Goblin goblin = new Goblin();
+                }
+            }
+
+
 
         // Set the monster's details from the goblin we made above called Bob.
         monsterName = goblin.getMonsterName();
@@ -78,6 +96,9 @@ public class level1 extends AppCompatActivity {
         currentHealth = goblin.getCurrentHealth();
         currentMana = goblin.getCurrentMana();
         monsterExperience = goblin.getExperience();
+
+
+
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
         String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel, playerGold);

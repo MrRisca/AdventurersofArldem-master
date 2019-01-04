@@ -1,5 +1,6 @@
 package com.example.android.adventurersofarldem;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -198,4 +199,62 @@ public class fight_launcher extends AppCompatActivity {
 
         }
     }
+
+    public void fightOrc(View view){
+            Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+            confirmIntent.putExtra("playerStrength", playerStrength);
+            confirmIntent.putExtra("playerAgility", playerAgility);
+            confirmIntent.putExtra("playerIntellect", playerIntellect);
+            confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+            confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+            confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+            confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+            confirmIntent.putExtra("playerClass", playerClass);
+            confirmIntent.putExtra("playerName", playerName);
+            confirmIntent.putExtra("playerExperience", playerExperience);
+            confirmIntent.putExtra("playerLevel", playerLevel);
+            confirmIntent.putExtra("playerGold", playerGold);
+            confirmIntent.putExtra("enemyChoice", "Orc");
+            if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(confirmIntent); }
+        }
+
+    public void fightGoblin(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putExtra("enemyChoice", "Goblin");
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+    }
+
+    public void fightDragon(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putExtra("enemyChoice", "Dragon");
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+    }
+
 }
