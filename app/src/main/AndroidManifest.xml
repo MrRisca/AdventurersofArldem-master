@@ -23,7 +23,8 @@
         <activity android:name=".level1" />
         <activity android:name=".youDead" />
         <activity android:name=".levelComplete" />
-        <activity android:name=".navigatorScreen"></activity>
+        <activity android:name=".navigatorScreen" />
+        <activity android:name=".fight_launcher"></activity>
     </application>
 
 </manifest>

@@ -145,7 +145,7 @@ public class Battle extends AppCompatActivity {
         } else {
             pModifier += 10;
         }
-        roll = randomNum + pModifier;
+        roll = randomNum + pModifier + 2;
         return roll;
     }
 

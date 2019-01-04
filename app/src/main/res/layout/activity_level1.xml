@@ -272,7 +272,8 @@
                 android:text="COMPLETE LEVEL"
                 android:layout_weight="1"
                 android:id="@+id/completeLevel"
-                android:onClick="completeLevel"/>
+                android:onClick="endLevel"/>
+
         </LinearLayout>
 
     </LinearLayout>
