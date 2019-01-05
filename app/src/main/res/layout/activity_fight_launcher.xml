@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
+            android:onClick="fightGoblin"
             android:text="FIGHT GOBLIN"/>
 
         <Button
@@ -34,6 +35,7 @@
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
+            android:onClick="fightDragon"
             android:text="FIGHT DRAGON"/>
     </LinearLayout>
 

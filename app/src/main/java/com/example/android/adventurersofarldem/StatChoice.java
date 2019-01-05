@@ -87,6 +87,8 @@ public class StatChoice extends AppCompatActivity {
         confirmIntent.putExtra("playerName", pName);
         confirmIntent.putExtra("playerExperience", pExperience);
         confirmIntent.putExtra("playerLevel", pLevel);
+        confirmIntent.putExtra("enemyChoice", "Goblin");
+        confirmIntent.putExtra("playerGold", 0);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
 

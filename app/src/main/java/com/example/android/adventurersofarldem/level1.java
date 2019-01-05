@@ -29,14 +29,14 @@ public class level1 extends AppCompatActivity {
     public int playerExperience;
     public int playerLevel;
     public int levelComplete = 0;
-    public int playerGold = 0;
+    public int playerGold;
     public String enemyChoice = "Goblin";
 
 
 
-    public Dragon dragon = new Dragon();
-    public Goblin goblin = new Goblin();
-    //("Bob", 12, 2, 7, 0, 7 ,0, 6);
+
+   public Dragon dragon = null;
+    public Goblin goblin = null;
     public String monsterName;
     public int armorClass;
     public int baseDamage;
@@ -46,7 +46,8 @@ public class level1 extends AppCompatActivity {
     public int currentMana;
     public int monsterExperience;
     public int playerOldExperience;
-    public int goblinRoll = 4;
+    public int monsterRoll = 4;
+    public int monsterGold;
     Battle battle = new Battle(playerStrength, baseDamage, pArmorClass, maximumHealth, maximumMana, currentHealth, currentMana, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
     levelUp levelUp = new levelUp(monsterExperience, playerExperience, playerLevel);
 
@@ -73,29 +74,58 @@ public class level1 extends AppCompatActivity {
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
         enemyChoice = getIntent().getStringExtra("enemyChoice");
-        if (enemyChoice == "Orc") {
+        playerGold = getIntent().getIntExtra("playerGold", 0);
+        if (enemyChoice.equals( "Orc")) {
             Orc orc = new Orc();
+            monsterName = orc.getMonsterName();
+            armorClass = orc.getArmorClass();
+            baseDamage = orc.getBaseDamage();
+            maximumHealth = orc.getMaximumHealth();
+            maximumMana = orc.getMaximumMana();
+            currentHealth = orc.getCurrentHealth();
+            currentMana = orc.getCurrentMana();
+            monsterExperience = orc.getExperience();
+            monsterGold = orc.getGold();
         }
         else {
-                if (enemyChoice == "Dragon") {
+                if (enemyChoice.equals("Dragon")) {
                     Dragon dragon = new Dragon();
+                    monsterName = dragon.getMonsterName();
+                    armorClass = dragon.getArmorClass();
+                    baseDamage = dragon.getBaseDamage();
+                    maximumHealth = dragon.getMaximumHealth();
+                    maximumMana = dragon.getMaximumMana();
+                    currentHealth = dragon.getCurrentHealth();
+                    currentMana = dragon.getCurrentMana();
+                    monsterExperience = dragon.getExperience();
+                    monsterGold = dragon.getGold();
                 }
                 else {
                     Goblin goblin = new Goblin();
+                    monsterName = goblin.getMonsterName();
+                    armorClass = goblin.getArmorClass();
+                    baseDamage = goblin.getBaseDamage();
+                    maximumHealth = goblin.getMaximumHealth();
+                    maximumMana = goblin.getMaximumMana();
+                    currentHealth = goblin.getCurrentHealth();
+                    currentMana = goblin.getCurrentMana();
+                    monsterExperience = goblin.getExperience();
+                    monsterGold = goblin.getGold();
+
                 }
             }
 
 
 
         // Set the monster's details from the goblin we made above called Bob.
-        monsterName = goblin.getMonsterName();
-        armorClass = goblin.getArmorClass();
-        baseDamage = goblin.getBaseDamage();
-        maximumHealth = goblin.getMaximumHealth();
-        maximumMana = goblin.getMaximumMana();
-        currentHealth = goblin.getCurrentHealth();
-        currentMana = goblin.getCurrentMana();
-        monsterExperience = goblin.getExperience();
+        //monsterName = goblin.getMonsterName();
+        //armorClass = goblin.getArmorClass();
+        //baseDamage = goblin.getBaseDamage();
+        //maximumHealth = goblin.getMaximumHealth();
+        //maximumMana = goblin.getMaximumMana();
+        //currentHealth = goblin.getCurrentHealth();
+        //currentMana = goblin.getCurrentMana();
+        //monsterExperience = goblin.getExperience();
 
 
 
@@ -110,7 +140,7 @@ public class level1 extends AppCompatActivity {
         TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
         confirmPlayerStrength.setText(String.valueOf(playerStrength));
 
-        //Set final TextView to have the goblin's current health.
+        //Set final TextView to have the monster's current health.
         TextView confirmPlayerIntellect = (TextView) findViewById(R.id.playerCurrentIntellect);
         confirmPlayerIntellect.setText(String.valueOf(playerIntellect));
 
@@ -140,23 +170,27 @@ public class level1 extends AppCompatActivity {
     public void fight(View view) {
         if (currentHealth < 1){
 
-            displayGoblinDefinitelydead();
+            displayMonsterDefinitelydead();
             endLevel(view);
         }
         else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, armorClass, currentHealth);
             int damageDone = x;
             currentHealth = (currentHealth - x);
-            if (currentHealth < 1){
-                displayGoblinDead(view);
+            int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, monsterRoll);
+            playerCurrentHP = playerCurrentHP - y;
+            if (currentHealth < 1) {
+                displayMonsterDead(view);
                 levelComplete = 1;
             }
-            else {String goblinMessage = "You did " + String.valueOf(damageDone) + " damage to the Goblin";
-                goblinMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
-                displayGoblinHealth(goblinMessage); }
+            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+                monsterMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
+                displayMonsterHealth(monsterMessage); }
 
-            int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, goblinRoll);
-            playerCurrentHP = playerCurrentHP - y;
             if (playerCurrentHP < 1){
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+
                 Intent confirmIntent = new Intent(level1.this, youDead.class);
 
                 startActivity(confirmIntent);
@@ -164,42 +198,40 @@ public class level1 extends AppCompatActivity {
             }
             else {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
-                displayGoblinDamage(damageReport);
+                displayMonsterDamage(damageReport);
                 displayPlayerHealth();
             }
         }}
 
 
-    //Method to update the TextView showing goblin's HP.
-    public void displayGoblinHealth(String goblinDamage){
-        TextView goblinHPTest = (TextView) findViewById(R.id.attackResults2);
-        goblinHPTest.setText(String.valueOf(goblinDamage));
+    //Method to update the TextView showing Monster's HP.
+    public void displayMonsterHealth(String monsterDamage){
+        TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
+        monsterHPTest.setText(String.valueOf(monsterDamage));
     }
 
-    public void displayGoblinDead(View view){
-        TextView goblinHPTest = (TextView) findViewById(R.id.attackResults2);
-        int goblinXP = goblin.getExperience();
-        int goblinGold = goblin.getGold();
+    public void displayMonsterDead(View view){
+        TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
         levelComplete = 1;
-        String x = "The Goblin's dead Dave. You gained " + String.valueOf(goblinXP) + " experience";
-        goblinHPTest.setText(x);
+        String x = "The Monster's dead Dave. You gained " + String.valueOf(monsterExperience) + " experience";
+        monsterHPTest.setText(x);
         int experienceNeeded = levelUp.experienceNeeded(playerLevel);
         playerOldExperience = playerExperience;
-        playerExperience += goblinXP;
-        playerGold += goblinGold;
+        playerExperience += monsterExperience;
+        playerGold += monsterGold;
         Button endLevel = (Button) findViewById(R.id.completeLevel);
-        if ((goblinXP + playerExperience) > experienceNeeded ){
+        if ((monsterExperience + playerExperience) > experienceNeeded ){
             playerLevel +=1;
             displayLevelUp();}
 
     }
 
-    public void displayGoblinDamage(String x){
+    public void displayMonsterDamage(String x){
         TextView returnDamage = (TextView) findViewById(R.id.attackResults);
         returnDamage.setText(x);
     }
 
-    public void displayGoblinDefinitelydead(){
+    public void displayMonsterDefinitelydead(){
         TextView leaveItalone = (TextView) findViewById(R.id.attackResults2);
         String x = "HES DEAD STOP HITTING HIM";
         leaveItalone.setText(x);
