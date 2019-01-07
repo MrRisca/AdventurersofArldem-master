@@ -1,6 +1,7 @@
 package com.example.android.adventurersofarldem;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +28,11 @@ public class level1 extends AppCompatActivity {
     public int pArmorClass;
     public int playerExperience;
     public int playerLevel;
+    public int levelComplete = 0;
+    public int playerGold = 0;
 
-
-    public Goblin goblin = new Goblin("Bob", 12, 2, 7, 0, 7 ,0, 6);
+    public Goblin goblin = new Goblin();
+    //("Bob", 12, 2, 7, 0, 7 ,0, 6);
     public String monsterName;
     public int armorClass;
     public int baseDamage;
@@ -38,6 +41,7 @@ public class level1 extends AppCompatActivity {
     public int currentHealth;
     public int currentMana;
     public int monsterExperience;
+    public int playerOldExperience;
     public int goblinRoll = 4;
     Battle battle = new Battle(playerStrength, baseDamage, pArmorClass, maximumHealth, maximumMana, currentHealth, currentMana, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
     levelUp levelUp = new levelUp(monsterExperience, playerExperience, playerLevel);
@@ -76,14 +80,12 @@ public class level1 extends AppCompatActivity {
         monsterExperience = goblin.getExperience();
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
-        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel);
+        String playerData = Singleton.getInstance().receivePlayerData(playerName, playerClass, playerStrength, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, pArmorClass, playerExperience, playerLevel, playerGold);
 
-        //Update playerData textview to pump out test result. Works fine.
         TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
         confirmPlayerAgility.setText(String.valueOf(playerAgility));
 
 
-        //Update goblinInfo in similar way.
         TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
         confirmPlayerStrength.setText(String.valueOf(playerStrength));
 
@@ -108,6 +110,9 @@ public class level1 extends AppCompatActivity {
 
         TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
         confirmPlayerLevel.setText(String.valueOf(playerLevel));
+
+        Button endLevel = (Button) findViewById(R.id.completeLevel);
+
     }
 
     //Perform battle to compare goblins' AC vs player's roll to see if damage is done.
@@ -115,16 +120,18 @@ public class level1 extends AppCompatActivity {
         if (currentHealth < 1){
 
             displayGoblinDefinitelydead();
+            endLevel(view);
         }
         else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, armorClass, currentHealth);
             int damageDone = x;
             currentHealth = (currentHealth - x);
             if (currentHealth < 1){
-                displayGoblinDead();
+                displayGoblinDead(view);
+                levelComplete = 1;
             }
             else {String goblinMessage = "You did " + String.valueOf(damageDone) + " damage to the Goblin";
-            goblinMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
-            displayGoblinHealth(goblinMessage); }
+                goblinMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
+                displayGoblinHealth(goblinMessage); }
 
             int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, goblinRoll);
             playerCurrentHP = playerCurrentHP - y;
@@ -148,17 +155,22 @@ public class level1 extends AppCompatActivity {
         goblinHPTest.setText(String.valueOf(goblinDamage));
     }
 
-    public void displayGoblinDead(){
+    public void displayGoblinDead(View view){
         TextView goblinHPTest = (TextView) findViewById(R.id.attackResults2);
         int goblinXP = goblin.getExperience();
+        int goblinGold = goblin.getGold();
+        levelComplete = 1;
         String x = "The Goblin's dead Dave. You gained " + String.valueOf(goblinXP) + " experience";
         goblinHPTest.setText(x);
         int experienceNeeded = levelUp.experienceNeeded(playerLevel);
-
+        playerOldExperience = playerExperience;
+        playerExperience += goblinXP;
+        playerGold += goblinGold;
+        Button endLevel = (Button) findViewById(R.id.completeLevel);
         if ((goblinXP + playerExperience) > experienceNeeded ){
             playerLevel +=1;
             displayLevelUp();}
-        playerExperience += goblinXP;
+
     }
 
     public void displayGoblinDamage(String x){
@@ -170,6 +182,8 @@ public class level1 extends AppCompatActivity {
         TextView leaveItalone = (TextView) findViewById(R.id.attackResults2);
         String x = "HES DEAD STOP HITTING HIM";
         leaveItalone.setText(x);
+        Button endLevel = (Button) findViewById(R.id.completeLevel);
+        endLevel.setBackgroundColor(0xFFFF0000);
     }
 
     public void displayPlayerDead(){
@@ -192,6 +206,27 @@ public class level1 extends AppCompatActivity {
     public void displayLevel() {
         TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
         confirmPlayerLevel.setText(String.valueOf(playerLevel));
+    }
+
+    public void endLevel(View view) {
+        if (levelComplete == 1){
+            Intent confirmIntent = new Intent(level1.this, levelComplete.class);
+            confirmIntent.putExtra("playerStrength", playerStrength);
+            confirmIntent.putExtra("playerAgility", playerAgility);
+            confirmIntent.putExtra("playerIntellect", playerIntellect);
+            confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+            confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+            confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+            confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+            confirmIntent.putExtra("playerClass", playerClass);
+            confirmIntent.putExtra("playerName", playerName);
+            confirmIntent.putExtra("playerOldExperience", playerOldExperience);
+            confirmIntent.putExtra("playerExperience", playerExperience);
+            confirmIntent.putExtra("playerLevel", playerLevel);
+            confirmIntent.putExtra("playerGold", playerGold);
+            if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(confirmIntent); }
+        }
     }
 
 

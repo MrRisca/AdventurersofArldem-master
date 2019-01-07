@@ -269,8 +269,11 @@
             <Button
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:text="Run away"
-                android:layout_weight="1"/>
+                android:text="COMPLETE LEVEL"
+                android:layout_weight="1"
+                android:id="@+id/completeLevel"
+                android:onClick="endLevel"/>
+
         </LinearLayout>
 
     </LinearLayout>
