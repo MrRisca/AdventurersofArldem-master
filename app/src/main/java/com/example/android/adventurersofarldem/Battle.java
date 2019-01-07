@@ -145,7 +145,7 @@ public class Battle extends AppCompatActivity {
         } else {
             pModifier += 10;
         }
-        roll = randomNum + pModifier;
+        roll = randomNum + pModifier + 2;
         return roll;
     }
 
@@ -154,7 +154,7 @@ public class Battle extends AppCompatActivity {
         int damageRoll = 0;
         int cModifier = 0;
         int randomNum = rand.nextInt((6) + 1) + 1;
-        if (pClass == "Warrior") {
+        if (pClass.equals("Warrior")) {
             if (pStrength < 8) {
                 cModifier -= 2;
             } else if (pStrength > 7 && pStrength < 10) {
@@ -183,7 +183,7 @@ public class Battle extends AppCompatActivity {
                 cModifier += 10;
             }}
 
-            else if (pClass == "Ranger") {
+            else if (pClass.equals("Ranger")) {
                 if (pAgility < 8) {
                     cModifier -= 2;
                 } else if (pAgility > 7 && pAgility < 10) {

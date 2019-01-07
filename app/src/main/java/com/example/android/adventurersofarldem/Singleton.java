@@ -17,7 +17,7 @@ public class Singleton extends AppCompatActivity
         public String s;
 
     // private constructor restricted to this class itself
-    private Singleton()
+    public Singleton()
     {
         String s;
     }
@@ -31,7 +31,7 @@ public class Singleton extends AppCompatActivity
         return INSTANCE;
     }
 
-    public String receivePlayerData(String playerName, String playerClass, int playerStrength, int playerAgility, int playerIntellect, int playerMaxHP, int playerMaxMP, int playerCurrentHP, int playerCurrentMP, int playerAC, int playerExperience, int playerLevel){
+    public String receivePlayerData(String playerName, String playerClass, int playerStrength, int playerAgility, int playerIntellect, int playerMaxHP, int playerMaxMP, int playerCurrentHP, int playerCurrentMP, int playerAC, int playerExperience, int playerLevel, int playerGold){
         String playerData = "Player name is " + playerName + ", who is playing the " + playerClass + " class" + "\n Their Strength is " + playerStrength + "\n Their Agility is " + playerAgility;
         playerData += "\n Their Intellect is " + playerIntellect;
         playerData += "\n Their Max HP is " + playerMaxHP + " and their current HP is " + playerCurrentHP;
@@ -39,6 +39,7 @@ public class Singleton extends AppCompatActivity
         playerData += "\n Their Armor Class is " + playerAC;
         playerData += "\n Their current Experience is " + playerExperience;
         playerData += "\n Their level is " + playerLevel;
+        playerData += "\n Their gold amount is " + playerGold;
         return playerData;
     }
 }
