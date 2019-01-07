@@ -1,9 +1,14 @@
 package com.example.android.adventurersofarldem;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+
 
 public class fight_launcher extends AppCompatActivity {
 
@@ -198,4 +203,72 @@ public class fight_launcher extends AppCompatActivity {
 
         }
     }
+
+    public void fightOrc(View view){
+            Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+            confirmIntent.putExtra("playerStrength", playerStrength);
+            confirmIntent.putExtra("playerAgility", playerAgility);
+            confirmIntent.putExtra("playerIntellect", playerIntellect);
+            confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+            confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+            confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+            confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+            confirmIntent.putExtra("playerClass", playerClass);
+            confirmIntent.putExtra("playerName", playerName);
+            confirmIntent.putExtra("playerExperience", playerExperience);
+            confirmIntent.putExtra("playerLevel", playerLevel);
+            confirmIntent.putExtra("playerGold", playerGold);
+            confirmIntent.putExtra("enemyChoice", "Orc");
+            Button button = (Button)findViewById(R.id.fight_orc_button);
+            final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+            button.startAnimation(myAnim);
+
+            // Use bounce interpolator with amplitude 0.2 and frequency 20
+            MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+            myAnim.setInterpolator(interpolator);
+
+            button.startAnimation(myAnim);
+            if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(confirmIntent); }
+        }
+
+
+    public void fightGoblin(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putExtra("enemyChoice", "Goblin");
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+    }
+
+    public void fightDragon(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putExtra("enemyChoice", "Dragon");
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+    }
+
 }

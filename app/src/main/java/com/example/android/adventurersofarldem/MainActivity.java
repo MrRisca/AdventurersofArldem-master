@@ -23,13 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayPlayerHealth(0);
-        displayPlayerMaxHealth(10);
-        displayPlayerMana(0);
-        displayPlayerMaxHana(10);
-        displayPlayerStrength(1);
-        displayPlayerInt(2);
-        displayPlayerAgility(3);
+
 
         setContentView(R.layout.activity_main);
 
@@ -51,40 +45,5 @@ public class MainActivity extends AppCompatActivity {
 
 // The following are the commands to update the text fields showing player stats.
 
-
-    public void displayPlayerHealth(int player_current_HP) {
-        TextView currentHealth = (TextView) findViewById(R.id.playerCurrentHealth);
-        currentHealth.setText(String.valueOf(player_current_HP));
-    }
-
-    public void displayPlayerMaxHealth(int player_max_HP) {
-        TextView maxHealth = (TextView) findViewById(R.id.playerMaxHealth);
-        maxHealth.setText(String.valueOf(player_max_HP));
-    }
-
-    public void displayPlayerMana(int player_current_MP) {
-        TextView currentMana = (TextView) findViewById(R.id.playerCurrentMana);
-        currentMana.setText(String.valueOf(player_current_MP));
-    }
-
-    public void displayPlayerMaxHana(int player_max_MP) {
-        TextView maxMana = (TextView) findViewById(R.id.playerMaxMana);
-        maxMana.setText(String.valueOf(player_max_MP));
-    }
-
-    public void displayPlayerStrength(int player_str) {
-        TextView str = (TextView) findViewById(R.id.playerCurrentStrength);
-        str.setText(String.valueOf(player_str));
-    }
-
-    public void displayPlayerAgility(int player_agi) {
-        TextView agi = (TextView) findViewById(R.id.playerCurrentAgility);
-        agi.setText(String.valueOf(player_agi));
-    }
-
-    public void displayPlayerInt(int player_int) {
-        TextView intellect = (TextView) findViewById(R.id.playerCurrentIntellect);
-        intellect.setText(String.valueOf(player_int));
-    }
 }
 

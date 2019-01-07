@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
@@ -15,24 +16,31 @@
         android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/fight_orc_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
-                android:text="FIGHT ORC"/>
+                android:onClick="fightOrc"
+                android:text="FIGHT ORC"
+                />
 
         <Button
+            android:id="@+id/fight_goblin_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
+            android:onClick="fightGoblin"
             android:text="FIGHT GOBLIN"/>
 
         <Button
+            android:id="@+id/fight_dragon_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
+            android:onClick="fightDragon"
             android:text="FIGHT DRAGON"/>
     </LinearLayout>
 

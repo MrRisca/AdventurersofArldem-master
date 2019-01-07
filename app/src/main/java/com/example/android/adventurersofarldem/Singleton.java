@@ -17,7 +17,7 @@ public class Singleton extends AppCompatActivity
         public String s;
 
     // private constructor restricted to this class itself
-    private Singleton()
+    public Singleton()
     {
         String s;
     }
