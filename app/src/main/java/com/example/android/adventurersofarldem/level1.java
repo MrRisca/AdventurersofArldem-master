@@ -35,22 +35,10 @@ public class level1 extends AppCompatActivity {
 
 
 
-//   public Dragon dragon = null;
-//    public Goblin goblin = null;
-//    public String monsterName;
-//    public int armorClass;
-//    public int baseDamage;
-//    public int maximumHealth;
-//    public int maximumMana;
-//    public int currentHealth;
-//    public int currentMana;
-//    public int monsterExperience;
+
     public int playerOldExperience;
     public int monsterRoll = 4;
-//    public int monsterGold;
     private Monster monster;
-    Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
-    levelUp levelUp = new levelUp(monster.getExperience(), playerExperience, playerLevel);
 
 
     @Override
@@ -78,43 +66,19 @@ public class level1 extends AppCompatActivity {
         playerGold = getIntent().getIntExtra("playerGold", 0);
         if (enemyChoice.equals( "Orc")) {
             monster = new Orc();
-//            monsterName = orc.getMonsterName();
-//            armorClass = orc.getArmorClass();
-//            baseDamage = orc.getBaseDamage();
-//            maximumHealth = orc.getMaximumHealth();
-//            maximumMana = orc.getMaximumMana();
-//            currentHealth = orc.getCurrentHealth();
-//            currentMana = orc.getCurrentMana();
-//            monsterExperience = orc.getExperience();
-//            monsterGold = orc.getGold();
+
         }
         else {
-                if (enemyChoice.equals("Dragon")) {
-                    monster = new Dragon();
-//                    monsterName = dragon.getMonsterName();
-//                    armorClass = dragon.getArmorClass();
-//                    baseDamage = dragon.getBaseDamage();
-//                    maximumHealth = dragon.getMaximumHealth();
-//                    maximumMana = dragon.getMaximumMana();
-//                    currentHealth = dragon.getCurrentHealth();
-//                    currentMana = dragon.getCurrentMana();
-//                    monsterExperience = dragon.getExperience();
-//                    monsterGold = dragon.getGold();
-                }
-                else {
-                    monster = new Goblin();
-//                    monsterName = goblin.getMonsterName();
-//                    armorClass = goblin.getArmorClass();
-//                    baseDamage = goblin.getBaseDamage();
-//                    maximumHealth = goblin.getMaximumHealth();
-//                    maximumMana = goblin.getMaximumMana();
-//                    currentHealth = goblin.getCurrentHealth();
-//                    currentMana = goblin.getCurrentMana();
-//                    monsterExperience = goblin.getExperience();
-//                    monsterGold = goblin.getGold();
+            if (enemyChoice.equals("Dragon")) {
+                monster = new Dragon();
 
-                }
             }
+            else {
+                monster = new Goblin();
+
+
+            }
+        }
 
 
 
@@ -159,12 +123,15 @@ public class level1 extends AppCompatActivity {
 
     //Perform battle to compare goblins' AC vs player's roll to see if damage is done.
     public void fight(View view) {
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
+
         if (monster.getCurrentHealth() < 1){
 
             displayMonsterDefinitelydead();
             endLevel(view);
         }
         else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
             int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
@@ -202,6 +169,8 @@ public class level1 extends AppCompatActivity {
     }
 
     public void displayMonsterDead(View view){
+        levelUp levelUp = new levelUp(monster.getExperience(), playerExperience, playerLevel);
+
         TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
         levelComplete = 1;
         String x = "The Monster's dead Dave. You gained " + String.valueOf(monster.getExperience()) + " experience";
