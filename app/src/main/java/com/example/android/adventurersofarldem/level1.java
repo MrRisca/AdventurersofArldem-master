@@ -39,8 +39,6 @@ public class level1 extends AppCompatActivity {
     public int playerOldExperience;
     public int monsterRoll = 4;
     private Monster monster;
-    Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
-    levelUp levelUp = new levelUp(monster.getExperience(), playerExperience, playerLevel);
 
 
     @Override
@@ -125,12 +123,15 @@ public class level1 extends AppCompatActivity {
 
     //Perform battle to compare goblins' AC vs player's roll to see if damage is done.
     public void fight(View view) {
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
+
         if (monster.getCurrentHealth() < 1){
 
             displayMonsterDefinitelydead();
             endLevel(view);
         }
         else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
             int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
@@ -168,6 +169,8 @@ public class level1 extends AppCompatActivity {
     }
 
     public void displayMonsterDead(View view){
+        levelUp levelUp = new levelUp(monster.getExperience(), playerExperience, playerLevel);
+
         TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
         levelComplete = 1;
         String x = "The Monster's dead Dave. You gained " + String.valueOf(monster.getExperience()) + " experience";
