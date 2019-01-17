@@ -21,6 +21,7 @@ public class Battle extends AppCompatActivity {
     public int pCurrentMana;
     public String pClass;
     public int pArmorClass = (10 + ((pAgility /2) -5));
+    public int attackType = 1;
 
     public Battle(int ps, int es, int ea, int emh, int emm, int ech, int ecm, int pa, int pi, int pmh, int pmm, int pch, int pcm, String pc) {
         pStrength = ps;
@@ -43,6 +44,7 @@ public class Battle extends AppCompatActivity {
     public int combatWarrior(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
         int didIHit = chanceToHit(pStrength, pAgility);
         int damage = calculateDamage(pClass, pStrength, pAgility);
+        attackType = 1;
         if (didIHit > eArmorClass) {
 
             return damage;
@@ -50,16 +52,66 @@ public class Battle extends AppCompatActivity {
 
     }
 
+    public int combatHeavy(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
+        int didIHit = chanceToHit(pStrength, pAgility);
+        int damage = calculateDamage(pClass, pStrength, pAgility);
+        attackType = 2;
+        if (didIHit > eArmorClass) {
+            damage += (damage * 0.1);
+            return damage;
+        }
+        else return  0;
+    }
+
+    public int combatLight(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
+        int didIHit = chanceToHit(pStrength, pAgility);
+        int damage = calculateDamage(pClass, pStrength, pAgility);
+        attackType = 3;
+        if (didIHit > eArmorClass) {
+            damage -= (damage * 0.1);
+
+            return damage;
+        }
+        else return  0;
+    }
+
     public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth, int enemyRoll) {
         Random rand = new Random();
         int randomNum = rand.nextInt((enemyRoll) +1) + 1;
-        int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
-        int damage;
-        if (didIHit == 1){
-            damage = randomNum;
-            return damage;
+        if (attackType == 2) {
+            pArmorClass -= 2;
+            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            int damage;
+            pArmorClass +=2;
+            if (didIHit == 1){
+                damage = randomNum;
+                return damage;}
+
+
+            else return 0;
         }
-        else return 0;
+
+        else if (attackType == 3) {
+            pArmorClass += 2;
+            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            int damage;
+            pArmorClass -=2;
+            if (didIHit == 1) {
+                damage = randomNum;
+                return damage;
+            }
+
+
+            else return 0;
+        }
+        else {
+            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            int damage;
+            if (didIHit == 1) {
+                damage = randomNum;
+                return damage;
+            } else return 0;
+        }
     }
 
 

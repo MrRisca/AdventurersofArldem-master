@@ -67,7 +67,8 @@
                     android:gravity="center_vertical"
                     android:text="Block"
                     android:textAlignment="center"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:onClick="lightFight"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -76,7 +77,8 @@
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:padding="10dp"
-                    android:text="Heavy attack"/>
+                    android:text="Heavy attack"
+                    android:onClick="heavyFight"/>
 
                 <Button
                     android:layout_width="wrap_content"
