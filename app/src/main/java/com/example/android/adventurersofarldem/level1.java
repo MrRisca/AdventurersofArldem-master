@@ -162,6 +162,84 @@ public class level1 extends AppCompatActivity {
         }}
 
 
+    public void lightFight(View view) {
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
+
+        if (monster.getCurrentHealth() < 1){
+
+            displayMonsterDefinitelydead();
+            endLevel(view);
+        }
+        else {int x = battle.combatLight(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+
+            int damageDone = x;
+            monster.setCurrentHealth((monster.getCurrentHealth() - x));
+            int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
+            playerCurrentHP = playerCurrentHP - y;
+            if (monster.getCurrentHealth() < 1) {
+                displayMonsterDead(view);
+                levelComplete = 1;
+            }
+            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+                monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
+                displayMonsterHealth(monsterMessage); }
+
+            if (playerCurrentHP < 1){
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+
+                Intent confirmIntent = new Intent(level1.this, youDead.class);
+
+                startActivity(confirmIntent);
+
+            }
+            else {
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+            }
+        }}
+
+    public void heavyFight(View view) {
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
+
+        if (monster.getCurrentHealth() < 1){
+
+            displayMonsterDefinitelydead();
+            endLevel(view);
+        }
+        else {int x = battle.combatHeavy(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+
+            int damageDone = x;
+            monster.setCurrentHealth((monster.getCurrentHealth() - x));
+            int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
+            playerCurrentHP = playerCurrentHP - y;
+            if (monster.getCurrentHealth() < 1) {
+                displayMonsterDead(view);
+                levelComplete = 1;
+            }
+            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+                monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
+                displayMonsterHealth(monsterMessage); }
+
+            if (playerCurrentHP < 1){
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+
+                Intent confirmIntent = new Intent(level1.this, youDead.class);
+
+                startActivity(confirmIntent);
+
+            }
+            else {
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+            }
+        }}
+
     //Method to update the TextView showing Monster's HP.
     public void displayMonsterHealth(String monsterDamage){
         TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
