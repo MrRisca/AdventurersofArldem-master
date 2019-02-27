@@ -48,6 +48,7 @@ public class level1 extends AppCompatActivity {
 
 
 
+
         //Import the Player's name, class and stats from where they just entered them
 
         playerName = getIntent().getStringExtra("playerName");
@@ -318,6 +319,18 @@ public class level1 extends AppCompatActivity {
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(confirmIntent); }
         }
+    }
+
+    public void magicClick(View view) {
+        Fragment spellListFragment;
+        spellListFragment = new spellList();
+
+        FragmentManager spellListManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = spellListManager.beginTransaction();
+            fragmentTransaction.replace(R.id.spellListFragment, spellListFragment);
+            fragmentTransaction.commit();
+
+
     }
 
 
