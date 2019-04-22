@@ -75,6 +75,8 @@ public class Battle extends AppCompatActivity {
         else return  0;
     }
 
+
+
     public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth, int enemyRoll) {
         Random rand = new Random();
         int randomNum = rand.nextInt((enemyRoll) +1) + 1;

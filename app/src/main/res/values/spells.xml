@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spells_array">
+        <item>Normal Attack</item>
+        <item>Heavy Attack</item>
+        <item>Block</item>
+        <item>Fireball</item>
+        <item>Frostbolt</item>
+    </string-array>
+</resources>
