@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".spellSelectActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,11 +21,11 @@
         <activity android:name=".playerConfirm" />
         <activity android:name=".Singleton" />
         <activity android:name=".StatChoice" />
-        <activity android:name=".level1" />
+        <activity android:name=".level1Activity" />
         <activity android:name=".youDead" />
         <activity android:name=".levelComplete" />
         <activity android:name=".navigatorScreen" />
-        <activity android:name=".fight_launcher"></activity>
+        <activity android:name=".fight_launcher" />
     </application>
 
 </manifest>

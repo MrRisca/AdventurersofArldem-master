@@ -1,7 +1,6 @@
 package com.example.android.adventurersofarldem;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,13 +10,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
+import org.w3c.dom.Text;
 
-public class level1 extends AppCompatActivity {
 
+public class level1Activity extends AppCompatActivity implements spellListFragment.Listener {
 
 
     public String playerName;
     public String playerClass;
+    public String spellChoice;
     public int playerStrength;
     public int playerAgility;
     public int playerIntellect;
@@ -33,9 +34,6 @@ public class level1 extends AppCompatActivity {
     public String enemyChoice = "Goblin";
 
 
-
-
-
     public int playerOldExperience;
     public int monsterRoll = 4;
     private Monster monster;
@@ -47,8 +45,6 @@ public class level1 extends AppCompatActivity {
         setContentView(R.layout.activity_level1);
 
 
-
-
         //Import the Player's name, class and stats from where they just entered them
 
         playerName = getIntent().getStringExtra("playerName");
@@ -57,33 +53,27 @@ public class level1 extends AppCompatActivity {
         playerAgility = getIntent().getIntExtra("playerAgility", 0);
         playerIntellect = getIntent().getIntExtra("playerIntellect", 0);
         playerMaxHP = getIntent().getIntExtra("playerMaxHP", 0);
-        playerMaxMP = getIntent().getIntExtra("playerMaxMP",0);
+        playerMaxMP = getIntent().getIntExtra("playerMaxMP", 0);
         playerCurrentHP = getIntent().getIntExtra("playerCurrentHP", 0);
         playerCurrentMP = getIntent().getIntExtra("playerCurrentMP", 0);
-        pArmorClass  = ((10 +(playerAgility / 2)) - 5);
+        pArmorClass = ((10 + (playerAgility / 2)) - 5);
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
         enemyChoice = getIntent().getStringExtra("enemyChoice");
         playerGold = getIntent().getIntExtra("playerGold", 0);
-        if (enemyChoice.equals( "Orc")) {
+        if (enemyChoice.equals("Orc")) {
             monster = new Orc();
 
-        }
-        else {
+        } else {
             if (enemyChoice.equals("Dragon")) {
                 monster = new Dragon();
 
-            }
-            else {
+            } else {
                 monster = new Goblin();
 
 
             }
         }
-
-
-
-
 
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
@@ -126,12 +116,12 @@ public class level1 extends AppCompatActivity {
     public void fight(View view) {
         Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
 
-        if (monster.getCurrentHealth() < 1){
+        if (monster.getCurrentHealth() < 1) {
 
             displayMonsterDefinitelydead();
             endLevel(view);
-        }
-        else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+        } else {
+            int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
 
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
@@ -140,38 +130,39 @@ public class level1 extends AppCompatActivity {
             if (monster.getCurrentHealth() < 1) {
                 displayMonsterDead(view);
                 levelComplete = 1;
-            }
-            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+            } else {
+                String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
                 monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
-                displayMonsterHealth(monsterMessage); }
+                displayMonsterHealth(monsterMessage);
+            }
 
-            if (playerCurrentHP < 1){
+            if (playerCurrentHP < 1) {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
 
-                Intent confirmIntent = new Intent(level1.this, youDead.class);
+                Intent confirmIntent = new Intent(level1Activity.this, youDead.class);
 
                 startActivity(confirmIntent);
 
-            }
-            else {
+            } else {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
             }
-        }}
+        }
+    }
 
 
     public void lightFight(View view) {
         Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
 
-        if (monster.getCurrentHealth() < 1){
+        if (monster.getCurrentHealth() < 1) {
 
             displayMonsterDefinitelydead();
             endLevel(view);
-        }
-        else {int x = battle.combatLight(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+        } else {
+            int x = battle.combatLight(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
 
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
@@ -180,37 +171,38 @@ public class level1 extends AppCompatActivity {
             if (monster.getCurrentHealth() < 1) {
                 displayMonsterDead(view);
                 levelComplete = 1;
-            }
-            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+            } else {
+                String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
                 monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
-                displayMonsterHealth(monsterMessage); }
+                displayMonsterHealth(monsterMessage);
+            }
 
-            if (playerCurrentHP < 1){
+            if (playerCurrentHP < 1) {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
 
-                Intent confirmIntent = new Intent(level1.this, youDead.class);
+                Intent confirmIntent = new Intent(level1Activity.this, youDead.class);
 
                 startActivity(confirmIntent);
 
-            }
-            else {
+            } else {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
             }
-        }}
+        }
+    }
 
     public void heavyFight(View view) {
         Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
 
-        if (monster.getCurrentHealth() < 1){
+        if (monster.getCurrentHealth() < 1) {
 
             displayMonsterDefinitelydead();
             endLevel(view);
-        }
-        else {int x = battle.combatHeavy(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
+        } else {
+            int x = battle.combatHeavy(playerStrength, playerAgility, playerClass, monster.getArmorClass(), monster.getCurrentHealth());
 
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
@@ -219,35 +211,36 @@ public class level1 extends AppCompatActivity {
             if (monster.getCurrentHealth() < 1) {
                 displayMonsterDead(view);
                 levelComplete = 1;
-            }
-            else {String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+            } else {
+                String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
                 monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
-                displayMonsterHealth(monsterMessage); }
+                displayMonsterHealth(monsterMessage);
+            }
 
-            if (playerCurrentHP < 1){
+            if (playerCurrentHP < 1) {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
 
-                Intent confirmIntent = new Intent(level1.this, youDead.class);
+                Intent confirmIntent = new Intent(level1Activity.this, youDead.class);
 
                 startActivity(confirmIntent);
 
-            }
-            else {
+            } else {
                 String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
             }
-        }}
+        }
+    }
 
     //Method to update the TextView showing Monster's HP.
-    public void displayMonsterHealth(String monsterDamage){
+    public void displayMonsterHealth(String monsterDamage) {
         TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
         monsterHPTest.setText(String.valueOf(monsterDamage));
     }
 
-    public void displayMonsterDead(View view){
+    public void displayMonsterDead(View view) {
         levelUp levelUp = new levelUp(monster.getExperience(), playerExperience, playerLevel);
 
         TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
@@ -259,18 +252,19 @@ public class level1 extends AppCompatActivity {
         playerExperience += monster.getExperience();
         playerGold += monster.getGold();
         Button endLevel = (Button) findViewById(R.id.completeLevel);
-        if ((monster.getExperience() + playerExperience) > experienceNeeded ){
-            playerLevel +=1;
-            displayLevelUp();}
+        if ((monster.getExperience() + playerExperience) > experienceNeeded) {
+            playerLevel += 1;
+            displayLevelUp();
+        }
 
     }
 
-    public void displayMonsterDamage(String x){
+    public void displayMonsterDamage(String x) {
         TextView returnDamage = (TextView) findViewById(R.id.attackResults);
         returnDamage.setText(x);
     }
 
-    public void displayMonsterDefinitelydead(){
+    public void displayMonsterDefinitelydead() {
         TextView leaveItalone = (TextView) findViewById(R.id.attackResults2);
         String x = "HES DEAD STOP HITTING HIM";
         leaveItalone.setText(x);
@@ -278,15 +272,17 @@ public class level1 extends AppCompatActivity {
         endLevel.setBackgroundColor(0xFFFF0000);
     }
 
-    public void displayPlayerDead(){
+    public void displayPlayerDead() {
         TextView returnDamage = (TextView) findViewById(R.id.attackResults);
         String x = "You are Dead";
         returnDamage.setText(x);
     }
 
-    public void displayPlayerHealth(){
+    public void displayPlayerHealth() {
         TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
         confirmPlayerCurrentHP.setText(String.valueOf(playerCurrentHP));
+        TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
+        confirmPlayerCurrentMP.setText(String.valueOf(playerCurrentMP));
     }
 
     public void displayLevelUp() {
@@ -301,8 +297,8 @@ public class level1 extends AppCompatActivity {
     }
 
     public void endLevel(View view) {
-        if (levelComplete == 1){
-            Intent confirmIntent = new Intent(level1.this, levelComplete.class);
+        if (levelComplete == 1) {
+            Intent confirmIntent = new Intent(level1Activity.this, levelComplete.class);
             confirmIntent.putExtra("playerStrength", playerStrength);
             confirmIntent.putExtra("playerAgility", playerAgility);
             confirmIntent.putExtra("playerIntellect", playerIntellect);
@@ -317,21 +313,66 @@ public class level1 extends AppCompatActivity {
             confirmIntent.putExtra("playerLevel", playerLevel);
             confirmIntent.putExtra("playerGold", playerGold);
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(confirmIntent); }
+                startActivity(confirmIntent);
+            }
         }
     }
 
     public void magicClick(View view) {
-        Fragment spellListFragment;
-        spellListFragment = new spellList();
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
 
-        FragmentManager spellListManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = spellListManager.beginTransaction();
-            fragmentTransaction.replace(R.id.spellListFragment, spellListFragment);
-            fragmentTransaction.commit();
+        if (monster.getCurrentHealth() < 1) {
 
+            displayMonsterDefinitelydead();
+            endLevel(view);
+        } else if ((playerCurrentMP > 5)) {
+            int damageDone = (10 + (playerIntellect / 4));
+            monster.setCurrentHealth((monster.getCurrentHealth() - damageDone));
+            int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
+            playerCurrentHP = playerCurrentHP - y;
+            playerCurrentMP = playerCurrentMP - 10;
+            if (monster.getCurrentHealth() < 1) {
+                displayMonsterDead(view);
+                levelComplete = 1;
+            } else {
+                String monsterMessage = "You did " + String.valueOf(damageDone) + " damage to the Monster";
+                monsterMessage += "\n They have " + String.valueOf(monster.getCurrentHealth()) + " health left";
+                displayMonsterHealth(monsterMessage);
+            }
+
+            if (playerCurrentHP < 1) {
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+
+                Intent confirmIntent = new Intent(level1Activity.this, youDead.class);
+
+                startActivity(confirmIntent);
+
+            } else {
+                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                displayMonsterDamage(damageReport);
+                displayPlayerHealth();
+            }
+        }
+
+        }
+
+
+
+
+
+
+    @Override
+    public void spellListDidSelectSpell(String selectedSpellName) {
 
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if (fragment instanceof spellListFragment) {
+            spellListFragment spellListFragment = (spellListFragment) fragment;
+            spellListFragment.setListener(this);
+        }
 
-}
+    }}
