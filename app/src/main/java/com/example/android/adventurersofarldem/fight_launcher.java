@@ -115,6 +115,7 @@ public class fight_launcher extends AppCompatActivity {
     public void heal(View view){
         if (playerGold > 2){
             playerCurrentHP = playerMaxHP;
+            playerCurrentMP = playerMaxMP;
             playerGold -= 3;
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
@@ -205,7 +206,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void fightOrc(View view){
-            Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+            Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
             confirmIntent.putExtra("playerStrength", playerStrength);
             confirmIntent.putExtra("playerAgility", playerAgility);
             confirmIntent.putExtra("playerIntellect", playerIntellect);
@@ -234,7 +235,7 @@ public class fight_launcher extends AppCompatActivity {
 
 
     public void fightGoblin(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
         confirmIntent.putExtra("playerStrength", playerStrength);
         confirmIntent.putExtra("playerAgility", playerAgility);
         confirmIntent.putExtra("playerIntellect", playerIntellect);
@@ -253,7 +254,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void fightDragon(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, level1.class);
+        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
         confirmIntent.putExtra("playerStrength", playerStrength);
         confirmIntent.putExtra("playerAgility", playerAgility);
         confirmIntent.putExtra("playerIntellect", playerIntellect);

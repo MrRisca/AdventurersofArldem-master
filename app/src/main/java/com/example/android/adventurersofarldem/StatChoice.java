@@ -75,7 +75,7 @@ public class StatChoice extends AppCompatActivity {
     public void submitStats(View view) {
         //String pName = pName;
         //String pClass = playerClass;
-        Intent confirmIntent = new Intent(StatChoice.this, level1.class);
+        Intent confirmIntent = new Intent(StatChoice.this, level1Activity.class);
         confirmIntent.putExtra("playerStrength", strength);
         confirmIntent.putExtra("playerAgility", agility);
         confirmIntent.putExtra("playerIntellect", intellect);

@@ -19,6 +19,7 @@
                 android:id="@+id/fight_orc_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:minHeight="0dp"
                 android:minWidth="0dp"
                 android:onClick="fightOrc"
@@ -29,6 +30,7 @@
             android:id="@+id/fight_goblin_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:onClick="fightGoblin"
@@ -38,10 +40,21 @@
             android:id="@+id/fight_dragon_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:onClick="fightDragon"
             android:text="FIGHT DRAGON"/>
+
+        <Button
+            android:id="@+id/next_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:onClick="nextLevel"
+            android:text="NEXT LEVEL"/>
     </LinearLayout>
 
         <LinearLayout
