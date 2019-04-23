@@ -19,6 +19,7 @@ public class Singleton extends AppCompatActivity
     public ArrayList<String> playerSpellList = null;
 
 
+
     // variable of type String
 
         public String s;
@@ -28,7 +29,8 @@ public class Singleton extends AppCompatActivity
     {
         String s;
         //playerSpellList = new ArrayList<>();
-        List<String> playerSpellList = new ArrayList<>(Arrays.asList("Attack", "Heavy Attack", "Block", "Fireball"));
+        playerSpellList = new ArrayList<>(Arrays.asList("Attack", "Heavy Attack", "Block", "Fireball"));
+
 
     }
 
