@@ -110,6 +110,18 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
         Button endLevel = (Button) findViewById(R.id.completeLevel);
 
+        TextView playerSpell1 = (TextView) findViewById(R.id.playerSpell1);
+        playerSpell1.setText(Singleton.getInstance().getPlayerSpellList().get(0));
+
+        TextView playerSpell2 = (TextView) findViewById(R.id.playerSpell2);
+        playerSpell2.setText(Singleton.getInstance().getPlayerSpellList().get(1));
+
+        TextView playerSpell3 = (TextView) findViewById(R.id.playerSpell3);
+        playerSpell3.setText(Singleton.getInstance().getPlayerSpellList().get(2));
+
+        TextView playerSpell4 = (TextView) findViewById(R.id.playerSpell4);
+        playerSpell4.setText(Singleton.getInstance().getPlayerSpellList().get(3));
+
     }
 
     //Perform battle to compare goblins' AC vs player's roll to see if damage is done.

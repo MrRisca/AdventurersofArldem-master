@@ -63,10 +63,10 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/blockAttack"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:text="Block"
+                    android:id="@+id/playerSpell2"
                     android:textAlignment="center"
                     android:padding="10dp"
                     android:onClick="lightFight"/>
@@ -74,22 +74,22 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/heavyAttack"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:text="Heavy attack"
+                    android:id="@+id/playerSpell3"
                     android:onClick="heavyFight"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/magicAttack"
                     android:layout_gravity="center"
                     android:text="Magic"
                     android:textAlignment="center"
                     android:gravity="center_vertical"
                     android:padding="10dp"
+                    android:id="@+id/playerSpell4"
                     android:onClick="magicClick"/>
 
             </LinearLayout>
@@ -298,8 +298,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="fight"
-
-                android:text="Attack" />
+                android:id="@+id/playerSpell1"
+                android:text="ATTACK" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -342,10 +342,10 @@
     </LinearLayout>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/spellListFragment">
-    </FrameLayout>
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/spellListFragment">-->
+    <!--</FrameLayout>-->
 </RelativeLayout>
 
