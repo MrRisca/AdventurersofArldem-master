@@ -35,6 +35,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
         spellSpinner1.setOnItemSelectedListener(this);
 
         String spellSelected1 = spellSpinner1.getSelectedItem().toString();
+        Singleton.INSTANCE.playerSpellList.set(0, spellSelected1);
+
 
         Spinner spellSpinner2 = findViewById(R.id.spell2);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -48,6 +50,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
         spellSpinner2.setOnItemSelectedListener(this);
 
         String spellSelected2 = spellSpinner2.getSelectedItem().toString();
+        Singleton.INSTANCE.playerSpellList.set(1, spellSelected2);
+
 
         Spinner spellSpinner3 = findViewById(R.id.spell3);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -61,6 +65,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
         spellSpinner3.setOnItemSelectedListener(this);
 
         String spellSelected3 = spellSpinner3.getSelectedItem().toString();
+        Singleton.INSTANCE.playerSpellList.set(2, spellSelected3);
+
 
         Spinner spellSpinner4 = findViewById(R.id.spell4);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -74,6 +80,7 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
         spellSpinner4.setOnItemSelectedListener(this);
 
         String spellSelected4 = spellSpinner4.getSelectedItem().toString();
+        Singleton.INSTANCE.playerSpellList.set(3, spellSelected4);
     }
 
     @Override
@@ -86,5 +93,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
 
     }
 
+    public void saveSpells(){
+
+    }
 
 }

@@ -44,6 +44,7 @@ public class Singleton extends AppCompatActivity
     }
 
 
+
     // static method to create instance of Singleton class
     public static Singleton getInstance()
     {
