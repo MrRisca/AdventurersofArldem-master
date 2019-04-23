@@ -272,4 +272,11 @@ public class fight_launcher extends AppCompatActivity {
             startActivity(confirmIntent); }
     }
 
-}
+    public void nextLevel(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, spellSelectActivity.class);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+        }
+    }
+
+
