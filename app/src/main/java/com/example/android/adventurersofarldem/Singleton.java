@@ -30,6 +30,20 @@ public class Singleton extends AppCompatActivity
         String s;
         //playerSpellList = new ArrayList<>();
         playerSpellList = new ArrayList<>(Arrays.asList("Attack", "Heavy Attack", "Block", "Fireball"));
+        String playerName;
+        String playerClass;
+        int playerStrength;
+        int playerAgility;
+        int playerIntellect;
+        int playerMaxHP;
+        int playerMaxMP;
+        int playerCurrentHP;
+        int playerCurrentMP;
+        int playerAC;
+        int playerExperience;
+        int playerLevel;
+        int playerGold;
+
 
 
     }
@@ -42,6 +56,7 @@ public class Singleton extends AppCompatActivity
     public void addToPlayerSpellList(String value) {
         playerSpellList.add(value);
     }
+    public void setPlayerSpellList(ArrayList<String> playerSpellList) {this.playerSpellList = playerSpellList;}
 
 
 
@@ -74,4 +89,5 @@ public class Singleton extends AppCompatActivity
         playerData += "\n Their gold amount is " + playerGold;
         return playerData;
     }
+
 }

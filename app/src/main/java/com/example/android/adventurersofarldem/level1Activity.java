@@ -12,6 +12,8 @@ import android.app.FragmentTransaction;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 
 public class level1Activity extends AppCompatActivity implements spellListFragment.Listener {
 
@@ -32,6 +34,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
     public int levelComplete = 0;
     public int playerGold;
     public String enemyChoice = "Goblin";
+    ArrayList<String> spellList = new ArrayList<String>();
 
 
     public int playerOldExperience;
@@ -43,6 +46,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level1);
+        spellList = getIntent().getStringArrayListExtra("spellList");
 
 
         //Import the Player's name, class and stats from where they just entered them
@@ -111,16 +115,16 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
         Button endLevel = (Button) findViewById(R.id.completeLevel);
 
         TextView playerSpell1 = (TextView) findViewById(R.id.playerSpell1);
-        playerSpell1.setText(Singleton.getInstance().getPlayerSpellList().get(0));
+        playerSpell1.setText(spellList.get(0));
 
         TextView playerSpell2 = (TextView) findViewById(R.id.playerSpell2);
-        playerSpell2.setText(Singleton.getInstance().getPlayerSpellList().get(1));
+        playerSpell2.setText(spellList.get(1));
 
         TextView playerSpell3 = (TextView) findViewById(R.id.playerSpell3);
-        playerSpell3.setText(Singleton.getInstance().getPlayerSpellList().get(2));
+        playerSpell3.setText(spellList.get(2));
 
         TextView playerSpell4 = (TextView) findViewById(R.id.playerSpell4);
-        playerSpell4.setText(Singleton.getInstance().getPlayerSpellList().get(3));
+        playerSpell4.setText(spellList.get(3));
 
     }
 
@@ -324,6 +328,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             confirmIntent.putExtra("playerExperience", playerExperience);
             confirmIntent.putExtra("playerLevel", playerLevel);
             confirmIntent.putExtra("playerGold", playerGold);
+            confirmIntent.putStringArrayListExtra("spellList", spellList);
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {
                 startActivity(confirmIntent);
             }

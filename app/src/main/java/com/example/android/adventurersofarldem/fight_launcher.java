@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 
 public class fight_launcher extends AppCompatActivity {
 
@@ -26,6 +28,8 @@ public class fight_launcher extends AppCompatActivity {
     public int playerLevel;
     public int levelComplete = 0;
     public int playerGold;
+    public ArrayList<String> spellList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class fight_launcher extends AppCompatActivity {
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
         playerGold = getIntent().getIntExtra("playerGold", playerGold);
+        spellList = getIntent().getStringArrayListExtra("spellList");
         TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
         confirmPlayerGold.setText(String.valueOf(playerGold));
 
@@ -220,7 +225,8 @@ public class fight_launcher extends AppCompatActivity {
             confirmIntent.putExtra("playerLevel", playerLevel);
             confirmIntent.putExtra("playerGold", playerGold);
             confirmIntent.putExtra("enemyChoice", "Orc");
-            Button button = (Button)findViewById(R.id.fight_orc_button);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
+        Button button = (Button)findViewById(R.id.fight_orc_button);
             final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
             button.startAnimation(myAnim);
 
@@ -249,6 +255,7 @@ public class fight_launcher extends AppCompatActivity {
         confirmIntent.putExtra("playerLevel", playerLevel);
         confirmIntent.putExtra("playerGold", playerGold);
         confirmIntent.putExtra("enemyChoice", "Goblin");
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
     }
@@ -268,12 +275,26 @@ public class fight_launcher extends AppCompatActivity {
         confirmIntent.putExtra("playerLevel", playerLevel);
         confirmIntent.putExtra("playerGold", playerGold);
         confirmIntent.putExtra("enemyChoice", "Dragon");
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
     }
 
     public void nextLevel(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, spellSelectActivity.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
         }

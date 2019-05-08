@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.content.Intent;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class StatChoice extends AppCompatActivity {
 
@@ -26,6 +29,8 @@ public class StatChoice extends AppCompatActivity {
     public int currentMP;
     public int pExperience;
     public int pLevel;
+    public ArrayList<String> spellList = new ArrayList<>(Arrays.asList("Attack", "Heavy Attack", "Block", "Fireball"));
+
 
 
     // Imports the characters existing stats which will be based on their class chosen, and then
@@ -68,6 +73,7 @@ public class StatChoice extends AppCompatActivity {
         pExperience = playerExperience;
         pLevel = playerLevel;
 
+
     }
 
     //Submits updated stats and existing name and class to the confirmation intent
@@ -89,6 +95,7 @@ public class StatChoice extends AppCompatActivity {
         confirmIntent.putExtra("playerLevel", pLevel);
         confirmIntent.putExtra("enemyChoice", "Goblin");
         confirmIntent.putExtra("playerGold", 0);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
 
