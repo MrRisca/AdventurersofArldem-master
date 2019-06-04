@@ -29,12 +29,21 @@ public class fight_launcher extends AppCompatActivity {
     public int levelComplete = 0;
     public int playerGold;
     public ArrayList<String> spellList;
+    public String playerLocation;
+    public int posX;
+    public int posY;
+    public WorldMapClass theWorld;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight_launcher);
+        posX = Singleton.getInstance().playerPositionX;
+        posY = Singleton.getInstance().playerPositionY;
+        theWorld = new WorldMapClass();
+        playerLocation = theWorld.worldMap[posX][posY];
+        System.out.println("OLI " + playerLocation);
         playerName = getIntent().getStringExtra("playerName");
         playerClass = getIntent().getStringExtra("playerClass");
         playerStrength = getIntent().getIntExtra("playerStrength", 0);
@@ -210,6 +219,11 @@ public class fight_launcher extends AppCompatActivity {
         }
     }
 
+    public void findEnemy(View view){
+        String enemyChoice;
+
+    }
+
     public void fightOrc(View view){
             Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
             confirmIntent.putExtra("playerStrength", playerStrength);
@@ -280,7 +294,7 @@ public class fight_launcher extends AppCompatActivity {
             startActivity(confirmIntent); }
     }
 
-    public void nextLevel(View view){
+    public void spellsButtonSelected(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, spellSelectActivity.class);
         confirmIntent.putExtra("playerStrength", playerStrength);
         confirmIntent.putExtra("playerAgility", playerAgility);

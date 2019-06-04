@@ -57,9 +57,9 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
         playerGold = getIntent().getIntExtra("playerGold", playerGold);
-        spellList = getIntent().getStringArrayListExtra("spellList");
+        spellList = Singleton.getInstance().playerSpellList;
 
-        Spinner spellSpinner1 = findViewById(R.id.spell1);
+        spellSpinner1 = findViewById(R.id.spell1);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.spells_array, android.R.layout.simple_spinner_item);
@@ -70,10 +70,9 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
 
         spellSpinner1.setOnItemSelectedListener(this);
 
-//        Singleton.INSTANCE.playerSpellList.set(0, spellSelected1);
 
 
-        Spinner spellSpinner2 = findViewById(R.id.spell2);
+        spellSpinner2 = findViewById(R.id.spell2);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.spells_array, android.R.layout.simple_spinner_item);
@@ -84,12 +83,11 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
 
         spellSpinner2.setOnItemSelectedListener(this);
 
-//        Singleton.INSTANCE.playerSpellList.set(1, spellSelected2);
 
 
 
 
-        Spinner spellSpinner3 = findViewById(R.id.spell3);
+        spellSpinner3 = findViewById(R.id.spell3);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
                 R.array.spells_array, android.R.layout.simple_spinner_item);
@@ -100,11 +98,10 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
 
         spellSpinner3.setOnItemSelectedListener(this);
 
-//        Singleton.INSTANCE.playerSpellList.set(2, spellSelected3);
 
 
 
-        Spinner spellSpinner4 = findViewById(R.id.spell4);
+        spellSpinner4 = findViewById(R.id.spell4);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
                 R.array.spells_array, android.R.layout.simple_spinner_item);
@@ -115,7 +112,6 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
 
         spellSpinner4.setOnItemSelectedListener(this);
 
-//        Singleton.INSTANCE.playerSpellList.set(3, spellSelected4);
 
 
     }
@@ -127,6 +123,7 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
             spellSpinner1.setOnItemSelectedListener(this);
             spellSelected1 = spellSpinner1.getSelectedItem().toString();
             spellList.set(0, spellSelected1);
+            Singleton.getInstance().playerSpellList.set(0, spellSelected1);
 
 
         }
@@ -134,6 +131,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
             spellSpinner2.setOnItemSelectedListener(this);
             spellSelected2 = spellSpinner2.getSelectedItem().toString();
             spellList.set(1, spellSelected2);
+            Singleton.getInstance().playerSpellList.set(1, spellSelected2);
+
 
 
         }
@@ -141,6 +140,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
             spellSpinner3.setOnItemSelectedListener(this);
             spellSelected3 = spellSpinner3.getSelectedItem().toString();
             spellList.set(2, spellSelected3);
+            Singleton.getInstance().playerSpellList.set(2, spellSelected3);
+
 
 
         }
@@ -148,6 +149,8 @@ public class spellSelectActivity extends AppCompatActivity implements AdapterVie
             spellSpinner4.setOnItemSelectedListener(this);
             spellSelected4 = spellSpinner4.getSelectedItem().toString();
             spellList.set(3, spellSelected4);
+            Singleton.getInstance().playerSpellList.set(3, spellSelected4);
+
 
 
         }
