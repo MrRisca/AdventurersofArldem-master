@@ -17,6 +17,8 @@ public class Singleton extends AppCompatActivity
     // static variable single_instance of type Singleton
     public static Singleton INSTANCE;
     public ArrayList<String> playerSpellList = null;
+    public int playerPositionY;
+    public int playerPositionX;
 
 
 
@@ -30,9 +32,29 @@ public class Singleton extends AppCompatActivity
         String s;
         //playerSpellList = new ArrayList<>();
         playerSpellList = new ArrayList<>(Arrays.asList("Attack", "Heavy Attack", "Block", "Fireball"));
+        String playerName;
+        String playerClass;
+        int playerStrength;
+        int playerAgility;
+        int playerIntellect;
+        int playerMaxHP;
+        int playerMaxMP;
+        int playerCurrentHP;
+        int playerCurrentMP;
+        int playerAC;
+        int playerExperience;
+        int playerLevel;
+        int playerGold;
+        playerPositionY = 17;
+        playerPositionX = 17;
+
+
 
 
     }
+
+    public int getPlayerPositionY() {return this.playerPositionY;}
+    public int getPlayerPositionX() {return this.playerPositionX;}
 
     // retrieve array from anywhere
     public ArrayList<String> getPlayerSpellList() {
@@ -42,6 +64,7 @@ public class Singleton extends AppCompatActivity
     public void addToPlayerSpellList(String value) {
         playerSpellList.add(value);
     }
+    public void setPlayerSpellList(ArrayList<String> playerSpellList) {this.playerSpellList = playerSpellList;}
 
 
 
@@ -74,4 +97,5 @@ public class Singleton extends AppCompatActivity
         playerData += "\n Their gold amount is " + playerGold;
         return playerData;
     }
+
 }

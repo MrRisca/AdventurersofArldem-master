@@ -8,6 +8,10 @@ import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import java.util.Random;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class fight_launcher extends AppCompatActivity {
@@ -26,11 +30,26 @@ public class fight_launcher extends AppCompatActivity {
     public int playerLevel;
     public int levelComplete = 0;
     public int playerGold;
+    public ArrayList<String> spellList;
+    public String playerLocation = "Fo";
+    public int posX;
+    public int posY;
+    public WorldMapClass theWorld;
+    public monsterTableClass foundMonster;
+    public int monsterType;
+    public ArrayList<String> monsterTypeArray = null;
+    String currentMonster;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight_launcher);
+        posX = Singleton.getInstance().playerPositionX;
+        posY = Singleton.getInstance().playerPositionY;
+        theWorld = new WorldMapClass();
+        playerLocation = theWorld.worldMap[posX][posY];
+        System.out.println("OLI " + playerLocation);
         playerName = getIntent().getStringExtra("playerName");
         playerClass = getIntent().getStringExtra("playerClass");
         playerStrength = getIntent().getIntExtra("playerStrength", 0);
@@ -44,6 +63,7 @@ public class fight_launcher extends AppCompatActivity {
         playerExperience = getIntent().getIntExtra("playerExperience", 0);
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
         playerGold = getIntent().getIntExtra("playerGold", playerGold);
+        spellList = getIntent().getStringArrayListExtra("spellList");
         TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
         confirmPlayerGold.setText(String.valueOf(playerGold));
 
@@ -205,6 +225,53 @@ public class fight_launcher extends AppCompatActivity {
         }
     }
 
+    public int monsterTypeSelected(){
+        int typeOfLocation;
+        if (playerLocation.equals("T")) {
+            typeOfLocation = 0;
+        }
+        else if (playerLocation.equals("Fo"))
+            typeOfLocation = 1;
+        else if (playerLocation.equals("Fa"))
+            typeOfLocation = 2;
+        else if (playerLocation.equals("M"))
+            typeOfLocation = 3;
+        else if (playerLocation.equals("D"))
+            typeOfLocation = 4;
+        else if (playerLocation.equals("H"))
+            typeOfLocation = 5;
+        else if (playerLocation.equals("R"))
+            typeOfLocation = 6;
+        else if (playerLocation.equals("C"))
+            typeOfLocation = 7;
+        else if (playerLocation.equals("P"))
+            typeOfLocation = 8;
+        else typeOfLocation = 9;
+
+        foundMonster = new monsterTableClass();
+        monsterType = foundMonster.monsterTable[playerLevel][typeOfLocation];
+        return monsterType;
+
+    }
+
+    public void findMonster(){
+        monsterTypeArray = new ArrayList<>(Arrays.asList("Goblin", "Orc", "Troll", "Dragon", "Warg", "Mummy", "Djinni", "Shark", "Kraken"));
+        Random rand = new Random();
+        int randomNumberToDetermineMonster = rand.nextInt(20);
+        int selectedMonsterFromArray = monsterTypeSelected();
+        currentMonster = "null";
+        if (randomNumberToDetermineMonster == 20){
+            currentMonster.equals("Dragon");
+
+        }
+        else {
+            currentMonster.equals(monsterTypeArray.get(selectedMonsterFromArray));
+        }
+
+
+
+    }
+
     public void fightOrc(View view){
             Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
             confirmIntent.putExtra("playerStrength", playerStrength);
@@ -220,7 +287,8 @@ public class fight_launcher extends AppCompatActivity {
             confirmIntent.putExtra("playerLevel", playerLevel);
             confirmIntent.putExtra("playerGold", playerGold);
             confirmIntent.putExtra("enemyChoice", "Orc");
-            Button button = (Button)findViewById(R.id.fight_orc_button);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
+        Button button = (Button)findViewById(R.id.fight_orc_button);
             final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
             button.startAnimation(myAnim);
 
@@ -233,6 +301,36 @@ public class fight_launcher extends AppCompatActivity {
                 startActivity(confirmIntent); }
         }
 
+
+    public void fightEnemy(View view){
+        findMonster();
+        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putExtra("enemyChoice", currentMonster);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
+        Button button = (Button)findViewById(R.id.find_enemy_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+    }
 
     public void fightGoblin(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
@@ -249,6 +347,7 @@ public class fight_launcher extends AppCompatActivity {
         confirmIntent.putExtra("playerLevel", playerLevel);
         confirmIntent.putExtra("playerGold", playerGold);
         confirmIntent.putExtra("enemyChoice", "Goblin");
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
     }
@@ -268,12 +367,26 @@ public class fight_launcher extends AppCompatActivity {
         confirmIntent.putExtra("playerLevel", playerLevel);
         confirmIntent.putExtra("playerGold", playerGold);
         confirmIntent.putExtra("enemyChoice", "Dragon");
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
     }
 
-    public void nextLevel(View view){
+    public void spellsButtonSelected(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, spellSelectActivity.class);
+        confirmIntent.putExtra("playerStrength", playerStrength);
+        confirmIntent.putExtra("playerAgility", playerAgility);
+        confirmIntent.putExtra("playerIntellect", playerIntellect);
+        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
+        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
+        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
+        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
+        confirmIntent.putExtra("playerClass", playerClass);
+        confirmIntent.putExtra("playerName", playerName);
+        confirmIntent.putExtra("playerExperience", playerExperience);
+        confirmIntent.putExtra("playerLevel", playerLevel);
+        confirmIntent.putExtra("playerGold", playerGold);
+        confirmIntent.putStringArrayListExtra("spellList", spellList);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
         }

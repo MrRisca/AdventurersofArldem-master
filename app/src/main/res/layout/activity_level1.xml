@@ -69,7 +69,7 @@
                     android:id="@+id/playerSpell2"
                     android:textAlignment="center"
                     android:padding="10dp"
-                    android:onClick="lightFight"/>
+                    android:onClick="attackTwo"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                     android:padding="10dp"
                     android:text="Heavy attack"
                     android:id="@+id/playerSpell3"
-                    android:onClick="heavyFight"/>
+                    android:onClick="attackThree"/>
 
                 <Button
                     android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                     android:gravity="center_vertical"
                     android:padding="10dp"
                     android:id="@+id/playerSpell4"
-                    android:onClick="magicClick"/>
+                    android:onClick="attackFour"/>
 
             </LinearLayout>
 
@@ -297,7 +297,7 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="fight"
+                android:onClick="attackOne"
                 android:id="@+id/playerSpell1"
                 android:text="ATTACK" />
 
