@@ -33,6 +33,8 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
     public int playerLevel;
     public int levelComplete = 0;
     public int playerGold;
+    public int monsterAttackTurn = 1;
+    public int valueOfMonsterAttack = 0;
     public String enemyChoice = "Goblin";
     ArrayList<String> spellList = new ArrayList<String>();
 
@@ -143,8 +145,9 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
             int damageDone = x;
             monster.setCurrentHealth((monster.getCurrentHealth() - x));
-            int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
-            playerCurrentHP = playerCurrentHP - y;
+            monsterSpecial();
+//            int y = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
+//            playerCurrentHP = playerCurrentHP - y;
             if (monster.getCurrentHealth() < 1) {
                 displayMonsterDead(view);
                 levelComplete = 1;
@@ -155,7 +158,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             }
 
             if (playerCurrentHP < 1) {
-                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                String damageReport = "You were hit for " + String.valueOf(valueOfMonsterAttack) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
 
@@ -164,7 +167,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
                 startActivity(confirmIntent);
 
             } else {
-                String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
+                String damageReport = "You were hit for " + String.valueOf(valueOfMonsterAttack) + " damage, and now you have " + playerCurrentHP + " left";
                 displayMonsterDamage(damageReport);
                 displayPlayerHealth();
             }
@@ -389,6 +392,23 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
         }
     }
 
+    public void monsterSpecial() {
+        Battle battle = new Battle(playerStrength, monster.getBaseDamage(), pArmorClass, monster.getMaximumHealth(), monster.getMaximumMana(), monster.getCurrentHealth(), monster.getCurrentMana(), playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
+        if (monsterAttackTurn == 3){
+            castMonsterSpecial();
+
+        }
+        else {
+            valueOfMonsterAttack = battle.combatEnemy(monster.getBaseDamage(), pArmorClass, monster.getCurrentHealth(), playerCurrentHP, monsterRoll);
+            playerCurrentHP = playerCurrentHP - valueOfMonsterAttack;
+        }
+        monsterAttackTurn += 1;
+
+    }
+
+    public void castMonsterSpecial() {
+
+    }
     public void displayMonsterDamage(String x) {
         TextView returnDamage = (TextView) findViewById(R.id.attackResults);
         returnDamage.setText(x);

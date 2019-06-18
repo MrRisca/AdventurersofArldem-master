@@ -19,7 +19,7 @@
                 android:layout_weight="1"
                 android:minHeight="0dp"
 
-                android:onClick="fightOrc"
+                android:onClick="fightEnemy"
                 android:text="Find Enemy"
                 />
 

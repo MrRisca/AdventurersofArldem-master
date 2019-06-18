@@ -19,8 +19,9 @@ abstract class Monster implements MonsterInterface{
     public int currentMana;
     public int experience;
     public int gold;
+    public String monsterSpecial;
 
-    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp) {
+    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, String monsterSp) {
         monsterName = n;
         armorClass = ac;
         baseDamage = bd;
@@ -30,6 +31,7 @@ abstract class Monster implements MonsterInterface{
         currentMana = currentMP;
         experience = xp;
         gold = gp;
+        monsterSpecial = monsterSp;
     }
 
 
@@ -109,6 +111,14 @@ abstract class Monster implements MonsterInterface{
     public int getGold() {
         return gold;
     }
+    public void setMonsterSpecial(String monsterSp) {
+        monsterSpecial = monsterSp;
+    }
+
+    public String getMonsterSpecial() {
+        return monsterSpecial;
+    }
+
 
 
     @Override

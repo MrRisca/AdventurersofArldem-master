@@ -11,7 +11,7 @@ import android.widget.ImageView;
 public class Goblin extends Monster {
     public Goblin() {
     //public Goblin(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super("Goblin", 12, 2, 7, 0, 7, 0, 6, 5);
+        super("Goblin", 12, 2, 7, 0, 7, 0, 6, 5, "Bleed");
     }
 
 
@@ -48,6 +48,10 @@ public class Goblin extends Monster {
         return  getCurrentHealth();
     }
 
+    public String GoblinSpecial() {
+        return getMonsterSpecial();
+    }
+    
     public int GoblinExperience(){
         return getExperience();}
 }
