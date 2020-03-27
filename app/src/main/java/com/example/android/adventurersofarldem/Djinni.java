@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Djinni extends Monster {
     public Djinni() {
-        super("Djinni", 15, 10, 30, 20, 30, 20, 40, 50);
+        super("Djinni", 15, 10, 30, 20, 30, 20, 40, 50, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Djinni extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

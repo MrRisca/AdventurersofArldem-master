@@ -1,14 +1,14 @@
 package com.example.android.adventurersofarldem;
 
 
-public interface MonsterInterface {
+public interface CharacterInterface {
 
 
     //return the name of the human
-    public String getMonsterName();
+    public String getCharacterName();
 
     //change the name of the human
-    public void setMonsterName(String name);
+    public void setCharacterName(String name);
 
     //get the strength of the player
     public int getArmorClass();
@@ -47,6 +47,8 @@ public interface MonsterInterface {
 
     //return a string representation of the player
     public String toString();
+
+
 
 }
 

@@ -10,14 +10,14 @@ package com.example.android.adventurersofarldem;
 
 public class Orc extends Monster {
     public Orc() {
-        super("Orc", 13, 8, 20, 5, 20, 5, 10, 10);
+        super("Orc", 13, 8, 20, 5, 20, 5, 10, 10, 5, 1, 1,1);
     }
 
 
 
     public String toString(){
         return "Orc{" +
-                "name='" + monsterName + '\'' +
+
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,6 +27,7 @@ public class Orc extends Monster {
                 '}';
 
     }
+
 
     public String OrcData(String monsterName, int armorClass, int baseDamage, int maximumHealth, int maximumMana, int currentHealth, int currentMana){
         String OrcData = "Orc name is " + monsterName + ", \n Their AC is " + armorClass + "\n Their Base Damage is " + baseDamage;

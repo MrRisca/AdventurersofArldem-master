@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Mummy extends Monster {
     public Mummy() {
-        super("Mummy", 15, 8, 30, 20, 30, 20, 20, 40);
+        super("Mummy", 15, 8, 30, 20, 30, 20, 20, 40, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Mummy extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

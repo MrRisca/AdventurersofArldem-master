@@ -1,18 +1,12 @@
 package com.example.android.adventurersofarldem;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-
 import java.util.Arrays;
 import java.util.List;
 
+public class Character {
 
-public class Monster extends Character implements CharacterInterface{
-
+    public static String characterType;
+    public static int strength;
     public String characterName;
     public int armorClass;
     public int baseDamage;
@@ -22,13 +16,12 @@ public class Monster extends Character implements CharacterInterface{
     public int currentMana;
     public int experience;
     public int gold;
+    public List <StatusEffect> statusEffect;
     public int speed;
-    public int strength;
     public int agility;
     public int intellect;
 
-    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in) {
-        super("Monster", 15, 10, 20, 20, 20, 20, 0, 0, 2, 11, 11, 11);
+    public Character(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in) {
         characterName = n;
         armorClass = ac;
         baseDamage = bd;
@@ -42,6 +35,7 @@ public class Monster extends Character implements CharacterInterface{
         strength = st;
         agility = ag;
         intellect = in;
+        
     }
 
     public void setStrength(int st) {
@@ -69,7 +63,7 @@ public class Monster extends Character implements CharacterInterface{
     public int getIntellect() {
         return intellect;
     }
-
+    
     public int attack(String target, String spell){
         int attackDamage = 0;
 
@@ -195,4 +189,3 @@ public class Monster extends Character implements CharacterInterface{
     }
 
 }
-

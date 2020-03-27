@@ -49,9 +49,24 @@ public class Goblin extends Monster {
     }
 
     public String GoblinSpecial() {
-        return getMonsterSpecial();
+//        Insert Method here
+        return monsterSpecial;
     }
-    
+
+    public String monsterSpecial() {
+        return monsterSpecial;
+    }
+
     public int GoblinExperience(){
         return getExperience();}
+
+    public String getSpecialAttack() {
+        return monsterSpecial;
+    }
+
+    @Override
+    public void setSpecialAttack() {
+
+    }
 }
+

@@ -36,7 +36,8 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
     public int monsterAttackTurn = 1;
     public int valueOfMonsterAttack = 0;
     public String enemyChoice = "Goblin";
-    ArrayList<String> spellList = new ArrayList<String>();
+    ArrayList<String> spellList;
+    public int playerTarget;
 
     public int positionX = Singleton.getInstance().playerPositionX;
     public int positionY = Singleton.getInstance().playerPositionY;
@@ -55,20 +56,20 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
         //Import the Player's name, class and stats from where they just entered them
 
-        playerName = getIntent().getStringExtra("playerName");
-        playerClass = getIntent().getStringExtra("playerClass");
-        playerStrength = getIntent().getIntExtra("playerStrength", 0);
-        playerAgility = getIntent().getIntExtra("playerAgility", 0);
-        playerIntellect = getIntent().getIntExtra("playerIntellect", 0);
-        playerMaxHP = getIntent().getIntExtra("playerMaxHP", 0);
-        playerMaxMP = getIntent().getIntExtra("playerMaxMP", 0);
-        playerCurrentHP = getIntent().getIntExtra("playerCurrentHP", 0);
-        playerCurrentMP = getIntent().getIntExtra("playerCurrentMP", 0);
+        playerName = Player.name;
+        playerClass = Player.playerClass;
+        playerStrength = Player.strength;
+        playerAgility = Player.agility;
+        playerIntellect = Player.intellect;
+        playerMaxHP = Player.maximumHealth;
+        playerMaxMP = Player.maximumMana;
+        playerCurrentHP = Player.currentHealth;
+        playerCurrentMP = Player.currentMana;
         pArmorClass = ((10 + (playerAgility / 2)) - 5);
-        playerExperience = getIntent().getIntExtra("playerExperience", 0);
-        playerLevel = getIntent().getIntExtra("playerLevel", 0);
+        playerExperience = Player.playerXP;
+        playerLevel = Player.playerLevel;
         enemyChoice = getIntent().getStringExtra("enemyChoice");
-        playerGold = getIntent().getIntExtra("playerGold", 0);
+        playerGold = Player.playerGold;
         if (enemyChoice.equals("Orc")) {
             monster = new Orc();
 
@@ -336,6 +337,10 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
         else if (Singleton.getInstance().playerSpellList.get(0).equals("Frostbolt")) {
             magicClick(view);
         }
+        playerTarget = 0;
+
+
+
     }
 
     public void attackTwo(View view) {

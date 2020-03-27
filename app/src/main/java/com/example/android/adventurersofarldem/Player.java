@@ -1,26 +1,26 @@
 package com.example.android.adventurersofarldem;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-abstract class Player implements PlayerInterface{
+abstract class Player implements CharacterInterface{
 
-    public String name;
-    public int strength;
-    public int agility;
-    public int intellect;
-    public int maximumHealth;
-    public int maximumMana;
-    public int currentHealth;
-    public int currentMana;
-    public int armorClass;
-    public int playerXP;
-    public int playerLevel;
+    public static String name;
+    public static String playerClass;
+    public static int strength;
+    public static int agility;
+    public static int intellect;
+    public static int maximumHealth;
+    public static int maximumMana;
+    public static int currentHealth;
+    public static int currentMana;
+    public static int armorClass;
+    public static int playerXP;
+    public static int playerLevel;
+    public List<Attack> spellList;
+    public static int playerGold;
 
     public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
         name = n;
@@ -37,7 +37,13 @@ abstract class Player implements PlayerInterface{
     }
 
 
+    public void setSpellList(Attack spell1, Attack spell2, Attack spell3, Attack spell4){
+        spellList = Arrays.asList(spell1, spell2, spell3, spell4);
+    }
 
+    public List<Attack> getSpellList() {
+        return spellList;
+    }
 
     public void setName(String n) {
         name = n;
@@ -130,6 +136,13 @@ abstract class Player implements PlayerInterface{
 
     public int getPlayerLevel() {
         return playerLevel;
+    }
+
+    public void setPlayerGold(int gold) {
+        playerGold = gold;
+    }
+    public int getPlayerGold() {
+        return playerGold;
     }
 
     @Override

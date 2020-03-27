@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class Dragon extends Monster {
     public Dragon() {
-        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500, 100);
+        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500, 100, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Dragon extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

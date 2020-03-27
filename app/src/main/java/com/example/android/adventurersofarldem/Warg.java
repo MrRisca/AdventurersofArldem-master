@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Warg extends Monster {
     public Warg() {
-        super("Warg", 15, 20, 20, 10, 20, 10, 25, 35);
+        super("Warg", 15, 20, 20, 10, 20, 10, 25, 35, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Warg extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

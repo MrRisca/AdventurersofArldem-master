@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Shark extends Monster {
     public Shark() {
-        super("Shark", 15, 10, 40, 2, 40, 2, 30, 50);
+        super("Shark", 15, 10, 40, 2, 40, 2, 30, 50, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Shark extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

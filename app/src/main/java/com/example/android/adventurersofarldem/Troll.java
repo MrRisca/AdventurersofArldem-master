@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Troll extends Monster {
     public Troll() {
-        super("Troll", 15, 10, 70, 2, 70, 2, 30, 50);
+        super("Troll", 15, 10, 70, 2, 70, 2, 30, 50, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Troll extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 

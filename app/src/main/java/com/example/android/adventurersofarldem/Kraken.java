@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class Kraken extends Monster {
     public Kraken() {
-        super("Kraken", 20, 15, 80, 10, 80, 10, 50, 100);
+        super("Kraken", 20, 15, 80, 10, 80, 10, 50, 100, "Bleed");
     }
 
 
@@ -24,6 +24,16 @@ public class Kraken extends Monster {
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+
+    }
+
+    @Override
+    public String getSpecialAttack() {
+        return null;
+    }
+
+    @Override
+    public void setSpecialAttack() {
 
     }
 
