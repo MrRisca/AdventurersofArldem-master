@@ -32,7 +32,6 @@ public class playerConfirm extends AppCompatActivity {
     public int currentHealth;
     public int currentMana;
     public int dragonRoll = 20;
-    Battle battle = new Battle(playerStrength, baseDamage, pArmorClass, maximumHealth, maximumMana, currentHealth, currentMana, playerAgility, playerIntellect, playerMaxHP, playerMaxMP, playerCurrentHP, playerCurrentMP, playerClass);
 
 
 
@@ -54,7 +53,7 @@ public class playerConfirm extends AppCompatActivity {
         playerLevel = getIntent().getIntExtra("playerLevel", 0);
 
         // Set the monster's details from the dragon we made above called Bob.
-        monsterName = dragon.getMonsterName();
+        monsterName = dragon.getCharacterName();
         armorClass = dragon.getArmorClass();
         baseDamage = dragon.getBaseDamage();
         maximumHealth = dragon.getMaximumHealth();
@@ -97,29 +96,7 @@ public class playerConfirm extends AppCompatActivity {
         }
 
         //Perform battle to compare dragons' AC vs player's roll to see if damage is done.
-    public void fight(View view) {
-        if (currentHealth < 1){
 
-            displayDragonDead();
-        }
-        else {int x = battle.combatWarrior(playerStrength, playerAgility, playerClass, armorClass, currentHealth);
-        int damageDone = x;
-        currentHealth = (currentHealth - x);
-            String dragonMessage = "You did " + String.valueOf(damageDone) + " damage to the Dragon";
-            dragonMessage += "\n They have " + String.valueOf(currentHealth) + " health left";
-            displayDragonHealth(dragonMessage);
-
-        int y = battle.combatEnemy(baseDamage, pArmorClass, currentHealth, playerCurrentHP, dragonRoll);
-        playerCurrentHP = playerCurrentHP - y;
-        if (playerCurrentHP < 1){
-            displayPlayerDead();
-        }
-        else {
-            String damageReport = "You were hit for " + String.valueOf(y) + " damage, and now you have " + playerCurrentHP + " left";
-            displayDragonDamage(damageReport);
-            displayPlayerHealth();
-        }
-        }}
 
 
         //Method to update the TextView showing dragon's HP.

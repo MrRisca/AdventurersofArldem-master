@@ -26,9 +26,10 @@ public class Monster extends Character implements CharacterInterface{
     public int strength;
     public int agility;
     public int intellect;
+    public int level;
 
-    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in) {
-        super("Monster", 15, 10, 20, 20, 20, 20, 0, 0, 2, 11, 11, 11);
+    public Monster(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
+        super("Monster", 15, 10, 20, 20, 20, 20, 0, 0, 2, 11, 11, 11, 1);
         characterName = n;
         armorClass = ac;
         baseDamage = bd;
@@ -42,6 +43,7 @@ public class Monster extends Character implements CharacterInterface{
         strength = st;
         agility = ag;
         intellect = in;
+        level = lvl;
     }
 
     public void setStrength(int st) {
@@ -177,7 +179,9 @@ public class Monster extends Character implements CharacterInterface{
         return statusEffect;
     }
 
-
+    public int determineMod(){
+        return level * 2;
+    }
 
 
 

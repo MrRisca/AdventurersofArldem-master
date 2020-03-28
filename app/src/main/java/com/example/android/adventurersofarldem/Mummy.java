@@ -10,13 +10,13 @@ import android.widget.ImageView;
 
 public class Mummy extends Monster {
     public Mummy() {
-        super("Mummy", 15, 8, 30, 20, 30, 20, 20, 40, "Bleed");
+        super("Mummy", 15, 8, 30, 20, 30, 20, 20, 40, 1, 1, 1, 1, 1);
     }
 
 
     public String toString() {
         return "Mummy{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,12 @@ public class Mummy extends Monster {
 
     }
 
-    @Override
+
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
+
     public void setSpecialAttack() {
 
     }

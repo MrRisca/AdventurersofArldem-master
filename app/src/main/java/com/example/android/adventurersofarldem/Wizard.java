@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Wizard extends Player {
-    public Wizard(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
-        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac, pXP, level);
+    public Wizard(String n, String pClass, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
+        super(n, pClass, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac, pXP, level);
     }
 
 

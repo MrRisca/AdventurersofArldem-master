@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Character {
 
-    public static String characterType;
-    public static int strength;
+    public String characterType;
+    public int strength;
     public String characterName;
     public int armorClass;
     public int baseDamage;
@@ -20,8 +20,9 @@ public class Character {
     public int speed;
     public int agility;
     public int intellect;
+    public int level;
 
-    public Character(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in) {
+    public Character(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         characterName = n;
         armorClass = ac;
         baseDamage = bd;
@@ -35,6 +36,7 @@ public class Character {
         strength = st;
         agility = ag;
         intellect = in;
+        level = lvl;
         
     }
 
@@ -162,6 +164,14 @@ public class Character {
         return gold;
     }
 
+    public void setLevel(int lvl) {
+        level = lvl;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
     public void addStatusEffect(StatusEffect effectName){
         statusEffect = Arrays.asList(effectName);
 
@@ -172,7 +182,10 @@ public class Character {
     }
 
 
-
+    public int determineMod(){
+        int characterMod = 0;
+        return characterMod;
+    }
 
 
     @Override

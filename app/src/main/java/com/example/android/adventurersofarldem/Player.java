@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-abstract class Player implements CharacterInterface{
+public class Player implements CharacterInterface{
 
     public static String name;
     public static String playerClass;
@@ -19,10 +19,11 @@ abstract class Player implements CharacterInterface{
     public static int armorClass;
     public static int playerXP;
     public static int playerLevel;
-    public List<Attack> spellList;
+    public List<Ability> spellList;
     public static int playerGold;
+    public static Player INSTANCE;
 
-    public Player(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
+    public Player(String n, String pClass, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
         name = n;
         strength = st;
         agility = ag;
@@ -34,18 +35,19 @@ abstract class Player implements CharacterInterface{
         armorClass = ac;
         playerXP = pXP;
         playerLevel = level;
+        playerClass = pClass;
     }
 
 
-    public void setSpellList(Attack spell1, Attack spell2, Attack spell3, Attack spell4){
+    public void setSpellList(Ability spell1, Ability spell2, Ability spell3, Ability spell4){
         spellList = Arrays.asList(spell1, spell2, spell3, spell4);
     }
 
-    public List<Attack> getSpellList() {
+    public List<Ability> getSpellList() {
         return spellList;
     }
 
-    public void setName(String n) {
+    public static void setName(String n) {
         name = n;
     }
 
@@ -53,7 +55,15 @@ abstract class Player implements CharacterInterface{
         return name;
     }
 
-    public void setStrength(int st) {
+    public static void setClass(String pc) {
+        playerClass = pc;
+    }
+
+    public String getPlayerClass() {
+        return playerClass;
+    }
+
+    public static void setStrength(int st) {
         strength = st;
     }
 
@@ -62,7 +72,7 @@ abstract class Player implements CharacterInterface{
     }
 
 
-    public void setAgility(int ag) {
+    public static void setAgility(int ag) {
         agility = ag;
     }
 
@@ -71,7 +81,7 @@ abstract class Player implements CharacterInterface{
     }
 
 
-    public void setIntellect(int in) {
+    public static void setIntellect(int in) {
         intellect = in;
     }
 
@@ -109,6 +119,16 @@ abstract class Player implements CharacterInterface{
         currentMana = currentMP;
     }
 
+    @Override
+    public int getExperience() {
+        return 0;
+    }
+
+    @Override
+    public void setExperience(int experience) {
+
+    }
+
     public int getCurrentMana() {
         return currentMana;
     }
@@ -118,11 +138,31 @@ abstract class Player implements CharacterInterface{
         armorClass = ac;
     }
 
+    @Override
+    public int getBaseDamage() {
+        return 0;
+    }
+
+    @Override
+    public void setBaseDamage(int baseDamage) {
+
+    }
+
+    @Override
+    public String getCharacterName() {
+        return null;
+    }
+
+    @Override
+    public void setCharacterName(String name) {
+
+    }
+
     public int getArmorClass() {
         return armorClass;
     }
 
-    public void setPlayerExperience(int pXP) {
+    public static void setPlayerExperience(int pXP) {
         playerXP = pXP;
     }
 
@@ -130,7 +170,7 @@ abstract class Player implements CharacterInterface{
         return playerXP;
     }
 
-    public void setPlayerLevel(int level) {
+    public static void setPlayerLevel(int level) {
         playerLevel = level;
     }
 
@@ -157,6 +197,29 @@ abstract class Player implements CharacterInterface{
                 ", currentHealth=" + currentHealth +
                 ", currentMana=" + currentMana +
                 '}';
+    }
+
+    public static Player getInstance()
+    {
+        if (INSTANCE == null) {
+            INSTANCE = new Player(name,playerClass, strength, agility,intellect, maximumHealth,maximumMana, currentHealth, currentMana, armorClass, playerXP, playerLevel);
+        }
+        return INSTANCE;
+    }
+
+    public int determineMod(){
+        int playerMod = 0;
+        if (Player.getInstance().getPlayerClass().equals("Wizard")) {
+            playerMod = ((Player.getInstance().getIntellect() / 2) - 5);
+        }
+            else if (Player.getInstance().getPlayerClass().equals("Warrior")){
+                playerMod = ((Player.getInstance().getStrength() / 2) - 5);
+            }
+            else if (Player.getInstance().getPlayerClass().equals("Ranger")){
+                playerMod = ((Player.getInstance().getAgility() / 2) - 5);
+        }
+
+        return playerMod;
     }
 }
 

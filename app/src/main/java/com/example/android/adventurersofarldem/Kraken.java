@@ -10,13 +10,13 @@ import android.widget.ImageView;
 
 public class Kraken extends Monster {
     public Kraken() {
-        super("Kraken", 20, 15, 80, 10, 80, 10, 50, 100, "Bleed");
+        super("Kraken", 20, 15, 80, 10, 80, 10, 50, 100, 1, 1, 1, 1, 1);
     }
 
 
     public String toString() {
         return "Kraken{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,12 @@ public class Kraken extends Monster {
 
     }
 
-    @Override
+
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
+
     public void setSpecialAttack() {
 
     }

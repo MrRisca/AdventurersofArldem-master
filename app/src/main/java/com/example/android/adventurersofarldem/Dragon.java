@@ -9,14 +9,14 @@ import android.widget.ImageView;
 
 public class Dragon extends Monster {
     public Dragon() {
-        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500, 100, "Bleed");
+        super("Dragon", 18, 15, 1000, 100, 1000, 100, 500, 100, 1, 1, 1, 1,1);
     }
 
 
 
     public String toString(){
         return "Dragon{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,12 @@ public class Dragon extends Monster {
 
     }
 
-    @Override
+
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
+
     public void setSpecialAttack() {
 
     }

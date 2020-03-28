@@ -10,13 +10,13 @@ import android.widget.ImageView;
 
 public class Shark extends Monster {
     public Shark() {
-        super("Shark", 15, 10, 40, 2, 40, 2, 30, 50, "Bleed");
+        super("Shark", 15, 10, 40, 2, 40, 2, 30, 50, 1, 1, 1, 1, 1);
     }
 
 
     public String toString() {
         return "Shark{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,12 @@ public class Shark extends Monster {
 
     }
 
-    @Override
+
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
+
     public void setSpecialAttack() {
 
     }

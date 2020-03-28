@@ -10,13 +10,13 @@ import android.widget.ImageView;
 
 public class Djinni extends Monster {
     public Djinni() {
-        super("Djinni", 15, 10, 30, 20, 30, 20, 40, 50, "Bleed");
+        super("Djinni", 15, 10, 30, 20, 30, 20, 40, 50, 1, 1, 1, 1, 1);
     }
 
 
     public String toString() {
         return "Djinni{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,10 @@ public class Djinni extends Monster {
 
     }
 
-    @Override
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
     public void setSpecialAttack() {
 
     }

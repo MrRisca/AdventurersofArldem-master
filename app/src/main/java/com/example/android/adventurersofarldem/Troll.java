@@ -10,13 +10,13 @@ import android.widget.ImageView;
 
 public class Troll extends Monster {
     public Troll() {
-        super("Troll", 15, 10, 70, 2, 70, 2, 30, 50, "Bleed");
+        super("Troll", 15, 10, 70, 2, 70, 2, 30, 50, 1, 1, 1, 1, 1);
     }
 
 
     public String toString() {
         return "Troll{" +
-                "name='" + monsterName + '\'' +
+                "name='" + characterName + '\'' +
                 ", armor class= " + armorClass +
                 ", base damage= " + baseDamage +
                 ", maximumHealth=" + maximumHealth +
@@ -27,12 +27,12 @@ public class Troll extends Monster {
 
     }
 
-    @Override
+
     public String getSpecialAttack() {
         return null;
     }
 
-    @Override
+
     public void setSpecialAttack() {
 
     }
