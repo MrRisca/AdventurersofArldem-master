@@ -1,4 +1,8 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Abilities;
+
+import com.example.android.adventurersofarldem.Attacks.Attack;
+import com.example.android.adventurersofarldem.Attacks.FlameAttack;
+import com.example.android.adventurersofarldem.Characters.Character;
 
 public class Fireball extends Ability {
 
@@ -11,7 +15,7 @@ public class Fireball extends Ability {
     }
 
 
-    public Attack toAttack() {
+    public Attack toAttack(Character character) {
         int directDamage = 4;
         Attack attack = new FlameAttack(directDamage);
         return attack;
@@ -23,7 +27,7 @@ public class Fireball extends Ability {
     }
 
     @Override
-    public String getDescriotion() {
+    public String getDescription() {
         return "I AM RAGNAROS";
     }
 }

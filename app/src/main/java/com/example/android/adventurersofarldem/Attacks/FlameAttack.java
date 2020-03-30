@@ -1,4 +1,6 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Attacks;
+
+import com.example.android.adventurersofarldem.Characters.Character;
 
 public class FlameAttack extends Attack {
 

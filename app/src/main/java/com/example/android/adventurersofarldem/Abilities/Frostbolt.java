@@ -1,4 +1,8 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Abilities;
+
+import com.example.android.adventurersofarldem.Attacks.Attack;
+import com.example.android.adventurersofarldem.Attacks.FrostAttack;
+import com.example.android.adventurersofarldem.Characters.Character;
 
 public class Frostbolt extends Ability {
 
@@ -11,7 +15,7 @@ public class Frostbolt extends Ability {
     }
 
 
-    public Attack toAttack() {
+    public Attack toAttack(Character character) {
         int directDamage = spellLevel * 5;
         Attack attack = new FrostAttack(directDamage);
         return attack;
@@ -23,7 +27,7 @@ public class Frostbolt extends Ability {
     }
 
     @Override
-    public String getDescriotion() {
+    public String getDescription() {
         return "Icy Blast of Frost";
     }
 }

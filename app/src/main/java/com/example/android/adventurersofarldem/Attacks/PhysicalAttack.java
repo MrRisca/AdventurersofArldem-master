@@ -1,6 +1,8 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Attacks;
 
-    public class PhysicalAttack extends Attack {
+import com.example.android.adventurersofarldem.Characters.Character;
+
+public class PhysicalAttack extends Attack {
 
         public PhysicalAttack(int directDamage){
             super(directDamage);

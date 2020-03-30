@@ -9,8 +9,8 @@ public class levelUp extends AppCompatActivity {
     public int xpToLevel;
     public int playerLevel;
 
-    public levelUp(int exp, int pexp, int pl){
-        enemyXP = exp;
+    public levelUp(int pexp, int pl){
+//        enemyXP = exp;
         playerExperience = pexp;
         playerLevel = pl;
     }
@@ -38,6 +38,7 @@ public class levelUp extends AppCompatActivity {
     }
 
     public int experienceNeeded(int playerLevel){
+
         if (playerLevel == 1){
             return 5;
             }

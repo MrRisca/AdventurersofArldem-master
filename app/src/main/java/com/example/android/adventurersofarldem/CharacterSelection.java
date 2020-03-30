@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.example.android.adventurersofarldem.Abilities.Fireball;
+import com.example.android.adventurersofarldem.Abilities.Frostbolt;
+import com.example.android.adventurersofarldem.Abilities.HolyStrike;
+import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
+import com.example.android.adventurersofarldem.Characters.Goblin;
+import com.example.android.adventurersofarldem.Characters.Player;
 
 public class CharacterSelection extends AppCompatActivity {
 
@@ -41,16 +43,19 @@ public class CharacterSelection extends AppCompatActivity {
         EditText pName = (EditText) findViewById(R.id.addName);
         String playerName = pName.getText().toString();
         Player.getInstance().setStrength(playerSt);
-        Player.getInstance().setName(playerName);
+        Player.getInstance().setCharacterName(playerName);
         Player.getInstance().setAgility(playerAg);
-        Player.getInstance().setClass(playerClass);
+        Player.getInstance().setCharacterClass(playerClass);
         Player.getInstance().setIntellect(playerIn);
         Player.getInstance().setCurrentHealth(playerCHP);
         Player.getInstance().setMaximumHealth(playerMHP);
         Player.getInstance().setCurrentMana(playerCMP);
         Player.getInstance().setMaximumMana(playerMMP);
-        Player.getInstance().setPlayerExperience(playerExperience);
-        Player.getInstance().setPlayerLevel(playerLevel);
+        Player.getInstance().setExperience(playerExperience);
+        Player.getInstance().setLevel(playerLevel);
+        Player.getInstance().setNextEnemy(new Goblin());
+        Player.getInstance().setPosX(18);
+        Player.getInstance().setPosY(18);
 
         Button confirm = findViewById(R.id.confirm);
                 Intent creationIntent = new Intent(CharacterSelection.this, level1Activity.class);

@@ -8,138 +8,123 @@ import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import java.util.Random;
+
+import com.example.android.adventurersofarldem.Characters.Monster;
+import com.example.android.adventurersofarldem.Characters.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class fight_launcher extends AppCompatActivity {
 
-    public String playerName;
-    public String playerClass;
-    public int playerStrength;
-    public int playerAgility;
-    public int playerIntellect;
-    public int playerMaxHP;
-    public int playerMaxMP;
-    public int playerCurrentMP;
-    public int playerCurrentHP;
-    public int pArmorClass;
-    public int playerExperience;
-    public int playerLevel;
-    public int levelComplete = 0;
-    public int playerGold;
     public ArrayList<String> spellList;
     public String playerLocation = "Fo";
     public int posX;
     public int posY;
     public WorldMapClass theWorld;
     public monsterTableClass foundMonster;
-    public int monsterType;
+    public Monster monsterType;
     public ArrayList<String> monsterTypeArray = null;
     String currentMonster;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fight_launcher);
-        posX = Singleton.getInstance().playerPositionX;
-        posY = Singleton.getInstance().playerPositionY;
         theWorld = new WorldMapClass();
-        playerLocation = theWorld.worldMap[posX][posY];
+        playerLocation = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
         System.out.println("OLI " + playerLocation);
-        playerName = getIntent().getStringExtra("playerName");
-        playerClass = getIntent().getStringExtra("playerClass");
-        playerStrength = getIntent().getIntExtra("playerStrength", 0);
-        playerAgility = getIntent().getIntExtra("playerAgility", 0);
-        playerIntellect = getIntent().getIntExtra("playerIntellect", 0);
-        playerMaxHP = getIntent().getIntExtra("playerMaxHP", 0);
-        playerMaxMP = getIntent().getIntExtra("playerMaxMP",0);
-        playerCurrentHP = getIntent().getIntExtra("playerCurrentHP", 0);
-        playerCurrentMP = getIntent().getIntExtra("playerCurrentMP", 0);
-        pArmorClass  = ((10 +(playerAgility / 2)) - 5);
-        playerExperience = getIntent().getIntExtra("playerExperience", 0);
-        playerLevel = getIntent().getIntExtra("playerLevel", 0);
-        playerGold = getIntent().getIntExtra("playerGold", playerGold);
         spellList = getIntent().getStringArrayListExtra("spellList");
         TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
-        confirmPlayerGold.setText(String.valueOf(playerGold));
+        confirmPlayerGold.setText(String.valueOf(Player.getInstance().getGold()));
 
         TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
-        confirmPlayerAgility.setText(String.valueOf(playerAgility));
+        confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
 
 
         TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
-        confirmPlayerStrength.setText(String.valueOf(playerStrength));
+        confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
 
         //Set final TextView to have the goblin's current health.
         TextView confirmPlayerIntellect = (TextView) findViewById(R.id.playerCurrentIntellect);
-        confirmPlayerIntellect.setText(String.valueOf(playerIntellect));
+        confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
         TextView confirmPlayerMaxHP = (TextView) findViewById(R.id.playerMaxHealth);
-        confirmPlayerMaxHP.setText(String.valueOf(playerMaxHP));
+        confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
 
         TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
-        confirmPlayerCurrentHP.setText(String.valueOf(playerCurrentHP));
+        confirmPlayerCurrentHP.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
 
         TextView confirmPlayerMaxMP = (TextView) findViewById(R.id.playerMaxMana);
-        confirmPlayerMaxMP.setText(String.valueOf(playerMaxMP));
+        confirmPlayerMaxMP.setText(String.valueOf(Player.getInstance().getMaximumMana()));
 
         TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
-        confirmPlayerCurrentMP.setText(String.valueOf(playerCurrentMP));
+        confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
 
         TextView confirmPlayerArmorClass = (TextView) findViewById(R.id.playerCurrentArmor);
-        confirmPlayerArmorClass.setText(String.valueOf(pArmorClass));
+        confirmPlayerArmorClass.setText(String.valueOf(Player.getInstance().getArmorClass()));
 
         TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
-        confirmPlayerLevel.setText(String.valueOf(playerLevel));
+        confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
+
+        TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+        playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+        TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+        playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
     }
 
     public void refreshStats(){
         TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
-        confirmPlayerGold.setText(String.valueOf(playerGold));
+        confirmPlayerGold.setText(String.valueOf(Player.getInstance().getGold()));
 
         TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
-        confirmPlayerAgility.setText(String.valueOf(playerAgility));
+        confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
 
 
         TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
-        confirmPlayerStrength.setText(String.valueOf(playerStrength));
+        confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
 
         //Set final TextView to have the goblin's current health.
         TextView confirmPlayerIntellect = (TextView) findViewById(R.id.playerCurrentIntellect);
-        confirmPlayerIntellect.setText(String.valueOf(playerIntellect));
+        confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
         TextView confirmPlayerMaxHP = (TextView) findViewById(R.id.playerMaxHealth);
-        confirmPlayerMaxHP.setText(String.valueOf(playerMaxHP));
+        confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
 
         TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
-        confirmPlayerCurrentHP.setText(String.valueOf(playerCurrentHP));
+        confirmPlayerCurrentHP.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
 
         TextView confirmPlayerMaxMP = (TextView) findViewById(R.id.playerMaxMana);
-        confirmPlayerMaxMP.setText(String.valueOf(playerMaxMP));
+        confirmPlayerMaxMP.setText(String.valueOf(Player.getInstance().getMaximumMana()));
 
         TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
-        confirmPlayerCurrentMP.setText(String.valueOf(playerCurrentMP));
+        confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
 
         TextView confirmPlayerArmorClass = (TextView) findViewById(R.id.playerCurrentArmor);
-        confirmPlayerArmorClass.setText(String.valueOf(pArmorClass));
+        confirmPlayerArmorClass.setText(String.valueOf(Player.getInstance().getArmorClass()));
 
         TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
-        confirmPlayerLevel.setText(String.valueOf(playerLevel));
+        confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
+
+        TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+        playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+        TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+        playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
     }
 
 
     public void heal(View view){
-        if (playerGold > 2){
-            playerCurrentHP = playerMaxHP;
-            playerCurrentMP = playerMaxMP;
-            playerGold -= 3;
+        if (Player.getInstance().getGold() > 2){
+            Player.getInstance().setCurrentHealth(Player.getInstance().getMaximumHealth());
+            Player.getInstance().setCurrentMana(Player.getInstance().getMaximumMana());
+            Player.getInstance().setGold(Player.getInstance().getGold() - 3);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
-            status.setText("You have healed to full health for 10 GP");
+            status.setText("You have healed to full health for 3 GP");
         }
         else {
             TextView status = (TextView) findViewById(R.id.status);
@@ -149,10 +134,10 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void addFiveHealth(View view){
-        if (playerGold > 4){
-            playerCurrentHP += 5;
-            playerMaxHP += 5;
-            playerGold -= 5;
+        if (Player.getInstance().getGold() > 4){
+            Player.getInstance().setCurrentHealth(Player.getInstance().getCurrentHealth() + 5);
+            Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() + 5);
+            Player.getInstance().setGold(Player.getInstance().getGold() - 5);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
             status.setText("You have gained 5 HP");
@@ -165,10 +150,10 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void addTenHealth(View view){
-        if (playerGold > 7){
-            playerCurrentHP += 10;
-            playerMaxHP += 10;
-            playerGold -= 8;
+        if (Player.getInstance().getGold() > 7) {
+            Player.getInstance().setCurrentHealth(Player.getInstance().getCurrentHealth() + 10);
+            Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() + 10);
+            Player.getInstance().setGold(Player.getInstance().getGold() - 8);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
             status.setText("You have gained 10 HP");
@@ -181,12 +166,12 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void addOneStrength(View view){
-        if (playerGold > 9){
-            playerStrength += 1;
-            playerGold -= 10;
+        if (Player.getInstance().getGold() > 9){
+            Player.getInstance().setStrength(Player.getInstance().getStrength() + 1);
+            Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
-            status.setText("You have gained 1 Strength");
+            status.setText("You have gained 1 STR");
         }
         else {
             TextView status = (TextView) findViewById(R.id.status);
@@ -196,12 +181,12 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void addOneAgility(View view){
-        if (playerGold > 9){
-            playerAgility += 1;
-            playerGold -= 10;
+        if (Player.getInstance().getGold() > 9){
+            Player.getInstance().setAgility(Player.getInstance().getAgility() + 1);
+            Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
-            status.setText("You have gained 1 Agility");
+            status.setText("You have gained 1 AGI");
         }
         else {
             TextView status = (TextView) findViewById(R.id.status);
@@ -211,12 +196,12 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void addOneIntellect(View view){
-        if (playerGold > 9){
-            playerIntellect += 1;
-            playerGold -= 10;
+        if (Player.getInstance().getGold() > 9){
+            Player.getInstance().setIntellect(Player.getInstance().getIntellect() + 1);
+            Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
             TextView status = (TextView) findViewById(R.id.status);
-            status.setText("You have gained 1 Intellect");
+            status.setText("You have gained 1 INT");
         }
         else {
             TextView status = (TextView) findViewById(R.id.status);
@@ -225,100 +210,85 @@ public class fight_launcher extends AppCompatActivity {
         }
     }
 
-    public int monsterTypeSelected(){
+    public void goNorth(View view){
+        if (Player.getInstance().getPosY() < 35){
+            Player.getInstance().setPosY(Player.getInstance().getPosY() + 1);
+            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+    }
+
+    public void goSouth(View view) {
+        if (Player.getInstance().getPosY() > 0) {
+            Player.getInstance().setPosY(Player.getInstance().getPosY() - 1);
+            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+    }
+
+    public void goEast(View view){
+        if (Player.getInstance().getPosX() < 35) {
+            Player.getInstance().setPosX(Player.getInstance().getPosX() + 1);
+            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+    }
+
+    public void goWest(View view){
+        if (Player.getInstance().getPosX() > 0) {
+            Player.getInstance().setPosX(Player.getInstance().getPosX() - 1);
+            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+    }
+
+    public Monster monsterTypeSelected(){
         int typeOfLocation;
-        if (playerLocation.equals("T")) {
+        if (playerLocation.equals("To")) {
             typeOfLocation = 0;
         }
         else if (playerLocation.equals("Fo"))
             typeOfLocation = 1;
         else if (playerLocation.equals("Fa"))
             typeOfLocation = 2;
-        else if (playerLocation.equals("M"))
+        else if (playerLocation.equals("Mo"))
             typeOfLocation = 3;
-        else if (playerLocation.equals("D"))
+        else if (playerLocation.equals("De"))
             typeOfLocation = 4;
-        else if (playerLocation.equals("H"))
+        else if (playerLocation.equals("Hi"))
             typeOfLocation = 5;
-        else if (playerLocation.equals("R"))
+        else if (playerLocation.equals("Ri"))
             typeOfLocation = 6;
-        else if (playerLocation.equals("C"))
+        else if (playerLocation.equals("Ca"))
             typeOfLocation = 7;
-        else if (playerLocation.equals("P"))
+        else if (playerLocation.equals("Pl"))
             typeOfLocation = 8;
         else typeOfLocation = 9;
 
         foundMonster = new monsterTableClass();
-        monsterType = foundMonster.monsterTable[playerLevel][typeOfLocation];
+        monsterType = foundMonster.monsterTable[typeOfLocation][Player.getInstance().getLevel()];
         return monsterType;
 
     }
 
-    public void findMonster(){
-        monsterTypeArray = new ArrayList<>(Arrays.asList("Goblin", "Orc", "Troll", "Dragon", "Warg", "Mummy", "Djinni", "Shark", "Kraken"));
-        Random rand = new Random();
-        int randomNumberToDetermineMonster = rand.nextInt(20);
-        int selectedMonsterFromArray = monsterTypeSelected();
-        currentMonster = "null";
-        if (randomNumberToDetermineMonster == 20){
-            currentMonster.equals("Dragon");
-
-        }
-        else {
-            currentMonster.equals(monsterTypeArray.get(selectedMonsterFromArray));
-        }
-
-
-
-    }
-
-    public void fightOrc(View view){
-            Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
-            confirmIntent.putExtra("playerStrength", playerStrength);
-            confirmIntent.putExtra("playerAgility", playerAgility);
-            confirmIntent.putExtra("playerIntellect", playerIntellect);
-            confirmIntent.putExtra("playerMaxHP", playerMaxHP);
-            confirmIntent.putExtra("playerMaxMP", playerMaxMP);
-            confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
-            confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
-            confirmIntent.putExtra("playerClass", playerClass);
-            confirmIntent.putExtra("playerName", playerName);
-            confirmIntent.putExtra("playerExperience", playerExperience);
-            confirmIntent.putExtra("playerLevel", playerLevel);
-            confirmIntent.putExtra("playerGold", playerGold);
-            confirmIntent.putExtra("enemyChoice", "Orc");
-        confirmIntent.putStringArrayListExtra("spellList", spellList);
-        Button button = (Button)findViewById(R.id.fight_orc_button);
-            final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
-            button.startAnimation(myAnim);
-
-            // Use bounce interpolator with amplitude 0.2 and frequency 20
-            MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
-            myAnim.setInterpolator(interpolator);
-
-            button.startAnimation(myAnim);
-            if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-                startActivity(confirmIntent); }
-        }
-
 
     public void fightEnemy(View view){
-        findMonster();
+        monsterTypeSelected();
+        Player.getInstance().setNextEnemy(monsterType);
         Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
-        confirmIntent.putExtra("playerStrength", playerStrength);
-        confirmIntent.putExtra("playerAgility", playerAgility);
-        confirmIntent.putExtra("playerIntellect", playerIntellect);
-        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
-        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
-        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
-        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
-        confirmIntent.putExtra("playerClass", playerClass);
-        confirmIntent.putExtra("playerName", playerName);
-        confirmIntent.putExtra("playerExperience", playerExperience);
-        confirmIntent.putExtra("playerLevel", playerLevel);
-        confirmIntent.putExtra("playerGold", playerGold);
-        confirmIntent.putExtra("enemyChoice", currentMonster);
-        confirmIntent.putStringArrayListExtra("spellList", spellList);
+
         Button button = (Button)findViewById(R.id.find_enemy_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         button.startAnimation(myAnim);
@@ -332,61 +302,10 @@ public class fight_launcher extends AppCompatActivity {
             startActivity(confirmIntent); }
     }
 
-    public void fightGoblin(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
-        confirmIntent.putExtra("playerStrength", playerStrength);
-        confirmIntent.putExtra("playerAgility", playerAgility);
-        confirmIntent.putExtra("playerIntellect", playerIntellect);
-        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
-        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
-        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
-        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
-        confirmIntent.putExtra("playerClass", playerClass);
-        confirmIntent.putExtra("playerName", playerName);
-        confirmIntent.putExtra("playerExperience", playerExperience);
-        confirmIntent.putExtra("playerLevel", playerLevel);
-        confirmIntent.putExtra("playerGold", playerGold);
-        confirmIntent.putExtra("enemyChoice", "Goblin");
-        confirmIntent.putStringArrayListExtra("spellList", spellList);
-        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(confirmIntent); }
-    }
 
-    public void fightDragon(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
-        confirmIntent.putExtra("playerStrength", playerStrength);
-        confirmIntent.putExtra("playerAgility", playerAgility);
-        confirmIntent.putExtra("playerIntellect", playerIntellect);
-        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
-        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
-        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
-        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
-        confirmIntent.putExtra("playerClass", playerClass);
-        confirmIntent.putExtra("playerName", playerName);
-        confirmIntent.putExtra("playerExperience", playerExperience);
-        confirmIntent.putExtra("playerLevel", playerLevel);
-        confirmIntent.putExtra("playerGold", playerGold);
-        confirmIntent.putExtra("enemyChoice", "Dragon");
-        confirmIntent.putStringArrayListExtra("spellList", spellList);
-        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(confirmIntent); }
-    }
 
-    public void spellsButtonSelected(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, spellSelectActivity.class);
-        confirmIntent.putExtra("playerStrength", playerStrength);
-        confirmIntent.putExtra("playerAgility", playerAgility);
-        confirmIntent.putExtra("playerIntellect", playerIntellect);
-        confirmIntent.putExtra("playerMaxHP", playerMaxHP);
-        confirmIntent.putExtra("playerMaxMP", playerMaxMP);
-        confirmIntent.putExtra("playerCurrentHP", playerCurrentHP);
-        confirmIntent.putExtra("playerCurrentMP", playerCurrentMP);
-        confirmIntent.putExtra("playerClass", playerClass);
-        confirmIntent.putExtra("playerName", playerName);
-        confirmIntent.putExtra("playerExperience", playerExperience);
-        confirmIntent.putExtra("playerLevel", playerLevel);
-        confirmIntent.putExtra("playerGold", playerGold);
-        confirmIntent.putStringArrayListExtra("spellList", spellList);
+    public void StatChoiceSelected(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, StatChoice.class);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
         }

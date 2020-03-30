@@ -1,7 +1,7 @@
 //package com.example.android.adventurersofarldem;
 //
-//import com.example.android.adventurersofarldem.Attack;
-//import com.example.android.adventurersofarldem.RicochetAttack;
+//import com.example.android.adventurersofarldem.Attacks.Attack;
+//import com.example.android.adventurersofarldem.Attacks.RicochetAttack;
 //import com.example.android.adventurersofarldem.StatusAttack;
 //
 //import java.util.List;

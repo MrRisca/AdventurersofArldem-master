@@ -1,37 +1,49 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Characters;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+import com.example.android.adventurersofarldem.StatusEffect;
 
 import java.util.Arrays;
 import java.util.List;
 
+public class Character {
 
-public class Goblin extends Monster {
-    public Goblin() {
-    //public Goblin(String n, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp) {
-        super("Goblin", 12, 2, 7, 0, 7, 0, 6, 5, 1, 1, 1, 1, 1);
+    public String characterType;
+    public int strength;
+    public String characterName;
+    public int armorClass;
+    public int baseDamage;
+    public int maximumHealth;
+    public int maximumMana;
+    public int currentHealth;
+    public int currentMana;
+    public int experience;
+    public int gold;
+    public List <StatusEffect> statusEffect;
+    public int speed;
+    public int agility;
+    public int intellect;
+    public int level;
+    public String characterClass;
+
+    public Character(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
+        characterName = n;
+        armorClass = ac;
+        baseDamage = bd;
+        maximumHealth = maxHP;
+        maximumMana = maxMP;
+        currentHealth = currentHP;
+        currentMana = currentMP;
+        experience = xp;
+        gold = gp;
+        speed = sp;
+        strength = st;
+        agility = ag;
+        intellect = in;
+        level = lvl;
+        characterClass = pClass;
+
+        
     }
-
-
-
-    public String toString(){
-        return "Goblin{" +
-                "name='" + characterName + '\'' +
-                ", armor class= " + armorClass +
-                ", base damage= " + baseDamage +
-                ", maximumHealth=" + maximumHealth +
-                ", maximumMana=" + maximumMana +
-                ", currentHealth=" + currentHealth +
-                ", currentMana=" + currentMana +
-                '}';
-
-    }
-
 
     public void setStrength(int st) {
         strength = st;
@@ -58,7 +70,7 @@ public class Goblin extends Monster {
     public int getIntellect() {
         return intellect;
     }
-
+    
     public int attack(String target, String spell){
         int attackDamage = 0;
 
@@ -74,12 +86,12 @@ public class Goblin extends Monster {
         return characterName;
     }
 
-    public void setCharacterType(String type) {
-        characterType = type;
+    public void setCharacterClass(String type) {
+        characterClass = type;
     }
 
-    public String getCharacterType() {
-        return characterType;
+    public String getCharacterClass() {
+        return characterClass;
     }
 
     public void setArmorClass(int ac) {
@@ -157,6 +169,14 @@ public class Goblin extends Monster {
         return gold;
     }
 
+    public void setLevel(int lvl) {
+        level = lvl;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
     public void addStatusEffect(StatusEffect effectName){
         statusEffect = Arrays.asList(effectName);
 
@@ -166,18 +186,24 @@ public class Goblin extends Monster {
         return statusEffect;
     }
 
+
     public int determineMod(){
-        return level * 2;
+        int characterMod = 0;
+        return characterMod;
     }
 
-    public String GoblinData(String monsterName, int armorClass, int baseDamage, int maximumHealth, int maximumMana, int currentHealth, int currentMana){
-        String GoblinData = "Goblin name is " + monsterName + ", \n Their AC is " + armorClass + "\n Their Base Damage is " + baseDamage;
-        GoblinData += "\n Their Max HP is " + maximumHealth + " and their current HP is " + currentHealth;
-        GoblinData += "\n Their Max MP is " + maximumMana + " and their current MP is " + currentMana;
-        GoblinData += "\n They are worth " + experience + " XP";
 
-        return GoblinData;
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + characterName + '\'' +
+                "Armor Class = " + armorClass +
+                "Base Damage = " + baseDamage +
+                ", maximumHealth=" + maximumHealth +
+                ", maximumMana=" + maximumMana +
+                ", currentHealth=" + currentHealth +
+                ", currentMana=" + currentMana +
+                '}';
     }
 
 }
-

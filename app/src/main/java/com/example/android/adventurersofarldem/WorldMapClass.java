@@ -1,5 +1,7 @@
 package com.example.android.adventurersofarldem;
 
+import com.example.android.adventurersofarldem.Characters.Player;
+
 import java.util.Arrays;
 
 public class WorldMapClass {
@@ -10,7 +12,7 @@ public class WorldMapClass {
         // declare and construct a 2D array
 
 
-        String x = worldMap[Singleton.getInstance().playerPositionX][Singleton.getInstance().playerPositionY];
+        String x = worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
 
     }
     public String[][] getMap() {
@@ -20,42 +22,43 @@ public class WorldMapClass {
     }
 
     public WorldMapClass() {
-        worldMap = new String[][]{       {"M", "M", "M", "M", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "T", "T", "T", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "T", "T", "T", "R", "R", "R", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "T", "T", "T", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "T", "T", "T", "R", "R", "R", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "T", "T", "T", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "T", "T", "T", "R", "R", "R", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"M", "M", "M", "M", "M", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo",  "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo",  "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo",  "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo",  "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "T", "T", "T", "T", "T", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "C", "C", "C", "Fo", "Fo", "Fo", "Fo", "Fo", "T", "T", "T", "T", "T", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "C", "C", "C", "Fo", "Fo", "Fo", "Fo", "Fo", "T", "T", "T", "T", "T", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "C", "C", "C", "Fo", "Fo", "Fo", "Fo", "Fo", "T", "T", "T", "T", "T", "Fo", "Fo", "Fo", "Fo", "Fo", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "C", "C", "Fa", "Fa", "Fa", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "C", "C", "Fa", "Fa", "Fa", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"H", "H", "H", "H", "H", "H", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "H", "H", "H", "H", "H", "H", "H", "H", "H", "P", "P"},
-                        {"P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P"},
-                        {"P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P"},
-                        {"P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P"},
-                        {"P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P", "P"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
-                        {"D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D", "D"},
+        worldMap = new String[][]{
+                        {"Mo", "Mo", "Mo", "Mo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "To", "To", "To", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "To", "To", "To", "Ri", "Ri", "Ri", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "To", "To", "To", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "To", "To", "To", "Ri", "Ri", "Ri", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "To", "To", "To", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "To", "To", "To", "Ri", "Ri", "Ri", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Mo", "Mo", "Mo", "Mo", "Mo", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc", "Oc"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fo", "Fo", "Fo", "Fo", "Fo", "To", "To", "To", "To", "To", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Ca", "Ca", "Ca", "Fo", "Fo", "Fo", "Fo", "Fo", "To", "To", "To", "To", "To", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Ca", "Ca", "Ca", "Fo", "Fo", "Fo", "Fo", "Fo", "To", "To", "To", "To", "To", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Ca", "Ca", "Ca", "Fo", "Fo", "Fo", "Fo", "Fo", "To", "To", "To", "To", "To", "Fo", "Fo", "Fo", "Fo", "Fo", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Ca", "Ca", "Fa", "Fa", "Fa", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Ca", "Ca", "Fa", "Fa", "Fa", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Fa", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Hi", "Pl", "Pl", "Pl"},
+                        {"Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl"},
+                        {"Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl"},
+                        {"Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl"},
+                        {"Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl", "Pl"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
+                        {"De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De", "De"},
                 };
 
     }

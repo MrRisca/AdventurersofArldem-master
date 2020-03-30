@@ -1,7 +1,17 @@
 package com.example.android.adventurersofarldem;
 
+import com.example.android.adventurersofarldem.Characters.Djinni;
+import com.example.android.adventurersofarldem.Characters.Dragon;
+import com.example.android.adventurersofarldem.Characters.Goblin;
+import com.example.android.adventurersofarldem.Characters.Kraken;
+import com.example.android.adventurersofarldem.Characters.Monster;
+import com.example.android.adventurersofarldem.Characters.Orc;
+import com.example.android.adventurersofarldem.Characters.Shark;
+import com.example.android.adventurersofarldem.Characters.Troll;
+import com.example.android.adventurersofarldem.Characters.Warg;
+
 public class monsterTableClass {
-    Integer[][] monsterTable;
+    Monster[][] monsterTable;
 
 //    public void create(String[] arg)
 //    {
@@ -11,7 +21,7 @@ public class monsterTableClass {
 //        String x = monsterTable[Singleton.getInstance().playerPositionX][Singleton.getInstance().playerPositionY];
 //
 //    }
-    public Integer[][] getMonsterTable() {
+    public Monster[][] getMonsterTable() {
         return monsterTable;
 
 
@@ -42,18 +52,36 @@ public class monsterTableClass {
     //--------------------
     //Ocean|
 
-    public monsterTableClass(){
-        monsterTable = new Integer[][]{{0,0,0,0,0},
-                {1,1,2,2,3},
-                {1,1,1,2,3},
-                {2,3,3,3,4},
-                {6,6,7,7,4},
-                {1,2,2,3,4},
-                {1,3,3,3,3},
-                {1,2,3,4,4},
-                {1,1,2,2,3},
-                {8,8,8,8,9}
-        };
+    //"Goblin", "Orc", "Troll", "Dragon", "Mummy", "Warg", "Djinni", "Shark", "Kraken"
 
+//    public Monster[][] monsterTableClass(int pos, int level){
+//        Monster[][] monsterTable = new Monster[][]{{new Goblin(),new Goblin(),new Goblin(),new Goblin(),new Goblin()},
+//                {new Orc(),new Orc(),new Troll(),new Troll(),new Dragon()},
+//                {new Orc(),new Orc(),new Troll(),new Troll(),new Dragon()},
+//                {new Orc(),new Troll(),new Troll(),new Troll(),new Dragon()},
+//                {new Warg(), new Warg(), new Djinni(), new Djinni(), new Dragon()},
+//                {new Goblin(),new Orc(),new Orc(),new Troll(),new Dragon()},
+//                {new Goblin(),new Troll(),new Troll(),new Troll(), new Troll()},
+//                {new Goblin(), new Orc(), new Troll(), new Dragon(),new Dragon()},
+//                {new Goblin(), new Goblin(), new Orc(), new Orc(), new Troll()},
+//                {new Shark(), new Shark(), new Shark(), new Shark(), new Kraken()}
+//
+//        };
+//        return monsterTable;
+//    }
+
+    public monsterTableClass() {
+        monsterTable = new Monster[][]{
+                {new Goblin(),new Goblin(),new Goblin(),new Goblin(),new Goblin()},
+                {new Orc(),new Orc(),new Troll(),new Troll(),new Dragon()},
+                {new Orc(),new Orc(),new Troll(),new Troll(),new Dragon()},
+                {new Orc(),new Troll(),new Troll(),new Troll(),new Dragon()},
+                {new Warg(), new Warg(), new Djinni(), new Djinni(), new Dragon()},
+                {new Goblin(),new Orc(),new Orc(),new Troll(),new Dragon()},
+                {new Goblin(),new Troll(),new Troll(),new Troll(), new Troll()},
+                {new Goblin(), new Orc(), new Troll(), new Dragon(),new Dragon()},
+                {new Goblin(), new Goblin(), new Orc(), new Orc(), new Troll()},
+                {new Shark(), new Shark(), new Shark(), new Shark(), new Kraken()}
+        };
     }
 }

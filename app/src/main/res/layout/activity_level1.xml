@@ -49,26 +49,31 @@
 
             <TextView
                 android:id="@+id/monsterHealthDescriber"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Monster Health" />
 
             <TextView
                 android:id="@+id/monsterCurrentHealth"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="0"/>
 
             <TextView
                 android:id="@+id/monsterMaxHealth"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="0" />
 
+
+
         </LinearLayout>
+
+
+
 
 
 
