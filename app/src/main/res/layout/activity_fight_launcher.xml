@@ -50,8 +50,8 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="spellsButtonSelected"
-            android:text="SPELLS"/>
+            android:onClick="StatChoiceSelected"
+            android:text="STATS"/>
     </LinearLayout>
 
     <LinearLayout
@@ -75,7 +75,7 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="fightOrc"
+            android:onClick="goNorth"
             android:text="Go North"
             />
 
@@ -86,7 +86,7 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="fightGoblin"
+            android:onClick="goEast"
             android:text="Go East"/>
 
         <Button
@@ -96,7 +96,7 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="fightDragon"
+            android:onClick="goSouth"
             android:text="Go South"/>
 
         <Button
@@ -106,7 +106,7 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="spellsButtonSelected"
+            android:onClick="goWest"
             android:text="Go West"/>
     </LinearLayout>
 
@@ -298,6 +298,36 @@
                     android:layout_weight="2"
                     android:id="@+id/playerGold"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Position x / y"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:id="@+id/playerXPos"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:id="@+id/playerYPos"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

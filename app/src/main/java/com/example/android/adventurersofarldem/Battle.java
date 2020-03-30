@@ -6,68 +6,72 @@ import java.util.Random;
 
 public class Battle extends AppCompatActivity {
 
-    public int eStrength;
-    public int eArmorClass;
-    public int eMaximumHealth;
-    public int eMaximumMana;
-    public int eCurrentHealth;
-    public int eCurrentMana;
-    public int pStrength;
-    public int pAgility;
-    public int pIntellect;
-    public int pMaximumHealth;
-    public int pMaximumMana;
-    public int pCurrentHealth;
-    public int pCurrentMana;
-    public String pClass;
-    public int pArmorClass = (10 + ((pAgility /2) -5));
+    public int tStrength;
+    public int tArmorClass;
+    public int tMaximumHealth;
+    public int tMaximumMana;
+    public int tCurrentHealth;
+    public int tCurrentMana;
+    public int cStrength;
+    public int cAgility;
+    public int cIntellect;
+    public int cMaximumHealth;
+    public int cMaximumMana;
+    public int cCurrentHealth;
+    public int cCurrentMana;
+    public String cClass;
+    public int cArmorClass = (10 + ((cAgility /2) -5));
     public int attackType = 1;
+    public String caster;
+    public String target;
 
-    public Battle(int ps, int es, int ea, int emh, int emm, int ech, int ecm, int pa, int pi, int pmh, int pmm, int pch, int pcm, String pc) {
-        pStrength = ps;
-        eStrength = es;
-        eArmorClass = ea;
-        eMaximumHealth = emh;
-        eMaximumMana = emm;
-        eCurrentHealth = ech;
-        eCurrentMana = ecm;
-        pAgility = pa;
-        pIntellect = pi;
-        pMaximumHealth = pmh;
-        pMaximumMana = pmm;
-        pCurrentHealth = pch;
-        pCurrentMana = pcm;
-        pClass = pc;
+    public Battle(int ps, int es, int ea, int emh, int emm, int ech, int ecm, int pa, int pi, int pmh, int pmm, int pch, int pcm, String pc, String cast, String tar) {
+        cStrength = ps;
+        cStrength = es;
+        tArmorClass = ea;
+        tMaximumHealth = emh;
+        tMaximumMana = emm;
+        tCurrentHealth = ech;
+        tCurrentMana = ecm;
+        cAgility = pa;
+        cIntellect = pi;
+        cMaximumHealth = pmh;
+        cMaximumMana = pmm;
+        cCurrentHealth = pch;
+        cCurrentMana = pcm;
+        cClass = pc;
+        caster = cast;
+        target = tar;
     }
 
 
-    public int combatWarrior(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
-        int didIHit = chanceToHit(pStrength, pAgility);
-        int damage = calculateDamage(pClass, pStrength, pAgility);
+    public int combatWarrior(int cStrength, int cAgility, String cClass, int tArmoryClass, int tCurrentHealth) {
+        int didIHit = chanceToHit(cStrength, cAgility);
+        int damage = calculateDamage(cClass, cStrength, cAgility);
         attackType = 1;
-        if (didIHit > eArmorClass) {
+        if (didIHit > tArmoryClass) {
 
             return damage;
         } else return 0;
 
     }
 
-    public int combatHeavy(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
-        int didIHit = chanceToHit(pStrength, pAgility);
-        int damage = calculateDamage(pClass, pStrength, pAgility);
+    public int combatHeavy(int cStrength, int cAgility, String cClass, int tArmoryClass, int tCurrentHealth) {
+        int didIHit = chanceToHit(cStrength, cAgility);
+        int damage = calculateDamage(cClass, cStrength, cAgility);
         attackType = 2;
-        if (didIHit > eArmorClass) {
+        if (didIHit > tArmoryClass) {
             damage += (damage * 0.1);
             return damage;
         }
         else return  0;
     }
 
-    public int combatLight(int pStrength, int pAgility, String pClass, int eArmorClass, int eCurrentHealth) {
-        int didIHit = chanceToHit(pStrength, pAgility);
-        int damage = calculateDamage(pClass, pStrength, pAgility);
+    public int combatLight(int cStrength, int cAgility, String cClass, int tArmoryClass, int tCurrentHealth) {
+        int didIHit = chanceToHit(cStrength, cAgility);
+        int damage = calculateDamage(cClass, cStrength, cAgility);
         attackType = 3;
-        if (didIHit > eArmorClass) {
+        if (didIHit > tArmoryClass) {
             damage -= (damage * 0.1);
 
             return damage;
@@ -77,14 +81,14 @@ public class Battle extends AppCompatActivity {
 
 
 
-    public int combatEnemy(int baseDamage, int pArmorClass, int eCurrentHealth, int pCurrentHealth, int enemyRoll) {
+    public int combatEnemy(int baseDamage, int cArmorClass, int tCurrentHealth, int cCurrentHealth, int targetRoll) {
         Random rand = new Random();
-        int randomNum = rand.nextInt((enemyRoll) +1) + 1;
+        int randomNum = rand.nextInt((targetRoll) +1) + 1;
         if (attackType == 2) {
-            pArmorClass -= 2;
-            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            cArmorClass -= 2;
+            int didIHit = enemyChanceToHit(baseDamage, cArmorClass);
             int damage;
-            pArmorClass +=2;
+            cArmorClass +=2;
             if (didIHit == 1){
                 damage = randomNum;
                 return damage;}
@@ -94,10 +98,10 @@ public class Battle extends AppCompatActivity {
         }
 
         else if (attackType == 3) {
-            pArmorClass += 2;
-            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            cArmorClass += 2;
+            int didIHit = enemyChanceToHit(baseDamage, cArmorClass);
             int damage;
-            pArmorClass -=2;
+            cArmorClass -=2;
             if (didIHit == 1) {
                 damage = randomNum;
                 return damage;
@@ -107,7 +111,7 @@ public class Battle extends AppCompatActivity {
             else return 0;
         }
         else {
-            int didIHit = enemyChanceToHit(baseDamage, pArmorClass);
+            int didIHit = enemyChanceToHit(baseDamage, cArmorClass);
             int damage;
             if (didIHit == 1) {
                 damage = randomNum;
@@ -117,10 +121,10 @@ public class Battle extends AppCompatActivity {
     }
 
 
-    public int enemyChanceToHit(int baseDamage, int pArmorClass){
+    public int enemyChanceToHit(int baseDamage, int cArmorClass){
         Random rand = new Random();
         int roll = rand.nextInt((20) +1) + 1;
-        if (roll > pArmorClass){
+        if (roll > cArmorClass){
 
             int x = 1;
             return x;
@@ -137,132 +141,132 @@ public class Battle extends AppCompatActivity {
 
     //Note Oli: You can replace these IFs with: Modifier = (Score / 2 ) - 5 but you need to set the ints to doubles first and then round down and I cba to do it right now.
 
-    public int chanceToHit(int pStrength, int pAgility) {
+    public int chanceToHit(int cStrength, int cAgility) {
         Random rand = new Random();
         int roll;
-        int pModifier = 0;
-        int randomNum = rand.nextInt((20) + 1) + 1;
-        if (pClass == "Ranger") {
-            if (pAgility < 8) {
-                pModifier -= 2;
-            } else if (pAgility > 7 && pAgility < 10) {
-                pModifier -= 1;
-            } else if (pAgility > 9 && pAgility < 12) {
-                pModifier += 0;
-            } else if (pAgility > 11 && pAgility < 14) {
-                pModifier += 1;
-            } else if (pAgility > 13 && pAgility < 16) {
-                pModifier += 2;
-            } else if (pAgility > 15 && pAgility < 18) {
-                pModifier += 3;
-            } else if (pAgility > 17 && pAgility < 20) {
-                pModifier += 4;
-            } else if (pAgility > 19 && pAgility < 22) {
-                pModifier += 5;
-            } else if (pAgility > 21 && pAgility < 24) {
-                pModifier += 6;
-            } else if (pAgility > 23 && pAgility < 26) {
-                pModifier += 7;
-            } else if (pAgility > 25 && pAgility < 28) {
-                pModifier += 8;
-            } else if (pAgility > 27 && pAgility < 30) {
-                pModifier += 9;
-            } else {
-                pModifier += 10;
-            }}
-
-        
-        else if (pStrength < 8) {
-            pModifier -= 2;
-        } else if (pStrength > 7 && pStrength < 10) {
-            pModifier -= 1;
-        } else if (pStrength > 9 && pStrength < 12) {
-            pModifier += 0;
-        } else if (pStrength > 11 && pStrength < 14) {
-            pModifier += 1;
-        } else if (pStrength > 13 && pStrength < 16) {
-            pModifier += 2;
-        } else if (pStrength > 15 && pStrength < 18) {
-            pModifier += 3;
-        } else if (pStrength > 17 && pStrength < 20) {
-            pModifier += 4;
-        } else if (pStrength > 19 && pStrength < 22) {
-            pModifier += 5;
-        } else if (pStrength > 21 && pStrength < 24) {
-            pModifier += 6;
-        } else if (pStrength > 23 && pStrength < 26) {
-            pModifier += 7;
-        } else if (pStrength > 25 && pStrength < 28) {
-            pModifier += 8;
-        } else if (pStrength > 27 && pStrength < 30) {
-            pModifier += 9;
-        } else {
-            pModifier += 10;
-        }
-        roll = randomNum + pModifier + 2;
-        return roll;
-    }
-
-    public int calculateDamage(String pClass, int pStrength, int pAgility) {
-        Random rand = new Random();
-        int damageRoll = 0;
         int cModifier = 0;
-        int randomNum = rand.nextInt((6) + 1) + 1;
-        if (pClass.equals("Warrior")) {
-            if (pStrength < 8) {
+        int randomNum = rand.nextInt((20) + 1) + 1;
+        if (cClass == "Ranger") {
+            if (cAgility < 8) {
                 cModifier -= 2;
-            } else if (pStrength > 7 && pStrength < 10) {
+            } else if (cAgility > 7 && cAgility < 10) {
                 cModifier -= 1;
-            } else if (pStrength > 9 && pStrength < 12) {
+            } else if (cAgility > 9 && cAgility < 12) {
                 cModifier += 0;
-            } else if (pStrength > 11 && pStrength < 14) {
+            } else if (cAgility > 11 && cAgility < 14) {
                 cModifier += 1;
-            } else if (pStrength > 13 && pStrength < 16) {
+            } else if (cAgility > 13 && cAgility < 16) {
                 cModifier += 2;
-            } else if (pStrength > 15 && pStrength < 18) {
+            } else if (cAgility > 15 && cAgility < 18) {
                 cModifier += 3;
-            } else if (pStrength > 17 && pStrength < 20) {
+            } else if (cAgility > 17 && cAgility < 20) {
                 cModifier += 4;
-            } else if (pStrength > 19 && pStrength < 22) {
+            } else if (cAgility > 19 && cAgility < 22) {
                 cModifier += 5;
-            } else if (pStrength > 21 && pStrength < 24) {
+            } else if (cAgility > 21 && cAgility < 24) {
                 cModifier += 6;
-            } else if (pStrength > 23 && pStrength < 26) {
+            } else if (cAgility > 23 && cAgility < 26) {
                 cModifier += 7;
-            } else if (pStrength > 25 && pStrength < 28) {
+            } else if (cAgility > 25 && cAgility < 28) {
                 cModifier += 8;
-            } else if (pStrength > 27 && pStrength < 30) {
+            } else if (cAgility > 27 && cAgility < 30) {
                 cModifier += 9;
             } else {
                 cModifier += 10;
             }}
 
-            else if (pClass.equals("Ranger")) {
-                if (pAgility < 8) {
+        
+        else if (cStrength < 8) {
+            cModifier -= 2;
+        } else if (cStrength > 7 && cStrength < 10) {
+            cModifier -= 1;
+        } else if (cStrength > 9 && cStrength < 12) {
+            cModifier += 0;
+        } else if (cStrength > 11 && cStrength < 14) {
+            cModifier += 1;
+        } else if (cStrength > 13 && cStrength < 16) {
+            cModifier += 2;
+        } else if (cStrength > 15 && cStrength < 18) {
+            cModifier += 3;
+        } else if (cStrength > 17 && cStrength < 20) {
+            cModifier += 4;
+        } else if (cStrength > 19 && cStrength < 22) {
+            cModifier += 5;
+        } else if (cStrength > 21 && cStrength < 24) {
+            cModifier += 6;
+        } else if (cStrength > 23 && cStrength < 26) {
+            cModifier += 7;
+        } else if (cStrength > 25 && cStrength < 28) {
+            cModifier += 8;
+        } else if (cStrength > 27 && cStrength < 30) {
+            cModifier += 9;
+        } else {
+            cModifier += 10;
+        }
+        roll = randomNum + cModifier + 2;
+        return roll;
+    }
+
+    public int calculateDamage(String cClass, int cStrength, int cAgility) {
+        Random rand = new Random();
+        int damageRoll = 0;
+        int cModifier = 0;
+        int randomNum = rand.nextInt((6) + 1) + 1;
+        if (cClass.equals("Warrior")) {
+            if (cStrength < 8) {
+                cModifier -= 2;
+            } else if (cStrength > 7 && cStrength < 10) {
+                cModifier -= 1;
+            } else if (cStrength > 9 && cStrength < 12) {
+                cModifier += 0;
+            } else if (cStrength > 11 && cStrength < 14) {
+                cModifier += 1;
+            } else if (cStrength > 13 && cStrength < 16) {
+                cModifier += 2;
+            } else if (cStrength > 15 && cStrength < 18) {
+                cModifier += 3;
+            } else if (cStrength > 17 && cStrength < 20) {
+                cModifier += 4;
+            } else if (cStrength > 19 && cStrength < 22) {
+                cModifier += 5;
+            } else if (cStrength > 21 && cStrength < 24) {
+                cModifier += 6;
+            } else if (cStrength > 23 && cStrength < 26) {
+                cModifier += 7;
+            } else if (cStrength > 25 && cStrength < 28) {
+                cModifier += 8;
+            } else if (cStrength > 27 && cStrength < 30) {
+                cModifier += 9;
+            } else {
+                cModifier += 10;
+            }}
+
+            else if (cClass.equals("Ranger")) {
+                if (cAgility < 8) {
                     cModifier -= 2;
-                } else if (pAgility > 7 && pAgility < 10) {
+                } else if (cAgility > 7 && cAgility < 10) {
                     cModifier -= 1;
-                } else if (pAgility > 9 && pAgility < 12) {
+                } else if (cAgility > 9 && cAgility < 12) {
                     cModifier += 0;
-                } else if (pAgility > 11 && pAgility < 14) {
+                } else if (cAgility > 11 && cAgility < 14) {
                     cModifier += 1;
-                } else if (pAgility > 13 && pAgility < 16) {
+                } else if (cAgility > 13 && cAgility < 16) {
                     cModifier += 2;
-                } else if (pAgility > 15 && pAgility < 18) {
+                } else if (cAgility > 15 && cAgility < 18) {
                     cModifier += 3;
-                } else if (pAgility > 17 && pAgility < 20) {
+                } else if (cAgility > 17 && cAgility < 20) {
                     cModifier += 4;
-                } else if (pAgility > 19 && pAgility < 22) {
+                } else if (cAgility > 19 && cAgility < 22) {
                     cModifier += 5;
-                } else if (pAgility > 21 && pAgility < 24) {
+                } else if (cAgility > 21 && cAgility < 24) {
                     cModifier += 6;
-                } else if (pAgility > 23 && pAgility < 26) {
+                } else if (cAgility > 23 && cAgility < 26) {
                     cModifier += 7;
-                } else if (pAgility > 25 && pAgility < 28) {
+                } else if (cAgility > 25 && cAgility < 28) {
                     cModifier += 8;
-                } else if (pAgility > 27 && pAgility < 30) {
+                } else if (cAgility > 27 && cAgility < 30) {
                     cModifier += 9;
-                } else if (pAgility > 29) {
+                } else if (cAgility > 29) {
                     cModifier += 10;
                 }} else {
                     cModifier += 1;

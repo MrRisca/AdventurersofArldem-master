@@ -7,10 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.android.adventurersofarldem.Abilities.Fireball;
+import com.example.android.adventurersofarldem.Abilities.Frostbolt;
+import com.example.android.adventurersofarldem.Abilities.HolyStrike;
+import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
+import com.example.android.adventurersofarldem.Characters.Goblin;
+import com.example.android.adventurersofarldem.Characters.Player;
 
 public class CharacterSelection extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +42,27 @@ public class CharacterSelection extends AppCompatActivity {
     public void submitPlayer(View view){
         EditText pName = (EditText) findViewById(R.id.addName);
         String playerName = pName.getText().toString();
-        Intent confirmIntent = new Intent(CharacterSelection.this, StatChoice.class);
-        confirmIntent.putExtra("playerName", playerName);
-        confirmIntent.putExtra("playerClass", playerClass);
-        confirmIntent.putExtra("playerSt", playerSt);
-        confirmIntent.putExtra("playerAg", playerAg);
-        confirmIntent.putExtra("playerIn", playerIn);
-        confirmIntent.putExtra("playerMHP", playerMHP);
-        confirmIntent.putExtra("playerCHP", playerCHP);
-        confirmIntent.putExtra("playerMMP", playerMMP);
-        confirmIntent.putExtra("playerCMP", playerCMP);
-        confirmIntent.putExtra("playerExperience", playerExperience);
-        confirmIntent.putExtra("playerLevel", playerLevel);
-        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(confirmIntent);
-    }}
+        Player.getInstance().setStrength(playerSt);
+        Player.getInstance().setCharacterName(playerName);
+        Player.getInstance().setAgility(playerAg);
+        Player.getInstance().setCharacterClass(playerClass);
+        Player.getInstance().setIntellect(playerIn);
+        Player.getInstance().setCurrentHealth(playerCHP);
+        Player.getInstance().setMaximumHealth(playerMHP);
+        Player.getInstance().setCurrentMana(playerCMP);
+        Player.getInstance().setMaximumMana(playerMMP);
+        Player.getInstance().setExperience(playerExperience);
+        Player.getInstance().setLevel(playerLevel);
+        Player.getInstance().setNextEnemy(new Goblin());
+        Player.getInstance().setPosX(18);
+        Player.getInstance().setPosY(18);
+
+        Button confirm = findViewById(R.id.confirm);
+                Intent creationIntent = new Intent(CharacterSelection.this, level1Activity.class);
+                startActivity(creationIntent);
+        }
+
+
 
 
     public void playerSelectedWizard(View view){
@@ -78,6 +89,8 @@ public class CharacterSelection extends AppCompatActivity {
         playerExperience = 1;
         playerLevel = 1;
 
+        Player.getInstance().setSpellList(new Frostbolt(1), new Fireball(2), new HolyStrike(3), new Frostbolt(4) );
+
     }
 
     public void playerSelectedWarrior(View view) {
@@ -103,6 +116,10 @@ public class CharacterSelection extends AppCompatActivity {
         playerCMP = 4;
         playerExperience = 1;
         playerLevel = 1;
+
+        Player.getInstance().setSpellList(new MeleeStrike(1), new MeleeStrike(2), new MeleeStrike(3), new MeleeStrike(4) );
+
+
     }
 
     public void playerSelectedRanger(View view){
@@ -128,6 +145,8 @@ public class CharacterSelection extends AppCompatActivity {
         playerCMP = 4;
         playerExperience = 1;
         playerLevel = 1;
+
+        Player.getInstance().setSpellList(new MeleeStrike(1), new Frostbolt(2), new MeleeStrike(3), new Frostbolt(4) );
     }
 
 }

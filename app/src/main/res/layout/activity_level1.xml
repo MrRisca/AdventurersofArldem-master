@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp">
@@ -39,13 +40,42 @@
 
             <ImageView
                 android:id="@+id/Dragon"
-                android:layout_width="match_parent"
+                android:layout_width="198dp"
                 android:layout_height="match_parent"
                 android:scaleType="center"
                 android:scaleX="0.7"
                 android:scaleY="0.9"
                 android:src="@drawable/goblin" />
+
+            <TextView
+                android:id="@+id/monsterHealthDescriber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monster Health" />
+
+            <TextView
+                android:id="@+id/monsterCurrentHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"/>
+
+            <TextView
+                android:id="@+id/monsterMaxHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0" />
+
+
+
         </LinearLayout>
+
+
+
+
+
 
         <LinearLayout
             android:id="@+id/playerContainer"
@@ -69,7 +99,8 @@
                     android:id="@+id/playerSpell2"
                     android:textAlignment="center"
                     android:padding="10dp"
-                    android:onClick="attackTwo"/>
+                    android:onClick="attackTwo"
+                    tools:ignore="RtlCompat" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -294,11 +325,11 @@
             android:padding="4dp">
 
             <Button
+                android:id="@+id/playerSpell1"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="attackOne"
-                android:id="@+id/playerSpell1"
                 android:text="ATTACK" />
 
             <LinearLayout
