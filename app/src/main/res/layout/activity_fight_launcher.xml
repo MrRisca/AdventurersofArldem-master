@@ -5,56 +5,109 @@
     android:layout_margin="16dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="#114c10"
     android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HELLO GOOD JOB" />
-    <LinearLayout
+     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/fight_orc_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/find_enemy_button"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:onClick="fightOrc"
-                android:text="FIGHT ORC"
+
+                android:onClick="fightEnemy"
+                android:text="Find Enemy"
                 />
 
         <Button
-            android:id="@+id/fight_goblin_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/bag_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:minHeight="0dp"
-            android:minWidth="0dp"
+
             android:onClick="fightGoblin"
-            android:text="FIGHT GOBLIN"/>
+            android:text="BAG"/>
 
         <Button
-            android:id="@+id/fight_dragon_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/search_area_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:minHeight="0dp"
-            android:minWidth="0dp"
+
             android:onClick="fightDragon"
-            android:text="FIGHT DRAGON"/>
+            android:text="Search Area"/>
 
         <Button
-            android:id="@+id/next_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/spells_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:onClick="nextLevel"
-            android:text="NEXT LEVEL"/>
+
+            android:onClick="StatChoiceSelected"
+            android:text="STATS"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/forrest" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/go_north_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:minHeight="0dp"
+
+            android:onClick="goNorth"
+            android:text="Go North"
+            />
+
+        <Button
+            android:id="@+id/go_east_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:minHeight="0dp"
+
+            android:onClick="goEast"
+            android:text="Go East"/>
+
+        <Button
+            android:id="@+id/go_south_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:minHeight="0dp"
+
+            android:onClick="goSouth"
+            android:text="Go South"/>
+
+        <Button
+            android:id="@+id/go_west_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:minHeight="0dp"
+
+            android:onClick="goWest"
+            android:text="Go West"/>
     </LinearLayout>
 
         <LinearLayout
@@ -245,6 +298,36 @@
                     android:layout_weight="2"
                     android:id="@+id/playerGold"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Position x / y"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:id="@+id/playerXPos"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:id="@+id/playerYPos"/>
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

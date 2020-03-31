@@ -1,17 +1,18 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Characters;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
-public class Wizard extends Player {
-    public Wizard(String n, int st, int ag, int in, int maxHP, int maxMP, int currentHP, int currentMP, int ac, int pXP, int level) {
-        super(n, st, ag, in, maxHP, maxMP, currentHP, currentMP, ac, pXP, level);
+import com.example.android.adventurersofarldem.Characters.Player;
+
+public class Ranger extends Player {
+    public Ranger(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
+        super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
     }
+
 
 
     @Override
     public String toString() {
-        return "Wizard{" +
+        return "Ranger{" +
                 "name='" + name + '\'' +
                 ", strength=" + strength +
                 ", agility=" + agility +

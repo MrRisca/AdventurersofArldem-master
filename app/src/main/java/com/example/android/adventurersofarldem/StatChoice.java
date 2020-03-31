@@ -6,26 +6,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.content.Intent;
 
+import com.example.android.adventurersofarldem.Characters.Player;
+
 
 public class StatChoice extends AppCompatActivity {
 
-    public String pName;
-    public String pClass;
-    public int strength;
-    public int agility;
-    public int intellect;
-    public int maxHP;
-    public int maxMP;
     public int minStrength;
     public int minAgility;
     public int minIntellect;
     public int minMaxHP;
     public int minMaxMP;
-    public int statsAvailable = 6;
-    public int currentHP;
-    public int currentMP;
-    public int pExperience;
-    public int pLevel;
 
 
     // Imports the characters existing stats which will be based on their class chosen, and then
@@ -34,61 +24,25 @@ public class StatChoice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stat_choice);
-        String playerName = getIntent().getStringExtra("playerName");
-        String playerClass = getIntent().getStringExtra("playerClass");
-        int playerStrength = getIntent().getIntExtra("playerSt", 0);
-        int playerAgility = getIntent().getIntExtra("playerAg", 0);
-        int playerIntellect = getIntent().getIntExtra("playerIn", 0);
-        int playerMaxHP = getIntent().getIntExtra("playerMHP", 0);
-        int playerMaxMP = getIntent().getIntExtra("playerMMP", 0);
-        int playerCurrentHP = getIntent().getIntExtra("playerCHP", 0);
-        int playerCurrentMP = getIntent().getIntExtra("playerCMP", 0);
-        int playerExperience = getIntent().getIntExtra("playerExperience", 0);
-        int playerLevel = getIntent().getIntExtra("playerLevel", 0);
-        strengthDisplay(playerStrength);
-        agilityDisplay(playerAgility);
-        intellectDisplay(playerIntellect);
-        maxHPDisplay(playerMaxHP);
-        maxMPDisplay(playerMaxMP);
-        strength = playerStrength;
-        agility = playerAgility;
-        intellect = playerIntellect;
-        maxHP = playerMaxHP;
-        maxMP = playerMaxMP;
-        minStrength = playerStrength;
-        minAgility = playerAgility;
-        minIntellect = playerIntellect;
-        minMaxHP = playerMaxHP;
-        minMaxMP = playerMaxMP;
-        currentHP = playerCurrentHP;
-        currentMP = playerCurrentMP;
-        statsDisplay(statsAvailable);
-        pName = playerName;
-        pClass = playerClass;
-        pExperience = playerExperience;
-        pLevel = playerLevel;
+        minStrength = Player.getInstance().getStrength();
+        minAgility = Player.getInstance().getAgility();
+        minIntellect = Player.getInstance().getIntellect();
+        minMaxHP = Player.getInstance().getMaximumHealth();
+        minMaxMP = Player.getInstance().getMaximumMana();
+        statsDisplay(Player.getInstance().getAvailablePoints());
+        strengthDisplay(Player.getInstance().getStrength());
+        agilityDisplay(Player.getInstance().getAgility());
+        intellectDisplay(Player.getInstance().getIntellect());
+        maxHPDisplay(Player.getInstance().getMaximumHealth());
+        maxMPDisplay(Player.getInstance().getMaximumMana());
 
     }
 
     //Submits updated stats and existing name and class to the confirmation intent
 
     public void submitStats(View view) {
-        //String pName = pName;
-        //String pClass = playerClass;
-        Intent confirmIntent = new Intent(StatChoice.this, level1Activity.class);
-        confirmIntent.putExtra("playerStrength", strength);
-        confirmIntent.putExtra("playerAgility", agility);
-        confirmIntent.putExtra("playerIntellect", intellect);
-        confirmIntent.putExtra("playerMaxHP", maxHP);
-        confirmIntent.putExtra("playerMaxMP", maxMP);
-        confirmIntent.putExtra("playerCurrentHP", currentHP);
-        confirmIntent.putExtra("playerCurrentMP", currentMP);
-        confirmIntent.putExtra("playerClass", pClass);
-        confirmIntent.putExtra("playerName", pName);
-        confirmIntent.putExtra("playerExperience", pExperience);
-        confirmIntent.putExtra("playerLevel", pLevel);
-        confirmIntent.putExtra("enemyChoice", "Goblin");
-        confirmIntent.putExtra("playerGold", 0);
+
+        Intent confirmIntent = new Intent(StatChoice.this, fight_launcher.class);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
 
@@ -114,11 +68,11 @@ public class StatChoice extends AppCompatActivity {
     // available stat away.
 
     public void increaseStrength(View view) {
-        if (statsAvailable > 0) {
-            strength += 1;
-            statsAvailable -= 1;
-            strengthDisplay(strength);
-            statsDisplay(statsAvailable);
+        if (Player.getInstance().getAvailablePoints() > 0) {
+            Player.getInstance().setStrength(Player.getInstance().getStrength() + 1);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() - 1);
+            strengthDisplay(Player.getInstance().getStrength());
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
@@ -127,15 +81,15 @@ public class StatChoice extends AppCompatActivity {
     // available by 1
 
     public void decreaseStrength(View view) {
-        if (strength > minStrength) {
+        if (Player.getInstance().getStrength() > minStrength) {
 
-            if (statsAvailable < 6) {
+            if (Player.getInstance().getAvailablePoints() < 6) {
 
-                strength -= 1;
-                statsAvailable += 1;
+                Player.getInstance().setStrength(Player.getInstance().getStrength() - 1);
+                Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
 
-                strengthDisplay(strength);
-                statsDisplay(statsAvailable);
+                strengthDisplay(Player.getInstance().getStrength());
+                statsDisplay(Player.getInstance().getAvailablePoints());
             }
         }
     }
@@ -148,22 +102,22 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseAgility(View view) {
-        if (statsAvailable > 0) {
+        if (Player.getInstance().getAvailablePoints() > 0) {
 
-            agility += 1;
-            statsAvailable -= 1;
-            agilityDisplay(agility);
-            statsDisplay(statsAvailable);
+            Player.getInstance().setAgility(Player.getInstance().getAgility() + 1);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() - 1);
+            agilityDisplay(Player.getInstance().getAgility());
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
     public void decreaseAgility(View view) {
-        if (agility > minAgility) {
-            if (statsAvailable < 6) {
-                agility -= 1;
-                statsAvailable += 1;
-                agilityDisplay(agility);
-                statsDisplay(statsAvailable);
+        if (Player.getInstance().getAgility() > minAgility) {
+            if (Player.getInstance().getAvailablePoints() < 6) {
+                Player.getInstance().setAgility(Player.getInstance().getAgility() - 1);
+                Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
+                agilityDisplay(Player.getInstance().getAgility());
+                statsDisplay(Player.getInstance().getAvailablePoints());
             }
         }
     }
@@ -174,22 +128,22 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseIntellect(View view) {
-        if (statsAvailable > 0) {
+        if (Player.getInstance().getAvailablePoints() > 0) {
 
-            intellect += 1;
-            statsAvailable -= 1;
-            intellectDisplay(intellect);
-            statsDisplay(statsAvailable);
+            Player.getInstance().setIntellect(Player.getInstance().getIntellect() + 1);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() - 1);
+            intellectDisplay(Player.getInstance().getIntellect());
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
     public void decreaseIntellect(View view) {
-        if (intellect > minIntellect) {
-            if (statsAvailable < 6) {
-                intellect -= 1;
-                statsAvailable += 1;
-                intellectDisplay(intellect);
-                statsDisplay(statsAvailable);
+        if (Player.getInstance().getIntellect() > minIntellect) {
+            if (Player.getInstance().getAvailablePoints() < 6) {
+                Player.getInstance().setIntellect(Player.getInstance().getIntellect() - 1);
+                Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
+                intellectDisplay(Player.getInstance().getIntellect());
+                statsDisplay(Player.getInstance().getAvailablePoints());
             }
         }
     }
@@ -200,25 +154,26 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseHP(View view) {
-        if (statsAvailable > 0) {
+        if (Player.getInstance().getAvailablePoints() > 0) {
 
-            maxHP += 1;
-            currentHP +=1;
-            statsAvailable -= 1;
-            maxHPDisplay(maxHP);
-            statsDisplay(statsAvailable);
+            Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() + 5);
+            Player.getInstance().setCurrentHealth(Player.getInstance().getCurrentHealth() + 5);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() - 1);
+            maxHPDisplay(Player.getInstance().getMaximumHealth());
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
     public void decreaseHP(View view) {
-        if (maxHP > minMaxHP) {
-            if (statsAvailable < 6) {
-                maxHP -= 1;
-                currentHP -=1;
-                statsAvailable += 1;
-                maxHPDisplay(maxHP);
+        if (Player.getInstance().getMaximumHealth() - 5 > minMaxHP) {
+            if (Player.getInstance().getAvailablePoints() < 6) {
+                Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() - 5);
+                Player.getInstance().setCurrentHealth(Player.getInstance().getCurrentHealth() - 5);
+                Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
+
+                maxHPDisplay(Player.getInstance().getMaximumHealth());
             }
-            statsDisplay(statsAvailable);
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
@@ -228,22 +183,22 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void increaseMP(View view) {
-        if (statsAvailable > 0) {
+        if (Player.getInstance().getAvailablePoints() > 0) {
 
-            maxMP += 1;
-            statsAvailable -= 1;
-            maxMPDisplay(maxMP);
-            statsDisplay(statsAvailable);
+            Player.getInstance().setMaximumMana(Player.getInstance().getMaximumMana() + 10);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() - 1);
+            maxMPDisplay(Player.getInstance().getMaximumMana());
+            statsDisplay(Player.getInstance().getAvailablePoints());
         }
     }
 
     public void decreaseMP(View view) {
-        if (maxMP > minMaxMP) {
-            if (statsAvailable < 6) {
-                maxMP -= 1;
-                statsAvailable += 1;
-                maxMPDisplay(maxMP);
-                statsDisplay(statsAvailable);
+        if (Player.getInstance().getMaximumMana() > minMaxMP) {
+            if (Player.getInstance().getAvailablePoints() < 6) {
+                Player.getInstance().setMaximumMana(Player.getInstance().getMaximumMana() - 1);
+                Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
+                maxMPDisplay(Player.getInstance().getMaximumMana());
+                statsDisplay(Player.getInstance().getAvailablePoints());
             }
         }
     }

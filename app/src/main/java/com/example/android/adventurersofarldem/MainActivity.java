@@ -11,13 +11,6 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int player_max_health = 10;
-    public int player_current_health = 0;
-    public int player_max_mana = 0;
-    public int player_current_mana = 0;
-    public int player_strength = 0;
-    public int player_agility = 0;
-    public int player_intellect = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-// The following are the commands to update the text fields showing player stats.
+
 
 }
 
