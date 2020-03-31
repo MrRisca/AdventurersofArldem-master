@@ -2,6 +2,7 @@ package com.example.android.adventurersofarldem.Characters;
 
 import com.example.android.adventurersofarldem.StatusEffect;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,12 +19,13 @@ public class Character {
     public int currentMana;
     public int experience;
     public int gold;
-    public List <StatusEffect> statusEffect;
+    public List <StatusEffect> statusEffects;
     public int speed;
     public int agility;
     public int intellect;
     public int level;
     public String characterClass;
+    public int stunnedTurns;
 
     public Character(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         characterName = n;
@@ -41,8 +43,8 @@ public class Character {
         intellect = in;
         level = lvl;
         characterClass = pClass;
+        statusEffects = new ArrayList<>();
 
-        
     }
 
     public void setStrength(int st) {
@@ -177,13 +179,21 @@ public class Character {
         return level;
     }
 
-    public void addStatusEffect(StatusEffect effectName){
-        statusEffect = Arrays.asList(effectName);
+    public int getStunnedTurns(){
+        return stunnedTurns;
+    }
+
+    public void setStunnedTurns(int sTurns){
+        stunnedTurns = sTurns;
+    }
+
+    public void addStatusEffects(StatusEffect effectName){
+        statusEffects.add(effectName);
 
     }
 
-    public List<StatusEffect> getStatusEffect() {
-        return statusEffect;
+    public List<StatusEffect> getStatusEffects() {
+        return statusEffects;
     }
 
 
