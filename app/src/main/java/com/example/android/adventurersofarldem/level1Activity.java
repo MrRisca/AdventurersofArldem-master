@@ -3,6 +3,7 @@ package com.example.android.adventurersofarldem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import android.app.Fragment;
 
 import com.example.android.adventurersofarldem.Abilities.Ability;
 import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
+import com.example.android.adventurersofarldem.Attacks.Attack;
+import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
 
@@ -114,10 +117,12 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
 
     //Method to update the TextView showing Monster's HP.
-    public void displayMonsterHealth(String monsterDamage) {
-        TextView monsterHPTest = (TextView) findViewById(R.id.attackResults2);
-        monsterHPTest.setText(String.valueOf(monsterDamage));
+    public void displayMonsterHealth() {
+        TextView monsterCurrentHealth = findViewById(R.id.monsterCurrentHealth);
+        monsterCurrentHealth.setText(String.valueOf(monster.getCurrentHealth()));
     }
+
+
 
 
     public void attackOne(View view){
@@ -132,11 +137,23 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             abilityToCast.toAttack(Player.getInstance()).applyTo(monster);
             TextView monsterCurrentHealth = findViewById(R.id.monsterCurrentHealth);
             monsterCurrentHealth.setText(String.valueOf(monster.getCurrentHealth()));
+            if (abilityToCast.hasDamageEffect()){
+                abilityToCast.addDamageEffect(monster);
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("Yes dot was added");
+                TextView dotInfo = findViewById(R.id.attackResults4);
+                dotInfo.setText(String.valueOf(abilityToCast.addDamageEffect(Player.getInstance()).getPeriodicDamage()));
+            }
+            else{
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("No Dot was not added");
+            }
+            if (abilityToCast.hasStunEffect()){
+                abilityToCast.addStunEffect(monster);
+            }
         }
         TextView resultsString = findViewById(R.id.attackResults);
         resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
-        TextView resultsString2 = findViewById(R.id.attackResults2);
-        resultsString2.setText(new StringBuilder().append("Gob roll + mod = ").append((defenderMod + defenderRoll)).toString());
         endTurn();
     }
 
@@ -152,11 +169,24 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             abilityToCast.toAttack(Player.getInstance()).applyTo(monster);
             TextView monsterCurrentHealth = findViewById(R.id.monsterCurrentHealth);
             monsterCurrentHealth.setText(String.valueOf(monster.getCurrentHealth()));
+            if (abilityToCast.hasDamageEffect()){
+                abilityToCast.addDamageEffect(monster);
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("Yes dot was added");
+                TextView dotInfo = findViewById(R.id.attackResults4);
+                dotInfo.setText(String.valueOf(abilityToCast.addDamageEffect(Player.getInstance()).getPeriodicDamage()));
+            }
+            else{
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("No Dot was not added");
+            }
+            if (abilityToCast.hasStunEffect()){
+                abilityToCast.addStunEffect(monster);
+            }
         }
         TextView resultsString = findViewById(R.id.attackResults);
         resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
-        TextView resultsString2 = findViewById(R.id.attackResults2);
-        resultsString2.setText(new StringBuilder().append("Gob roll + mod = ").append((defenderMod + defenderRoll)).toString());
+
         endTurn();
     }
 
@@ -172,11 +202,25 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             abilityToCast.toAttack(Player.getInstance()).applyTo(monster);
             TextView monsterCurrentHealth = findViewById(R.id.monsterCurrentHealth);
             monsterCurrentHealth.setText(String.valueOf(monster.getCurrentHealth()));
+            if (abilityToCast.hasDamageEffect()){
+                abilityToCast.addDamageEffect(monster);
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("Yes dot was added");
+                TextView dotInfo = findViewById(R.id.attackResults4);
+                dotInfo.setText(String.valueOf(abilityToCast.addDamageEffect(Player.getInstance()).getPeriodicDamage()));
+                Log.d("has effect", String.valueOf((abilityToCast.hasDamageEffect())));
+                Log.d("dot info", (String.valueOf(abilityToCast.addDamageEffect(Player.getInstance()).getPeriodicDamage())));
+            }
+            else{
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("No Dot was not added");
+            }
+            if (abilityToCast.hasStunEffect()){
+                abilityToCast.addStunEffect(monster);
+            }
         }
         TextView resultsString = findViewById(R.id.attackResults);
         resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
-        TextView resultsString2 = findViewById(R.id.attackResults2);
-        resultsString2.setText(new StringBuilder().append("Gob roll + mod = ").append((defenderMod + defenderRoll)).toString());
         endTurn();
     }
 
@@ -192,11 +236,25 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
             abilityToCast.toAttack(Player.getInstance()).applyTo(monster);
             TextView monsterCurrentHealth = findViewById(R.id.monsterCurrentHealth);
             monsterCurrentHealth.setText(String.valueOf(monster.getCurrentHealth()));
+            if (abilityToCast.hasDamageEffect()){
+                abilityToCast.addDamageEffect(monster);
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("Yes dot was added");
+                TextView dotInfo = findViewById(R.id.attackResults4);
+                dotInfo.setText(String.valueOf(abilityToCast.addDamageEffect(Player.getInstance()).getPeriodicDamage()));
+            }
+            else{
+                TextView wasDotAdded = findViewById(R.id.attackResults3);
+                wasDotAdded.setText("No Dot was not added");
+            }
+            if (abilityToCast.hasStunEffect()){
+                abilityToCast.addStunEffect(monster);
+            }
+
         }
         TextView resultsString = findViewById(R.id.attackResults);
         resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
-        TextView resultsString2 = findViewById(R.id.attackResults2);
-        resultsString2.setText(new StringBuilder().append("Gob roll + mod = ").append((defenderMod + defenderRoll)).toString());
+
         endTurn();
     }
 
@@ -225,30 +283,78 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
            characterKillGains();
         }
             else {
-            Random rand = new Random();
-            int attackerRoll = rand.nextInt(20 + 1) + 1;
-            int defenderRoll = rand.nextInt((20) + 1) + 1;
-            int attackerMod = monster.determineMod();
-            int defenderMod = Player.getInstance().determineMod();
-            Ability abilityToCast = new MeleeStrike(1);
-            RollDice didHit = new RollDice(attackerRoll, defenderRoll, attackerMod, defenderMod);
-            TextView resultsString2 = findViewById(R.id.attackResults2);
-            resultsString2.setText(new StringBuilder().append("You = ").append((defenderMod + defenderRoll)).append("Gob = ").append((attackerMod + attackerRoll)).toString());
-            if (didHit.isSuccessful()){
-                abilityToCast.toAttack(monster).applyTo(Player.getInstance());
-                TextView playerCurrentHealth = findViewById(R.id.playerCurrentHealth);
-                playerCurrentHealth.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
-                TextView resultsString3 = findViewById(R.id.attackResults2);
-                resultsString3.setText(new StringBuilder().append("Your roll + mod = ").append((defenderMod + defenderRoll)).append("You took ").append(monster.baseDamage).toString());
-                if (checkIfPlayerDead()){
-                    displayPlayerDead();
-                    new youDead();
+            checkIfMonsterStunned();
+            List<StatusEffect> monsterStatusEffect = monster.getStatusEffects();
+            Log.d("listOfEffects", String.valueOf(monsterStatusEffect));
+            if (monsterStatusEffect != null) {
+                for (int numberOfStatusEffects = 0; numberOfStatusEffects < monsterStatusEffect.size(); numberOfStatusEffects++) {
+                    if (monsterStatusEffect.get(numberOfStatusEffects).duration > 0) {
+                        monsterStatusEffect.get(numberOfStatusEffects).applyPeriodicDamage(monster);
+                        Log.d("dur eot", String.valueOf(monsterStatusEffect.get(numberOfStatusEffects).duration));
+                        displayMonsterHealth();
+                        if (checkIfMonsterDead()) {
+                            displayMonsterDefinitelydead();
+                            characterKillGains();
+                        }
+                    } else {
+                        monsterStatusEffect.remove(numberOfStatusEffects);
+                    }
                 }
             }
+            List<StatusEffect> playerStatusEffect = Player.getInstance().getStatusEffects();
+            if (playerStatusEffect != null) {
+                for (int numberOfPlayerStatusEffects = 0; numberOfPlayerStatusEffects < playerStatusEffect.size(); numberOfPlayerStatusEffects++) {
+                    if (playerStatusEffect.get(numberOfPlayerStatusEffects).duration > 0) {
+                        playerStatusEffect.get(numberOfPlayerStatusEffects).applyPeriodicDamage(Player.getInstance());
+                        displayPlayerHealth();
+                        if (checkIfPlayerDead()) {
+                            displayPlayerDead();
+                        }
+                    }
+                }
+            }
+            if (monster.getStunnedTurns() > 0) {
+                Log.d("Mon Stun", String.valueOf(monster.getStunnedTurns()));
+                TextView resultsString2 = findViewById(R.id.attackResults2);
+                resultsString2.setText("Monster could not attack");
+                monster.setStunnedTurns(monster.getStunnedTurns() - 1);
+                TextView resultsString5 = findViewById(R.id.attackResults5);
+                resultsString5.setText("Monster is stunned" + String.valueOf(monster.getStunnedTurns()));
+                Log.d("new mon stun",String.valueOf(monster.getStunnedTurns()));
+            }
+                Random rand = new Random();
+                int attackerRoll = rand.nextInt(20 + 1) + 1;
+                int defenderRoll = rand.nextInt((20) + 1) + 1;
+                int attackerMod = monster.determineMod();
+                int defenderMod = Player.getInstance().determineMod();
+                Ability abilityToCast = new MeleeStrike(1);
+                RollDice didHit = new RollDice(attackerRoll, defenderRoll, attackerMod, defenderMod);
+                TextView resultsString2 = findViewById(R.id.attackResults2);
+                resultsString2.setText(new StringBuilder().append("You = ").append((defenderMod + defenderRoll)).append("Gob = ").append((attackerMod + attackerRoll)).toString());
+                if (didHit.isSuccessful() && monster.getStunnedTurns() < 1) {
+                    checkIfMonsterStunned();
+                    abilityToCast.toAttack(monster).applyTo(Player.getInstance());
+                    displayPlayerHealth();
+                    TextView resultsString3 = findViewById(R.id.attackResults);
+                    resultsString3.setText(new StringBuilder().append("Your roll + mod = ").append((defenderMod + defenderRoll)).append("You took ").append(monster.baseDamage * abilityToCast.spellLevel).toString());
+                    TextView resultsString4 = findViewById(R.id.attackResults2);
+                    resultsString4.setText(new StringBuilder().append("Gob roll + mod = ").append((attackerMod + attackerRoll)).toString());
+                    if (checkIfPlayerDead()) {
+                        displayPlayerDead();
+                        new youDead();
+                    }
+                }
+
         }
 
 
+    }
 
+    public void checkIfMonsterStunned(){
+        if (monster.getStunnedTurns() < 1){
+            TextView resultsString5 = findViewById(R.id.attackResults5);
+            resultsString5.setText("Monster is NOT stunned");
+        }
     }
 
     public boolean checkIfPlayerDead(){
@@ -277,8 +383,8 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
     }
 
     public void displayPlayerHealth() {
-        TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
-        confirmPlayerCurrentHP.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
+        TextView playerCurrentHealth = findViewById(R.id.playerCurrentHealth);
+        playerCurrentHealth.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
         TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
         confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
     }

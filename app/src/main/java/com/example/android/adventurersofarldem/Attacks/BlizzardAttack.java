@@ -2,7 +2,7 @@
 //
 //import com.example.android.adventurersofarldem.Attacks.Attack;
 //import com.example.android.adventurersofarldem.Attacks.RicochetAttack;
-//import com.example.android.adventurersofarldem.StatusAttack;
+//import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 //
 //import java.util.List;
 //import java.util.Random;

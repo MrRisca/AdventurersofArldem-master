@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.FlameAttack;
+import com.example.android.adventurersofarldem.Attacks.PhysicalAttack;
+import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
 
 public class MeleeStrike extends Ability {
@@ -17,11 +19,18 @@ public class MeleeStrike extends Ability {
     public Attack toAttack(Character character) {
 
         int directDamage = (this.spellLevel * character.getBaseDamage());
-        Log.d("sl in MeleeStrike", String.valueOf(this.spellLevel));
-        Log.d("bd in MeleeStrike", String.valueOf(character.getBaseDamage()));
-        Log.d("dd in MeleeStrike", String.valueOf(directDamage));
-        Attack attack = new FlameAttack(directDamage);
+        Attack attack = new PhysicalAttack(directDamage);
         return attack;
+    }
+
+    @Override
+    public StatusAttack addDamageEffect(Character character) {
+        return null;
+    }
+
+    @Override
+    public StatusAttack addStunEffect(Character character) {
+        return null;
     }
 
     @Override
@@ -32,5 +41,15 @@ public class MeleeStrike extends Ability {
     @Override
     public String getDescription() {
         return "I BEAT YOU UP";
+    }
+
+    @Override
+    public boolean hasDamageEffect() {
+        return false;
+    }
+
+    @Override
+    public boolean hasStunEffect() {
+        return false;
     }
 }

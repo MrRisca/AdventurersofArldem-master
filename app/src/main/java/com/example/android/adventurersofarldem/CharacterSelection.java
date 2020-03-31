@@ -82,14 +82,14 @@ public class CharacterSelection extends AppCompatActivity {
         playerSt = 8;
         playerAg = 8;
         playerIn = 12;
-        playerMHP = 6;
-        playerCHP = 6;
+        playerMHP = 60000;
+        playerCHP = 60000;
         playerMMP = 20;
         playerCMP = 20;
         playerExperience = 1;
         playerLevel = 1;
 
-        Player.getInstance().setSpellList(new Frostbolt(1), new Fireball(2), new HolyStrike(3), new Frostbolt(4) );
+        Player.getInstance().setSpellList(new Frostbolt(1), new Fireball(2), new HolyStrike(1), new Frostbolt(4) );
 
     }
 
