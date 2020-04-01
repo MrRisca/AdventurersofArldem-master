@@ -22,7 +22,7 @@ public class CharacterSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_selection);
 
-        mButton = (Button) findViewById(R.id.confirm);
+        mButton = findViewById(R.id.confirm);
 
     }
 
@@ -37,10 +37,11 @@ public class CharacterSelection extends AppCompatActivity {
     int playerCMP = 0;
     int playerExperience = 0;
     int playerLevel = 0;
+    int playerBd = 2;
 
 
     public void submitPlayer(View view){
-        EditText pName = (EditText) findViewById(R.id.addName);
+        EditText pName = findViewById(R.id.addName);
         String playerName = pName.getText().toString();
         Player.getInstance().setStrength(playerSt);
         Player.getInstance().setCharacterName(playerName);
@@ -56,6 +57,7 @@ public class CharacterSelection extends AppCompatActivity {
         Player.getInstance().setNextEnemy(new Goblin());
         Player.getInstance().setPosX(18);
         Player.getInstance().setPosY(18);
+        Player.getInstance().setBaseDamage(playerBd);
 
         Button confirm = findViewById(R.id.confirm);
                 Intent creationIntent = new Intent(CharacterSelection.this, level1Activity.class);
@@ -67,15 +69,15 @@ public class CharacterSelection extends AppCompatActivity {
 
     public void playerSelectedWizard(View view){
         ImageView wizardClass;
-            wizardClass = (ImageView) findViewById(R.id.Wizard);
+            wizardClass = findViewById(R.id.Wizard);
             wizardClass.setImageResource(R.drawable.wizardyes);
 
         ImageView rangerClass;
-            rangerClass = (ImageView) findViewById(R.id.Ranger);
+            rangerClass = findViewById(R.id.Ranger);
             rangerClass.setImageResource(R.drawable.ranger);
 
         ImageView warriorClass;
-            warriorClass = (ImageView) findViewById(R.id.Warrior);
+            warriorClass = findViewById(R.id.Warrior);
             warriorClass.setImageResource(R.drawable.warrior);
 
         playerClass = "Wizard";
@@ -95,27 +97,28 @@ public class CharacterSelection extends AppCompatActivity {
 
     public void playerSelectedWarrior(View view) {
         ImageView wizardClass;
-            wizardClass = (ImageView) findViewById(R.id.Wizard);
+            wizardClass = findViewById(R.id.Wizard);
             wizardClass.setImageResource(R.drawable.wizard);
 
         ImageView rangerClass;
-            rangerClass = (ImageView) findViewById(R.id.Ranger);
+            rangerClass = findViewById(R.id.Ranger);
             rangerClass.setImageResource(R.drawable.ranger);
 
         ImageView warriorClass;
-            warriorClass = (ImageView) findViewById(R.id.Warrior);
+            warriorClass = findViewById(R.id.Warrior);
             warriorClass.setImageResource(R.drawable.warrioryes);
 
         playerClass = "Warrior";
         playerSt = 12;
         playerAg = 8;
         playerIn = 8;
-        playerMHP = 8;
-        playerCHP = 8;
+        playerMHP = 8000;
+        playerCHP = 8000;
         playerMMP = 4;
         playerCMP = 4;
         playerExperience = 1;
         playerLevel = 1;
+        playerBd = 4;
 
         Player.getInstance().setSpellList(new MeleeStrike(1), new MeleeStrike(2), new MeleeStrike(3), new MeleeStrike(4) );
 
@@ -124,15 +127,15 @@ public class CharacterSelection extends AppCompatActivity {
 
     public void playerSelectedRanger(View view){
         ImageView wizardClass;
-            wizardClass = (ImageView) findViewById(R.id.Wizard);
+            wizardClass = findViewById(R.id.Wizard);
             wizardClass.setImageResource(R.drawable.wizard);
 
         ImageView rangerClass;
-            rangerClass = (ImageView) findViewById(R.id.Ranger);
+            rangerClass = findViewById(R.id.Ranger);
             rangerClass.setImageResource(R.drawable.rangeryes);
 
         ImageView warriorClass;
-            warriorClass = (ImageView) findViewById(R.id.Warrior);
+            warriorClass = findViewById(R.id.Warrior);
             warriorClass.setImageResource(R.drawable.warrior);
 
         playerClass = "Ranger";

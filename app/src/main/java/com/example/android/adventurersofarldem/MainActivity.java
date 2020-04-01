@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        ImageView creation = (ImageView) findViewById(R.id.Dragon);
+        ImageView creation = findViewById(R.id.Dragon);
 
         creation.setOnClickListener(new OnClickListener() {
             // The code in this method will be executed when the numbers category is clicked on.

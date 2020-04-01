@@ -4,31 +4,29 @@ import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.FlameAttack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
+import com.example.android.adventurersofarldem.StatusEffects.Burn;
 import com.example.android.adventurersofarldem.StatusEffects.DelayedDamage;
 import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
-import com.example.android.adventurersofarldem.StatusEffects.Smite;
 
-public class HolyStrike extends Ability {
-
-    private int spellLevel;
+public class Pyroclasm extends Ability {
 
 
-    public HolyStrike(int spellLevel) {
+    public Pyroclasm(int spellLevel) {
         super(spellLevel);
         this.spellLevel = spellLevel;
     }
 
 
     public Attack toAttack(Character character) {
-        int directDamage = spellLevel * 5;
+        int directDamage = spellLevel * 4;
         Attack attack = new FlameAttack(directDamage);
         return attack;
     }
 
-    @Override
+
     public StatusAttack addDamageEffect(Character character) {
-        int duration = 5;
-        int periodicDamage = spellLevel * 1;
+        int duration = 10;
+        int periodicDamage = spellLevel * duration;
         StatusAttack attack = new StatusAttack(duration, periodicDamage);
         StatusEffect statusEffect = new StatusEffect(duration, periodicDamage, duration);
         statusEffect.addToList(character, new DelayedDamage(duration, periodicDamage, duration));
@@ -48,12 +46,12 @@ public class HolyStrike extends Ability {
 
     @Override
     public String getName() {
-        return "Holy Strike";
+        return "Fireball";
     }
 
     @Override
     public String getDescription() {
-        return "The power of Christ compels you!";
+        return "I AM RAGNAROS";
     }
 
     @Override

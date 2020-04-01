@@ -1,13 +1,10 @@
 package com.example.android.adventurersofarldem.Abilities;
 
-import android.util.Log;
-
 import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.FlameAttack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.Characters.Player;
-import com.example.android.adventurersofarldem.StatusEffect;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 import com.example.android.adventurersofarldem.StatusEffects.Burn;
 
 public class Fireball extends Ability {
@@ -30,13 +27,19 @@ public class Fireball extends Ability {
         int duration = 10;
         int periodicDamage = spellLevel * 2;
         StatusAttack attack = new StatusAttack(duration, periodicDamage);
-        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage);
+        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage, duration);
         statusEffect.addToList(character, new Burn(duration, periodicDamage));
         return attack;
     }
 
     @Override
     public StatusAttack addStunEffect(Character character) {
+        return null;
+    }
+
+    @Override
+    public StatusEffect addWeakenEffect(Character character) {
+
         return null;
     }
 
@@ -57,6 +60,11 @@ public class Fireball extends Ability {
 
     @Override
     public boolean hasStunEffect() {
+        return false;
+    }
+
+    @Override
+    public boolean hasWeakenEffect() {
         return false;
     }
 }
