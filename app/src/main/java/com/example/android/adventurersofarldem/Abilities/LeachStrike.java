@@ -1,36 +1,26 @@
 package com.example.android.adventurersofarldem.Abilities;
 
 import com.example.android.adventurersofarldem.Attacks.Attack;
-import com.example.android.adventurersofarldem.Attacks.FlameAttack;
+import com.example.android.adventurersofarldem.Attacks.LeachAttack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.StatusEffects.Burn;
-import com.example.android.adventurersofarldem.StatusEffects.DelayedDamage;
 import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 
-public class Pyroclasm extends Ability {
-
-
-    public Pyroclasm(int spellLevel) {
+public class LeachStrike extends Ability {
+    public LeachStrike(int spellLevel) {
         super(spellLevel);
-        this.spellLevel = spellLevel;
     }
 
-
+    @Override
     public Attack toAttack(Character character) {
         int directDamage = spellLevel * 4;
-        Attack attack = new FlameAttack(directDamage);
+        Attack attack = new LeachAttack(directDamage);
         return attack;
     }
 
-
+    @Override
     public StatusAttack addDamageEffect(Character character) {
-        int duration = 10;
-        int periodicDamage = spellLevel * duration;
-        StatusAttack attack = new StatusAttack(duration, periodicDamage);
-        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage, duration);
-        statusEffect.addToList(character, new DelayedDamage(duration, periodicDamage, duration));
-        return attack;
+        return null;
     }
 
     @Override
@@ -40,23 +30,29 @@ public class Pyroclasm extends Ability {
 
     @Override
     public StatusEffect addWeakenEffect(Character character) {
-
         return null;
     }
 
     @Override
+    public void addLeachEffect(Character caster) {
+        int directDamage = spellLevel * 4;
+        LeachAttack attack = new LeachAttack(directDamage);
+        attack.leachDamage(caster);
+    }
+
+    @Override
     public String getName() {
-        return "Pyroclasm";
+        return "Leach Strike";
     }
 
     @Override
     public String getDescription() {
-        return "I AM BIG RAGNAROS";
+        return null;
     }
 
     @Override
     public boolean hasDamageEffect() {
-        return true;
+        return false;
     }
 
     @Override
@@ -71,11 +67,6 @@ public class Pyroclasm extends Ability {
 
     @Override
     public boolean hasLeachEffect() {
-        return false;
-    }
-
-    @Override
-    public void addLeachEffect(Character caster) {
-
+        return true;
     }
 }

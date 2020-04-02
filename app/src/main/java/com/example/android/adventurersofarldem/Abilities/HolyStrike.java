@@ -70,4 +70,14 @@ public class HolyStrike extends Ability {
     public boolean hasWeakenEffect() {
         return false;
     }
+
+    @Override
+    public boolean hasLeachEffect() {
+        return false;
+    }
+
+    @Override
+    public void addLeachEffect(Character caster) {
+
+    }
 }

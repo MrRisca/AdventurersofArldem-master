@@ -31,4 +31,7 @@ public abstract class Ability {
 
     public abstract boolean hasWeakenEffect();
 
+    public abstract boolean hasLeachEffect();
+
+    public abstract void addLeachEffect(Character caster);
 }

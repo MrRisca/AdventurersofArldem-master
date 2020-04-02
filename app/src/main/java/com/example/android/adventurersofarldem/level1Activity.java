@@ -155,6 +155,9 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
                         monster.setIsWeakened(true);
                     }
                 }
+                if (abilityToCast.hasLeachEffect()){
+                    abilityToCast.addLeachEffect(Player.getInstance());
+                }
             }
             TextView resultsString = findViewById(R.id.attackResults);
             resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
@@ -198,6 +201,9 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
                         monster.setIsWeakened(true);
                     }
                 }
+                if (abilityToCast.hasLeachEffect()){
+                    abilityToCast.addLeachEffect(Player.getInstance());
+                }
             }
             TextView resultsString = findViewById(R.id.attackResults);
             resultsString.setText(new StringBuilder().append("You = ").append((attackerMod + attackerRoll)).append("Gob = ").append((defenderMod + defenderRoll)).toString());
@@ -235,6 +241,9 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
                 }
                 if (abilityToCast.hasStunEffect()) {
                     abilityToCast.addStunEffect(monster);
+                }
+                if (abilityToCast.hasLeachEffect()){
+                    abilityToCast.addLeachEffect(Player.getInstance());
                 }
                 if (abilityToCast.hasWeakenEffect()) {
                     if (!monster.getIsWeakened()) {
@@ -286,6 +295,9 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
                         wasWeakenAdded.setText(String.valueOf(monster.getBaseDamage()));
                         monster.setIsWeakened(true);
                     }
+                }
+                if (abilityToCast.hasLeachEffect()){
+                    abilityToCast.addLeachEffect(Player.getInstance());
                 }
 
             }

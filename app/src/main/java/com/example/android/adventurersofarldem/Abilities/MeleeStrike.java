@@ -70,4 +70,14 @@ public class MeleeStrike extends Ability {
         return true;
     }
 
+    @Override
+    public boolean hasLeachEffect() {
+        return false;
+    }
+
+    @Override
+    public void addLeachEffect(Character caster) {
+
+    }
+
 }

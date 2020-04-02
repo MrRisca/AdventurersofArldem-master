@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.example.android.adventurersofarldem.Abilities.Fireball;
 import com.example.android.adventurersofarldem.Abilities.Frostbolt;
 import com.example.android.adventurersofarldem.Abilities.HolyStrike;
+import com.example.android.adventurersofarldem.Abilities.LeachStrike;
 import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
 import com.example.android.adventurersofarldem.Characters.Goblin;
 import com.example.android.adventurersofarldem.Characters.Player;
@@ -142,14 +143,14 @@ public class CharacterSelection extends AppCompatActivity {
         playerSt = 8;
         playerAg = 12;
         playerIn = 8;
-        playerMHP = 7;
-        playerCHP = 7;
+        playerMHP = 7000;
+        playerCHP = 7000;
         playerMMP = 4;
         playerCMP = 4;
         playerExperience = 1;
         playerLevel = 1;
 
-        Player.getInstance().setSpellList(new MeleeStrike(1), new Frostbolt(2), new MeleeStrike(3), new Frostbolt(4) );
+        Player.getInstance().setSpellList(new MeleeStrike(1), new LeachStrike(2), new MeleeStrike(3), new Frostbolt(4) );
     }
 
 }
