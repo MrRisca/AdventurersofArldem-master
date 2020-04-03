@@ -3,7 +3,9 @@ package com.example.android.adventurersofarldem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -210,19 +212,9 @@ public class fight_launcher extends AppCompatActivity {
         }
     }
 
-    public void goNorth(View view){
-        if (Player.getInstance().getPosY() < 35){
-            Player.getInstance().setPosY(Player.getInstance().getPosY() + 1);
-            TextView playerXPos = findViewById(R.id.playerXPos);
-            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
-
-            TextView playerYPos = findViewById(R.id.playerYPos);
-            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
-        }
-    }
-
-    public void goSouth(View view) {
-        if (Player.getInstance().getPosY() > 0) {
+    public void goWest(View view){
+        updateScenery(view);
+        if (Player.getInstance().getPosY() > 0){
             Player.getInstance().setPosY(Player.getInstance().getPosY() - 1);
             TextView playerXPos = findViewById(R.id.playerXPos);
             playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
@@ -230,9 +222,26 @@ public class fight_launcher extends AppCompatActivity {
             TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
-    public void goEast(View view){
+    public void goEast(View view) {
+        updateScenery(view);
+        if (Player.getInstance().getPosY() < 35) {
+            Player.getInstance().setPosY(Player.getInstance().getPosY() + 1);
+            TextView playerXPos = findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
+    }
+
+    public void goSouth(View view){
+        updateScenery(view);
         if (Player.getInstance().getPosX() < 35) {
             Player.getInstance().setPosX(Player.getInstance().getPosX() + 1);
             TextView playerXPos = findViewById(R.id.playerXPos);
@@ -241,9 +250,12 @@ public class fight_launcher extends AppCompatActivity {
             TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
-    public void goWest(View view){
+    public void goNorth(View view){
+        updateScenery(view);
         if (Player.getInstance().getPosX() > 0) {
             Player.getInstance().setPosX(Player.getInstance().getPosX() - 1);
             TextView playerXPos = findViewById(R.id.playerXPos);
@@ -252,6 +264,8 @@ public class fight_launcher extends AppCompatActivity {
             TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
     public Monster monsterTypeSelected(){
@@ -283,6 +297,41 @@ public class fight_launcher extends AppCompatActivity {
 
     }
 
+    public void updateScenery(View view){
+        playerLocation = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
+        ImageView sceneryView = findViewById(R.id.sceneryImage);
+        if (playerLocation.equals("To")) {
+            sceneryView.setImageResource(R.drawable.town);
+        }
+        else if (playerLocation.equals("Fo")){
+            sceneryView.setImageResource(R.drawable.forest);
+        }
+        else if (playerLocation.equals("Fa")){
+            sceneryView.setImageResource(R.drawable.farmland);
+        }
+        else if (playerLocation.equals("Mo")){
+            sceneryView.setImageResource(R.drawable.mountains);
+        }
+        else if (playerLocation.equals("De")){
+            sceneryView.setImageResource(R.drawable.desert);
+        }
+        else if (playerLocation.equals("Hi")){
+            sceneryView.setImageResource(R.drawable.hills);
+        }
+        else if (playerLocation.equals("Ri")){
+            sceneryView.setImageResource(R.drawable.river);
+        }
+        else if (playerLocation.equals("Ca")){
+            sceneryView.setImageResource(R.drawable.caves);
+        }
+        else if (playerLocation.equals("Pl")){
+            sceneryView.setImageResource(R.drawable.plains);
+        }
+        else if (playerLocation.equals("Oc")){
+            sceneryView.setImageResource(R.drawable.oceans);
+        }
+    }
+
 
     public void fightEnemy(View view){
         monsterTypeSelected();
@@ -300,6 +349,23 @@ public class fight_launcher extends AppCompatActivity {
         button.startAnimation(myAnim);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
+    }
+
+    public void openInventory(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, EquipmentActivity.class);
+
+        Button button = findViewById(R.id.bag_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+
     }
 
 

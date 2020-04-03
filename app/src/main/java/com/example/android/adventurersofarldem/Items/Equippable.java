@@ -6,6 +6,7 @@ public class Equippable extends Item {
     private int amount;
     private String slot;
     private String stat;
+    private Equippable oldItem;
 
     public Equippable(String n, String des, boolean perma, int val, int rar, String sl, String st, int am) {
         super(n, des, perma, val, rar);
@@ -20,9 +21,12 @@ public class Equippable extends Item {
 
     public void equip(){
         if (slot.equals("Head")){
+            oldItem = (Equippable) Player.getInstance().getItemInSlotHead();
+            if (oldItem != null){
+            oldItem.unequip();}
             Player.getInstance().setItemInSlotHead(this);
-            Player.getInstance().removeFromInventory(this);
             statIncrease();
+
         }
         else if (slot.equals("Chest")){
             Player.getInstance().setItemInSlotChest(this);
@@ -68,8 +72,39 @@ public class Equippable extends Item {
 
 
     public void unequip(){
+        oldItem = (Equippable) Player.getInstance().getItemInSlotHead();
+        if (oldItem != null) {
+            oldItem.statDecrease();
+            if (oldItem.getSlot().equals("Head")){
+                Player.getInstance().setItemInSlotHead(null);
+            }
+            if (oldItem.getSlot().equals("Chest")){
+                Player.getInstance().setItemInSlotChest(null);
+            }
+            if (oldItem.getSlot().equals("Legs")){
+                Player.getInstance().setItemInSlotLegs(null);
+            }
+            if (oldItem.getSlot().equals("Feet")){
+                Player.getInstance().setItemInSlotFeet(null);
+            }
+            if (oldItem.getSlot().equals("Hands")){
+                Player.getInstance().setItemInSlotHands(null);
+            }
+            if (oldItem.getSlot().equals("Ring")){
+                Player.getInstance().setItemInSlotRing(null);
+            }
+            if (oldItem.getSlot().equals("Main Hand")){
+                Player.getInstance().setItemInSlotMainHand(null);
+            }
+            if (oldItem.getSlot().equals("Off Hand")){
+                Player.getInstance().setItemInSlotOffHand(null);
+            }
+            if (oldItem.getSlot().equals("Neck")){
+                Player.getInstance().setItemInSlotNeck(null);
+            }
+        }
         Player.getInstance().addToInventory(this);
-        statDecrease();
+
         //Create a 0 value item and replace the existing item with it.
     }
 

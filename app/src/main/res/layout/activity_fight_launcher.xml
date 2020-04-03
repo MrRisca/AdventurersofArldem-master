@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="fightGoblin"
+            android:onClick="openInventory"
             android:text="BAG"/>
 
         <Button
@@ -61,7 +61,8 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="200dp"
-            android:src="@drawable/forrest" />
+            android:src="@drawable/town"
+            android:id="@+id/sceneryImage"/>
     </LinearLayout>
 
     <LinearLayout

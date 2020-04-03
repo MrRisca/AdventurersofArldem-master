@@ -6,6 +6,7 @@ import com.example.android.adventurersofarldem.CharacterInterface;
 import com.example.android.adventurersofarldem.Items.*;
 import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,19 +33,20 @@ public class Player extends Character implements CharacterInterface {
     public static int posY;
     public Monster nextEnemy;
     public int availablePoints;
-    private Item itemInSlotHead;
-    private Item itemInSlotChest;
-    private Item itemInSlotLegs;
-    private Item itemInSlotHands;
-    private Item itemInSlotFeet;
-    private Item itemInSlotNeck;
-    private Item itemInSlotRing;
-    private Item itemInSlotMainHand;
-    private Item itemInSlotOffHand;
-    public List<Item> inventory;
+    private Equippable itemInSlotHead;
+    private Equippable itemInSlotChest;
+    private Equippable itemInSlotLegs;
+    private Equippable itemInSlotHands;
+    private Equippable itemInSlotFeet;
+    private Equippable itemInSlotNeck;
+    private Equippable itemInSlotRing;
+    private Equippable itemInSlotMainHand;
+    private Equippable itemInSlotOffHand;
+    public List<Equippable> inventory;
 
     public Player(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
+        inventory = new ArrayList<>();
     }
 
 
@@ -120,6 +122,8 @@ public class Player extends Character implements CharacterInterface {
             removeFromInventory(item);
     }
 
+
+
     public Item getItemInSlotChest(){
         return itemInSlotChest;
     }
@@ -192,17 +196,17 @@ public class Player extends Character implements CharacterInterface {
             removeFromInventory(item);
     }
 
-    public void addToInventory(Item itemName){
+    public void addToInventory(Equippable itemName){
         inventory.add(itemName);
 
     }
 
-    public List<Item> getInventory() {
+    public List<Equippable> getInventory() {
         return inventory;
     }
 
     public void removeFromInventory(Item itemName){
-        if (Arrays.asList(inventory).contains(itemName)){
+        if (inventory.size() > 0) {
             inventory.remove(itemName);
         }
     }
