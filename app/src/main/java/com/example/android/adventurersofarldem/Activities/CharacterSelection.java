@@ -1,4 +1,4 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import com.example.android.adventurersofarldem.Abilities.LeachStrike;
 import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
 import com.example.android.adventurersofarldem.Characters.Goblin;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.R;
+import com.example.android.adventurersofarldem.level1Activity;
 
 public class CharacterSelection extends AppCompatActivity {
 
@@ -59,6 +61,7 @@ public class CharacterSelection extends AppCompatActivity {
         Player.getInstance().setPosX(18);
         Player.getInstance().setPosY(18);
         Player.getInstance().setBaseDamage(playerBd);
+
 
         Button confirm = findViewById(R.id.confirm);
                 Intent creationIntent = new Intent(CharacterSelection.this, level1Activity.class);

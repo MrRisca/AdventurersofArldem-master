@@ -34,14 +34,13 @@
             android:text="BAG"/>
 
         <Button
-            android:id="@+id/search_area_button"
+            android:id="@+id/change_talents_button"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:minHeight="0dp"
-
-            android:onClick="fightDragon"
-            android:text="Search Area"/>
+            android:onClick="changeTalents"
+            android:text="Talents"/>
 
         <Button
             android:id="@+id/spells_button"

@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.EditText;
+
+import com.example.android.adventurersofarldem.Activities.CharacterSelection;
 
 public class MainActivity extends AppCompatActivity {
 

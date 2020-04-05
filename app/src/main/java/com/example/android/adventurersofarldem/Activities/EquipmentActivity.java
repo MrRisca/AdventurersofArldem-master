@@ -1,4 +1,4 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import com.example.android.adventurersofarldem.Items.Equippable;
 import com.example.android.adventurersofarldem.Items.Equippables.HatOfStrength;
 import com.example.android.adventurersofarldem.Items.Equippables.HatOfWisdom;
 import com.example.android.adventurersofarldem.Items.Item;
+import com.example.android.adventurersofarldem.R;
 
 import java.util.List;
 

@@ -5,6 +5,11 @@ import com.example.android.adventurersofarldem.Abilities.Ability;
 import com.example.android.adventurersofarldem.CharacterInterface;
 import com.example.android.adventurersofarldem.Items.*;
 import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
+import com.example.android.adventurersofarldem.Talents.Talent;
+import com.example.android.adventurersofarldem.Talents.plusOneInt;
+import com.example.android.adventurersofarldem.Talents.plusOneStr;
+import com.example.android.adventurersofarldem.Talents.plusTwoInt;
+import com.example.android.adventurersofarldem.Talents.plusTwoStr;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,10 +48,18 @@ public class Player extends Character implements CharacterInterface {
     private Equippable itemInSlotMainHand;
     private Equippable itemInSlotOffHand;
     public List<Equippable> inventory;
+    public List<Ability> possibleAbilities;
+    public List<Talent> playerTalents;
+    public List<Talent> possibleTalents;
+    public List<Talent> allTalents;
 
     public Player(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
         inventory = new ArrayList<>();
+        possibleAbilities = new ArrayList<>();
+        playerTalents = new ArrayList<>();
+        possibleTalents = new ArrayList<>();
+        allTalents = Arrays.asList(new plusOneStr("Warrior", 1), new plusTwoStr("Warrior", 1), new plusOneInt("Wizard", 1), new plusTwoInt("Wizard", 1));
     }
 
 
@@ -209,6 +222,42 @@ public class Player extends Character implements CharacterInterface {
         if (inventory.size() > 0) {
             inventory.remove(itemName);
         }
+    }
+
+    public List<Ability> getPossibleAbilities() {
+        return possibleAbilities;
+    }
+
+    public void addToPossibleAbilities(Ability ab) {
+        possibleAbilities.add(ab);
+    }
+
+    public List<Talent> getPlayerTalents() {
+        return playerTalents;
+    }
+
+    public void addToPlayerTalents(Talent ta) {
+        playerTalents.add(ta);
+    }
+
+    public void removeFromPlayerTalents(Talent ta){
+        playerTalents.remove(ta);
+    }
+
+    public List<Talent> getPossibleTalents() {
+        return possibleTalents;
+    }
+
+    public void addToPossibleTalents(Talent ta) {
+        possibleTalents.add(ta);
+    }
+
+    public List<Talent> getAllTalents() {
+        return allTalents;
+    }
+
+    public void addToAllTalents(Talent ta) {
+        allTalents.add(ta);
     }
 
 }
