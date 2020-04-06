@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CharacterSelection" />
+        <activity android:name=".Activities.CharacterSelection" />
         <activity android:name=".playerConfirm" />
         <activity android:name=".Singleton" />
         <activity android:name=".StatChoice"></activity>

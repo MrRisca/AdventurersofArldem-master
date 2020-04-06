@@ -1,15 +1,17 @@
 package com.example.android.adventurersofarldem.StatusEffects;
 
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.StatusEffect;
 
 public class Smite extends StatusEffect {
     public Smite(int duration, int periodicDamage) {
-        super(duration, periodicDamage);
+        super(duration, periodicDamage, duration);
     }
 
     @Override
-    public void removeEffect(Character character) {
-        Smite.this.duration = 0;
+    public void removeWeakenEffect(Character character){
    }
+    @Override
+    public String getName() {
+        return "Smite";
+    }
 }

@@ -14,4 +14,6 @@ public class Attack{
     public void applyTo(Character character){
           character.currentHealth -= directDamage;
         }
+
+
     }

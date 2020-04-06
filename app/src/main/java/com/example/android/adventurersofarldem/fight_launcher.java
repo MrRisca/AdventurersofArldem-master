@@ -3,12 +3,15 @@ package com.example.android.adventurersofarldem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.example.android.adventurersofarldem.Activities.EquipmentActivity;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
 
@@ -37,82 +40,82 @@ public class fight_launcher extends AppCompatActivity {
         playerLocation = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
         System.out.println("OLI " + playerLocation);
         spellList = getIntent().getStringArrayListExtra("spellList");
-        TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
+        TextView confirmPlayerGold = findViewById(R.id.playerGold);
         confirmPlayerGold.setText(String.valueOf(Player.getInstance().getGold()));
 
-        TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
+        TextView confirmPlayerAgility = findViewById(R.id.playerCurrentAgility);
         confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
 
 
-        TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
+        TextView confirmPlayerStrength = findViewById(R.id.playerCurrentStrength);
         confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
 
         //Set final TextView to have the goblin's current health.
-        TextView confirmPlayerIntellect = (TextView) findViewById(R.id.playerCurrentIntellect);
+        TextView confirmPlayerIntellect = findViewById(R.id.playerCurrentIntellect);
         confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
-        TextView confirmPlayerMaxHP = (TextView) findViewById(R.id.playerMaxHealth);
+        TextView confirmPlayerMaxHP = findViewById(R.id.playerMaxHealth);
         confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
 
-        TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
+        TextView confirmPlayerCurrentHP = findViewById(R.id.playerCurrentHealth);
         confirmPlayerCurrentHP.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
 
-        TextView confirmPlayerMaxMP = (TextView) findViewById(R.id.playerMaxMana);
+        TextView confirmPlayerMaxMP = findViewById(R.id.playerMaxMana);
         confirmPlayerMaxMP.setText(String.valueOf(Player.getInstance().getMaximumMana()));
 
-        TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
+        TextView confirmPlayerCurrentMP = findViewById(R.id.playerCurrentMana);
         confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
 
-        TextView confirmPlayerArmorClass = (TextView) findViewById(R.id.playerCurrentArmor);
+        TextView confirmPlayerArmorClass = findViewById(R.id.playerCurrentArmor);
         confirmPlayerArmorClass.setText(String.valueOf(Player.getInstance().getArmorClass()));
 
-        TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
+        TextView confirmPlayerLevel = findViewById(R.id.playerLevel);
         confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
 
-        TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+        TextView playerXPos = findViewById(R.id.playerXPos);
         playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
 
-        TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+        TextView playerYPos = findViewById(R.id.playerYPos);
         playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
     }
 
     public void refreshStats(){
-        TextView confirmPlayerGold = (TextView) findViewById(R.id.playerGold);
+        TextView confirmPlayerGold = findViewById(R.id.playerGold);
         confirmPlayerGold.setText(String.valueOf(Player.getInstance().getGold()));
 
-        TextView confirmPlayerAgility = (TextView) findViewById(R.id.playerCurrentAgility);
+        TextView confirmPlayerAgility = findViewById(R.id.playerCurrentAgility);
         confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
 
 
-        TextView confirmPlayerStrength = (TextView) findViewById(R.id.playerCurrentStrength);
+        TextView confirmPlayerStrength = findViewById(R.id.playerCurrentStrength);
         confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
 
         //Set final TextView to have the goblin's current health.
-        TextView confirmPlayerIntellect = (TextView) findViewById(R.id.playerCurrentIntellect);
+        TextView confirmPlayerIntellect = findViewById(R.id.playerCurrentIntellect);
         confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
-        TextView confirmPlayerMaxHP = (TextView) findViewById(R.id.playerMaxHealth);
+        TextView confirmPlayerMaxHP = findViewById(R.id.playerMaxHealth);
         confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
 
-        TextView confirmPlayerCurrentHP = (TextView) findViewById(R.id.playerCurrentHealth);
+        TextView confirmPlayerCurrentHP = findViewById(R.id.playerCurrentHealth);
         confirmPlayerCurrentHP.setText(String.valueOf(Player.getInstance().getCurrentHealth()));
 
-        TextView confirmPlayerMaxMP = (TextView) findViewById(R.id.playerMaxMana);
+        TextView confirmPlayerMaxMP = findViewById(R.id.playerMaxMana);
         confirmPlayerMaxMP.setText(String.valueOf(Player.getInstance().getMaximumMana()));
 
-        TextView confirmPlayerCurrentMP = (TextView) findViewById(R.id.playerCurrentMana);
+        TextView confirmPlayerCurrentMP = findViewById(R.id.playerCurrentMana);
         confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
 
-        TextView confirmPlayerArmorClass = (TextView) findViewById(R.id.playerCurrentArmor);
+        TextView confirmPlayerArmorClass = findViewById(R.id.playerCurrentArmor);
         confirmPlayerArmorClass.setText(String.valueOf(Player.getInstance().getArmorClass()));
 
-        TextView confirmPlayerLevel = (TextView) findViewById(R.id.playerLevel);
+        TextView confirmPlayerLevel = findViewById(R.id.playerLevel);
         confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
 
-        TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+        TextView playerXPos = findViewById(R.id.playerXPos);
         playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
 
-        TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+        TextView playerYPos = findViewById(R.id.playerYPos);
         playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
     }
 
@@ -123,11 +126,11 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setCurrentMana(Player.getInstance().getMaximumMana());
             Player.getInstance().setGold(Player.getInstance().getGold() - 3);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have healed to full health for 3 GP");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
         }
 
@@ -139,11 +142,11 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() + 5);
             Player.getInstance().setGold(Player.getInstance().getGold() - 5);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have gained 5 HP");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
 
         }
@@ -155,11 +158,11 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setMaximumHealth(Player.getInstance().getMaximumHealth() + 10);
             Player.getInstance().setGold(Player.getInstance().getGold() - 8);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have gained 10 HP");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
 
         }
@@ -170,11 +173,11 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setStrength(Player.getInstance().getStrength() + 1);
             Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have gained 1 STR");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
 
         }
@@ -185,11 +188,11 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setAgility(Player.getInstance().getAgility() + 1);
             Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have gained 1 AGI");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
 
         }
@@ -200,58 +203,70 @@ public class fight_launcher extends AppCompatActivity {
             Player.getInstance().setIntellect(Player.getInstance().getIntellect() + 1);
             Player.getInstance().setGold(Player.getInstance().getGold() - 10);
             refreshStats();
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You have gained 1 INT");
         }
         else {
-            TextView status = (TextView) findViewById(R.id.status);
+            TextView status = findViewById(R.id.status);
             status.setText("You don't have enough gold");
 
         }
     }
 
-    public void goNorth(View view){
-        if (Player.getInstance().getPosY() < 35){
-            Player.getInstance().setPosY(Player.getInstance().getPosY() + 1);
-            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
-            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
-
-            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
-            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
-        }
-    }
-
-    public void goSouth(View view) {
-        if (Player.getInstance().getPosY() > 0) {
+    public void goWest(View view){
+        updateScenery(view);
+        if (Player.getInstance().getPosY() > 0){
             Player.getInstance().setPosY(Player.getInstance().getPosY() - 1);
-            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            TextView playerXPos = findViewById(R.id.playerXPos);
             playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
 
-            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
-    public void goEast(View view){
+    public void goEast(View view) {
+        updateScenery(view);
+        if (Player.getInstance().getPosY() < 35) {
+            Player.getInstance().setPosY(Player.getInstance().getPosY() + 1);
+            TextView playerXPos = findViewById(R.id.playerXPos);
+            playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
+
+            TextView playerYPos = findViewById(R.id.playerYPos);
+            playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
+    }
+
+    public void goSouth(View view){
+        updateScenery(view);
         if (Player.getInstance().getPosX() < 35) {
             Player.getInstance().setPosX(Player.getInstance().getPosX() + 1);
-            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            TextView playerXPos = findViewById(R.id.playerXPos);
             playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
 
-            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
-    public void goWest(View view){
+    public void goNorth(View view){
+        updateScenery(view);
         if (Player.getInstance().getPosX() > 0) {
             Player.getInstance().setPosX(Player.getInstance().getPosX() - 1);
-            TextView playerXPos = (TextView) findViewById(R.id.playerXPos);
+            TextView playerXPos = findViewById(R.id.playerXPos);
             playerXPos.setText(String.valueOf(Player.getInstance().getPosX()));
 
-            TextView playerYPos = (TextView) findViewById(R.id.playerYPos);
+            TextView playerYPos = findViewById(R.id.playerYPos);
             playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
         }
+        updateScenery(view);
+        Log.d("Loc", playerLocation);
     }
 
     public Monster monsterTypeSelected(){
@@ -283,13 +298,48 @@ public class fight_launcher extends AppCompatActivity {
 
     }
 
+    public void updateScenery(View view){
+        playerLocation = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
+        ImageView sceneryView = findViewById(R.id.sceneryImage);
+        if (playerLocation.equals("To")) {
+            sceneryView.setImageResource(R.drawable.town);
+        }
+        else if (playerLocation.equals("Fo")){
+            sceneryView.setImageResource(R.drawable.forest);
+        }
+        else if (playerLocation.equals("Fa")){
+            sceneryView.setImageResource(R.drawable.farmland);
+        }
+        else if (playerLocation.equals("Mo")){
+            sceneryView.setImageResource(R.drawable.mountains);
+        }
+        else if (playerLocation.equals("De")){
+            sceneryView.setImageResource(R.drawable.desert);
+        }
+        else if (playerLocation.equals("Hi")){
+            sceneryView.setImageResource(R.drawable.hills);
+        }
+        else if (playerLocation.equals("Ri")){
+            sceneryView.setImageResource(R.drawable.river);
+        }
+        else if (playerLocation.equals("Ca")){
+            sceneryView.setImageResource(R.drawable.caves);
+        }
+        else if (playerLocation.equals("Pl")){
+            sceneryView.setImageResource(R.drawable.plains);
+        }
+        else if (playerLocation.equals("Oc")){
+            sceneryView.setImageResource(R.drawable.oceans);
+        }
+    }
+
 
     public void fightEnemy(View view){
         monsterTypeSelected();
         Player.getInstance().setNextEnemy(monsterType);
         Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
 
-        Button button = (Button)findViewById(R.id.find_enemy_button);
+        Button button = findViewById(R.id.find_enemy_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         button.startAnimation(myAnim);
 
@@ -300,6 +350,40 @@ public class fight_launcher extends AppCompatActivity {
         button.startAnimation(myAnim);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
+    }
+
+    public void openInventory(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, EquipmentActivity.class);
+
+        Button button = findViewById(R.id.bag_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+
+    }
+
+    public void changeTalents(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, TalentTreeActivity.class);
+
+        Button button = findViewById(R.id.change_talents_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+
     }
 
 

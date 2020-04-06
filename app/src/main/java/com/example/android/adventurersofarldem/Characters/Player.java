@@ -3,7 +3,15 @@ package com.example.android.adventurersofarldem.Characters;
 
 import com.example.android.adventurersofarldem.Abilities.Ability;
 import com.example.android.adventurersofarldem.CharacterInterface;
+import com.example.android.adventurersofarldem.Items.*;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
+import com.example.android.adventurersofarldem.Talents.Talent;
+import com.example.android.adventurersofarldem.Talents.plusOneInt;
+import com.example.android.adventurersofarldem.Talents.plusOneStr;
+import com.example.android.adventurersofarldem.Talents.plusTwoInt;
+import com.example.android.adventurersofarldem.Talents.plusTwoStr;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,9 +38,28 @@ public class Player extends Character implements CharacterInterface {
     public static int posY;
     public Monster nextEnemy;
     public int availablePoints;
+    private Equippable itemInSlotHead;
+    private Equippable itemInSlotChest;
+    private Equippable itemInSlotLegs;
+    private Equippable itemInSlotHands;
+    private Equippable itemInSlotFeet;
+    private Equippable itemInSlotNeck;
+    private Equippable itemInSlotRing;
+    private Equippable itemInSlotMainHand;
+    private Equippable itemInSlotOffHand;
+    public List<Equippable> inventory;
+    public List<Ability> possibleAbilities;
+    public List<Talent> playerTalents;
+    public List<Talent> possibleTalents;
+    public List<Talent> allTalents;
 
     public Player(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
+        inventory = new ArrayList<>();
+        possibleAbilities = new ArrayList<>();
+        playerTalents = new ArrayList<>();
+        possibleTalents = new ArrayList<>();
+        allTalents = Arrays.asList(new plusOneStr("Warrior", 1), new plusTwoStr("Warrior", 1), new plusOneInt("Wizard", 1), new plusTwoInt("Wizard", 1));
     }
 
 
@@ -98,5 +125,140 @@ public class Player extends Character implements CharacterInterface {
     public int getAvailablePoints(){
         return availablePoints;
     }
+
+    public Item getItemInSlotHead(){
+        return itemInSlotHead;
+    }
+
+    public void setItemInSlotHead(Equippable item){
+            itemInSlotHead = item;
+            removeFromInventory(item);
+    }
+
+
+
+    public Item getItemInSlotChest(){
+        return itemInSlotChest;
+    }
+
+    public void setItemInSlotChest(Equippable item){
+            itemInSlotChest = item;
+            removeFromInventory(item);
+    }
+
+    public Item getItemInSlotLegs(){
+        return itemInSlotLegs;
+    }
+
+    public void setItemInSlotLegs(Equippable item){
+            itemInSlotLegs = item;
+            removeFromInventory(item);
+    }
+
+    public Item getItemInSlotHands(){
+        return itemInSlotHands;
+    }
+
+    public void setItemInSlotHands(Equippable item){
+            itemInSlotHands = item;
+            removeFromInventory(item);
+    }
+    public Item getItemInSlotFeet(){
+        return itemInSlotFeet;
+    }
+
+    public void setItemInSlotFeet(Equippable item){
+            itemInSlotFeet = item;
+            removeFromInventory(item);
+    }
+
+    public Item getItemInSlotNeck(){
+        return itemInSlotNeck;
+    }
+
+    public void setItemInSlotNeck(Equippable item){
+            itemInSlotNeck = item;
+            removeFromInventory(item);
+    }
+
+    public Item getItemInSlotRing(){
+        return itemInSlotRing;
+    }
+
+    public void setItemInSlotRing(Equippable item){
+            itemInSlotRing = item;
+            removeFromInventory(item);
+
+    }
+
+    public Item getItemInSlotMainHand(){
+        return itemInSlotMainHand;
+    }
+
+    public void setItemInSlotMainHand(Equippable item){
+            itemInSlotMainHand = item;
+            removeFromInventory(item);
+    }
+
+    public Item getItemInSlotOffHand(){
+        return itemInSlotOffHand;
+    }
+
+    public void setItemInSlotOffHand(Equippable item){
+            itemInSlotOffHand = item;
+            removeFromInventory(item);
+    }
+
+    public void addToInventory(Equippable itemName){
+        inventory.add(itemName);
+
+    }
+
+    public List<Equippable> getInventory() {
+        return inventory;
+    }
+
+    public void removeFromInventory(Item itemName){
+        if (inventory.size() > 0) {
+            inventory.remove(itemName);
+        }
+    }
+
+    public List<Ability> getPossibleAbilities() {
+        return possibleAbilities;
+    }
+
+    public void addToPossibleAbilities(Ability ab) {
+        possibleAbilities.add(ab);
+    }
+
+    public List<Talent> getPlayerTalents() {
+        return playerTalents;
+    }
+
+    public void addToPlayerTalents(Talent ta) {
+        playerTalents.add(ta);
+    }
+
+    public void removeFromPlayerTalents(Talent ta){
+        playerTalents.remove(ta);
+    }
+
+    public List<Talent> getPossibleTalents() {
+        return possibleTalents;
+    }
+
+    public void addToPossibleTalents(Talent ta) {
+        possibleTalents.add(ta);
+    }
+
+    public List<Talent> getAllTalents() {
+        return allTalents;
+    }
+
+    public void addToAllTalents(Talent ta) {
+        allTalents.add(ta);
+    }
+
 }
 

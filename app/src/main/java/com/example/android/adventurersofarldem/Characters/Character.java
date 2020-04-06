@@ -1,9 +1,8 @@
 package com.example.android.adventurersofarldem.Characters;
 
-import com.example.android.adventurersofarldem.StatusEffect;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Character {
@@ -26,6 +25,9 @@ public class Character {
     public int level;
     public String characterClass;
     public int stunnedTurns;
+    public int weakenedTurns;
+    public boolean isDead = false;
+    public boolean isWeakened = false;
 
     public Character(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         characterName = n;
@@ -45,6 +47,16 @@ public class Character {
         characterClass = pClass;
         statusEffects = new ArrayList<>();
 
+    }
+
+
+    public void addStatusEffects(StatusEffect effectName){
+        statusEffects.add(effectName);
+
+    }
+
+    public List<StatusEffect> getStatusEffects() {
+        return statusEffects;
     }
 
     public void setStrength(int st) {
@@ -187,15 +199,27 @@ public class Character {
         stunnedTurns = sTurns;
     }
 
-    public void addStatusEffects(StatusEffect effectName){
-        statusEffects.add(effectName);
-
+    public int getWeakenedTurns(){
+        return weakenedTurns;
     }
 
-    public List<StatusEffect> getStatusEffects() {
-        return statusEffects;
+    public void setWeakenedTurns(int wTurns){
+        weakenedTurns = wTurns;
     }
 
+    public boolean getIsDead(){
+        return isDead;
+    }
+    public void setIsDead(boolean dead){
+        isDead = dead;
+    }
+
+    public boolean getIsWeakened(){
+        return isWeakened;
+    }
+    public void setIsWeakened(boolean weak){
+        isWeakened = weak;
+    }
 
     public int determineMod(){
         int characterMod = 0;

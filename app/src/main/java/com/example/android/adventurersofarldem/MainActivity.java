@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.EditText;
+
+import com.example.android.adventurersofarldem.Activities.CharacterSelection;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        ImageView creation = (ImageView) findViewById(R.id.Dragon);
+        ImageView creation = findViewById(R.id.Dragon);
 
         creation.setOnClickListener(new OnClickListener() {
             // The code in this method will be executed when the numbers category is clicked on.
