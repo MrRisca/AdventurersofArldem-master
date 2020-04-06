@@ -4,8 +4,8 @@ public abstract class Potion extends Item {
 
     public int numberOfUses;
 
-    public Potion(String n, String des, boolean perma, int val, int rar, int nOU) {
-        super(n, des, perma, val, rar);
+    public Potion(String n, String des, boolean perma, int val, int rar, int iconP, int nOU) {
+        super(n, des, perma, val, rar, iconP);
         numberOfUses = nOU;
     }
 

@@ -8,8 +8,8 @@ public class Equippable extends Item {
     private String stat;
     private Equippable oldItem;
 
-    public Equippable(String n, String des, boolean perma, int val, int rar, String sl, String st, int am) {
-        super(n, des, perma, val, rar);
+    public Equippable(String n, String des, boolean perma, int val, int rar, int iconP, String sl, String st, int am) {
+        super(n, des, perma, val, rar, iconP);
         slot = sl;
         stat = st;
         amount = am;

@@ -4,8 +4,8 @@ public abstract class Weapon extends Equippable {
 
     public int damageOfWeapon;
 
-    public Weapon(String n, String des, boolean perma, int val, int rar, String sl, int dmg, String st, int am) {
-        super(n, des, perma, val, rar, sl, st, am);
+    public Weapon(String n, String des, boolean perma, int val, int rar, int iconP, String sl, int dmg, String st, int am) {
+        super(n, des, perma, val, rar, iconP, sl, st, am);
         damageOfWeapon = dmg;
     }
 

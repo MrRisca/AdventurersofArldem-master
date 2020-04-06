@@ -11,15 +11,17 @@ public class Item {
     public List<String> classesWhoCanUse;
     public int value;
     public int rarity;
+    public int iconPath;
 
 
-    public Item(String n, String des, boolean perma, int val, int rar){
+    public Item(String n, String des, boolean perma, int val, int rar, int iconP){
         name = n;
         description = des;
         permanence = perma;
         classesWhoCanUse = new ArrayList<>();
         value = val;
         rarity = rar;
+        iconPath = iconP;
     }
 
     public void setName(String n){
