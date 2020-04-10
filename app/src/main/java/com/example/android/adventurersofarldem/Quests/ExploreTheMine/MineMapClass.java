@@ -54,7 +54,7 @@ public class MineMapClass {
                 {false, false, false, false, true},
                 {true, false, false, false, true},
                 {true, false, true, false, true},
-                {true, true, true, true, false},
+                {true, true, true, true, true},
         };
 
         mineMapGoDown = new Boolean[][]{
@@ -66,6 +66,10 @@ public class MineMapClass {
                 {true, true, true, true, false},
                 {false, false, true, false, false},
         };
+        }
+
+        public void updateMineMap(int mapRow, int mapCol){
+        mineMap[mapRow][mapCol] = "E";
         }
     }
 

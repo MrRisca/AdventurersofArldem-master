@@ -82,7 +82,7 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
             upButton.setImageResource(R.drawable.noiconshrunk);
             canPlayerGoUp = false;
         }
-        if (mineMapOverall.mineMapGoLeft[Player.getInstance().getQuestPosX()][Player.getInstance().getQuestPosY()]){
+        if (mineMapOverall.mineMapGoDown[Player.getInstance().getQuestPosX()][Player.getInstance().getQuestPosY()]){
             downButton.setImageResource(R.drawable.south);
             canPlayerGoDown = true;
         }
@@ -119,20 +119,33 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
         if (playerPosition.equals("G")){
             mainTextField.setText("You see a hideous Goblin");
             loadFragment(new ExploreTheMineFightGoblin());
+            mineMapOverall.updateMineMap(Player.getInstance().getQuestPosX(),Player.getInstance().getQuestPosY());
         }
         if (playerPosition.equals("O")){
             mainTextField.setText("You see a hideous Orc");
             loadFragment(new ExploreTheMineFightOrc());
+            mineMapOverall.updateMineMap(Player.getInstance().getQuestPosX(),Player.getInstance().getQuestPosY());
         }
         if (playerPosition.equals("M")){
             mainTextField.setText("You see a hideous Mummy");
             loadFragment(new ExploreTheMineFightMummy());
+            mineMapOverall.updateMineMap(Player.getInstance().getQuestPosX(),Player.getInstance().getQuestPosY());
+        }
+        if (playerPosition.equals("T")){
+            Player.getInstance().setGold(Player.getInstance().getGold() + 20);
+            mainTextField.setText("You have found 20 gold!");
+            mineMapOverall.updateMineMap(Player.getInstance().getQuestPosX(),Player.getInstance().getQuestPosY());
         }
         if (playerPosition.equals("B")){
             mainTextField.setText("You see a spooky ghost!");
             loadFragment(new ExploreTheMineFightBigGhost());
             ImageView runAway = findViewById(R.id.runAway);
             runAway.setImageResource(R.drawable.treasurechest);
+            canPlayerGoDown = false;
+            canPlayerGoUp = false;
+            canPlayerGoRight = false;
+            canPlayerGoLeft = false;
+            mineMapOverall.updateMineMap(Player.getInstance().getQuestPosX(),Player.getInstance().getQuestPosY());
             runAway.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -147,9 +160,9 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
         if (canPlayerGoLeft) {
             if (Player.getInstance().getQuestPosY() > 0) {
                 Player.getInstance().setQuestPosY(Player.getInstance().getQuestPosY() - 1);
-                updateNavigation();
                 checkRoom();
             }
+            updateNavigation();
         }
     }
 
@@ -158,9 +171,10 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
         if (canPlayerGoRight) {
             if (Player.getInstance().getQuestPosY() < 4) {
                 Player.getInstance().setQuestPosY(Player.getInstance().getQuestPosY() + 1);
-                updateNavigation();
+
                 checkRoom();
             }
+            updateNavigation();
         }
     }
 
@@ -169,9 +183,10 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
         if (canPlayerGoUp) {
             if (Player.getInstance().getQuestPosX() > 0) {
                 Player.getInstance().setQuestPosX(Player.getInstance().getQuestPosX() - 1);
-                updateNavigation();
+
                 checkRoom();
             }
+            updateNavigation();
         }
     }
 
@@ -180,9 +195,10 @@ public class ExploreTheMinePartTwoActivity extends AppCompatActivity {
         if (canPlayerGoDown) {
             if (Player.getInstance().getQuestPosX() < 6) {
                 Player.getInstance().setQuestPosX(Player.getInstance().getQuestPosX() + 1);
-                updateNavigation();
+
                 checkRoom();
             }
+            updateNavigation();
         }
     }
 
