@@ -52,6 +52,8 @@ public class Player extends Character implements CharacterInterface {
     public List<Talent> playerTalents;
     public List<Talent> possibleTalents;
     public List<Talent> allTalents;
+    public static int questPosX;
+    public static int questPosY;
 
     public Player(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
@@ -109,6 +111,23 @@ public class Player extends Character implements CharacterInterface {
     public void setPosY(int pY){
         posY = pY;
     }
+
+    public int getQuestPosX(){
+        return questPosX;
+    }
+
+    public void setQuestPosX(int pX){
+        questPosX = pX;
+    }
+
+    public int getQuestPosY(){
+        return questPosY;
+    }
+
+    public void setQuestPosY(int pY){
+        questPosY = pY;
+    }
+
 
     public Monster getNextEnemy(){
         return nextEnemy;

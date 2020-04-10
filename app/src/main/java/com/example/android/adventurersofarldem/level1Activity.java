@@ -321,7 +321,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
         int experienceNeeded = check.experienceNeeded(Player.getInstance().level);
         if (experienceNeeded < Player.getInstance().getExperience()) {
             Player.getInstance().setLevel(Player.getInstance().getLevel() + 1);
-            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 5);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
 
         }
 

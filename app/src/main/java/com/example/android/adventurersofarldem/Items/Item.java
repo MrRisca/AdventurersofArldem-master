@@ -12,9 +12,9 @@ public class Item {
     public int value;
     public int rarity;
     public int iconPath;
+    public int iconSelected;
 
-
-    public Item(String n, String des, boolean perma, int val, int rar, int iconP){
+    public Item(String n, String des, boolean perma, int val, int rar, int iconP, int iconS){
         name = n;
         description = des;
         permanence = perma;
@@ -22,6 +22,7 @@ public class Item {
         value = val;
         rarity = rar;
         iconPath = iconP;
+        iconSelected = iconS;
     }
 
     public void setName(String n){

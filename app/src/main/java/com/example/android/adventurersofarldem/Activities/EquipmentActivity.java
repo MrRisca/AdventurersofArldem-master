@@ -122,14 +122,4 @@ public class EquipmentActivity extends AppCompatActivity {
 
     }
 
-//    public void unequipItemTwo(View view) {
-//        Equippable oldItem = (Equippable) Player.getInstance().getItemInSlotHead();
-//        if (oldItem != null) {
-//
-//            Equippable itemTwo = Player.getInstance().inventory.get(1);
-//            itemTwo.unequip();
-//            displayPlayerStats();
-//            refreshButtons();
-//        }
-//    }
 }

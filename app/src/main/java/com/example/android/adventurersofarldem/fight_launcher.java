@@ -14,6 +14,8 @@ import android.widget.Button;
 import com.example.android.adventurersofarldem.Activities.EquipmentActivity;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartTwoActivity;
+import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity;
 
 import java.util.ArrayList;
 
@@ -371,6 +373,23 @@ public class fight_launcher extends AppCompatActivity {
 
     public void changeTalents(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, TalentTreeActivity.class);
+
+        Button button = findViewById(R.id.change_talents_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+
+    }
+
+    public void launchQuest(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, ExploreTheMinePartTwoActivity.class);
 
         Button button = findViewById(R.id.change_talents_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);

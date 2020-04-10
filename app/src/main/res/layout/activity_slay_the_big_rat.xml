@@ -1,9 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SlayTheBigRatActivity">
+    android:padding="8dp">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Enemy"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="ENEMY:"
+                android:textSize="32dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/DragonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="514dp"
+            android:layout_weight="1"
+            android:scaleX="1"
+            android:scaleY="1">
+
+            <ImageView
+                android:id="@+id/Dragon"
+                android:layout_width="198dp"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:scaleX="0.7"
+                android:scaleY="0.9"
+                android:src="@drawable/cuterat" />
+
+            <TextView
+                android:id="@+id/monsterHealthDescriber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monster Health" />
+
+            <TextView
+                android:id="@+id/monsterCurrentHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/monsterMaxHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/playerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Attack One"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/playerSpell1"
+                    android:onClick="attackOne"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text="Attack Two"
+                    android:id="@+id/playerSpell2"
+                    android:textAlignment="center"
+                    android:padding="10dp"
+                    android:onClick="attackTwo"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:text="Attack Three"
+                    android:id="@+id/playerSpell3"
+                    android:onClick="attackThree"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Attack Four"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/playerSpell4"
+                    android:onClick="attackFour"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/playerHealth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Health:" />
+
+                    <TextView
+                        android:id="@+id/playerCurrentHealth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+
+                    <TextView
+                        android:id="@+id/playerMaxHealth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/playerMana"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Mana:" />
+
+                    <TextView
+                        android:id="@+id/playerCurrentMana"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+
+                    <TextView
+                        android:id="@+id/playerMaxMana"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/playerArmor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Armor Class:" />
+
+                    <TextView
+                        android:id="@+id/playerCurrentArmor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Level:" />
+
+                    <TextView
+                        android:id="@+id/playerLevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="301dp"
+                android:layout_weight="50"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/attackResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Attack Results here" />
+
+                <TextView
+                    android:id="@+id/attackResults2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Enemy Attack Results here" />
+
+                <TextView
+                    android:id="@+id/dotResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Was dot applied?" />
+
+                <TextView
+                    android:id="@+id/dotResults2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Dot damage info" />
+
+                <TextView
+                    android:id="@+id/stunResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Stun info here" />
+
+                <TextView
+                    android:id="@+id/weakenResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Weaken info here" />
+
+                <TextView
+                    android:id="@+id/playerDotResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player dot here" />
+
+                <TextView
+                    android:id="@+id/playerStunResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player stun here" />
+
+                <TextView
+                    android:id="@+id/playerWeakenResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player weaken here" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/completeLevel"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="continueQuest"
+                android:text="COMPLETE LEVEL" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            class= "com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatStoryPartOneFragment"/>
+
+
+
+
+    </FrameLayout>
+
+</RelativeLayout>
+

@@ -16,6 +16,7 @@ import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
 import com.example.android.adventurersofarldem.Characters.Goblin;
 import com.example.android.adventurersofarldem.Characters.Player;
 import com.example.android.adventurersofarldem.R;
+import com.example.android.adventurersofarldem.fight_launcher;
 import com.example.android.adventurersofarldem.level1Activity;
 
 public class CharacterSelection extends AppCompatActivity {
@@ -64,7 +65,7 @@ public class CharacterSelection extends AppCompatActivity {
 
 
         Button confirm = findViewById(R.id.confirm);
-                Intent creationIntent = new Intent(CharacterSelection.this, level1Activity.class);
+                Intent creationIntent = new Intent(CharacterSelection.this, fight_launcher.class);
                 startActivity(creationIntent);
         }
 
