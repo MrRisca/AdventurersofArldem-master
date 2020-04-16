@@ -1,8 +1,11 @@
-package com.example.android.adventurersofarldem;
+package com.example.android.adventurersofarldem.Quests.ExploreTheMine;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,13 +15,20 @@ import com.example.android.adventurersofarldem.Abilities.Ability;
 import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
 import com.example.android.adventurersofarldem.Characters.BigRat;
 import com.example.android.adventurersofarldem.Characters.Monster;
+import com.example.android.adventurersofarldem.Characters.Mummy;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatPartTwoActivity;
+import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatStoryPartOneFragment;
+import com.example.android.adventurersofarldem.R;
+import com.example.android.adventurersofarldem.RollDice;
 import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
+import com.example.android.adventurersofarldem.levelUp;
+import com.example.android.adventurersofarldem.youDead;
 
 import java.util.List;
 import java.util.Random;
 
-public class SlayTheBigRatActivity extends AppCompatActivity {
+public class ExploreTheMinePartThreeActivity extends AppCompatActivity {
 
     public int levelComplete = 0;
 
@@ -38,16 +48,17 @@ public class SlayTheBigRatActivity extends AppCompatActivity {
     private Monster monster;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slay_the_big_rat);
+        setContentView(R.layout.activity_explore_the_mine_part_three);
         playerOldExperience = Player.getInstance().getExperience();
         playerOldGold = Player.getInstance().getGold();
         playerOldLevel = Player.getInstance().getLevel();
 
         //Import the Player's name, class and stats from where they just entered them
-        monster = new BigRat();
+        monster = new Mummy();
 
 
         TextView confirmEnemyType = findViewById(R.id.Enemy);
@@ -56,15 +67,6 @@ public class SlayTheBigRatActivity extends AppCompatActivity {
 
         //Create strings of the player information and monster information to make sure it's correct in testing.
 
-        TextView confirmPlayerAgility = findViewById(R.id.playerCurrentAgility);
-        confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
-
-
-        TextView confirmPlayerStrength = findViewById(R.id.playerCurrentStrength);
-        confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
-
-        TextView confirmPlayerIntellect = findViewById(R.id.playerCurrentIntellect);
-        confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
         TextView confirmPlayerMaxHP = findViewById(R.id.playerMaxHealth);
         confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
@@ -104,9 +106,20 @@ public class SlayTheBigRatActivity extends AppCompatActivity {
         TextView monsterMaximumHealth = findViewById(R.id.monsterMaxHealth);
         monsterMaximumHealth.setText(String.valueOf(monster.getMaximumHealth()));
 
+        loadFragment(new ExploreTheMinePartThreeFragment());
+
     }
 
-    //Perform battle to compare goblins' AC vs player's roll to see if damage is done.
+    private void loadFragment(Fragment fragment) {
+
+                // create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+// create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+// replace the FrameLayout with new Fragment
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit(); // save the changes
+    }
 
 
     //Method to update the TextView showing Monster's HP.
@@ -557,11 +570,11 @@ public class SlayTheBigRatActivity extends AppCompatActivity {
         confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
     }
 
-    public void endLevel(View view) {
+    public void continueQuest(View view) {
         if (levelComplete == 1) {
             int goldDifference = playerNewGold - playerOldGold;
             int experienceDifference = playerNewExperience - playerOldExperience;
-            Intent confirmIntent = new Intent(SlayTheBigRatActivity.this, levelComplete.class);
+            Intent confirmIntent = new Intent(ExploreTheMinePartThreeActivity.this, SlayTheBigRatPartTwoActivity.class);
             confirmIntent.putExtra("playerGold", goldDifference);
             confirmIntent.putExtra("playerExperience", experienceDifference);
             if (confirmIntent.resolveActivity(getPackageManager()) != null) {

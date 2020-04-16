@@ -9,5 +9,8 @@ public class Shark extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setSharksKilled(Player.getInstance().getSharksKilled() + 1);
+    }
 }

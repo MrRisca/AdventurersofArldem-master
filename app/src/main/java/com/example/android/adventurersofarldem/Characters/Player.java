@@ -52,6 +52,10 @@ public class Player extends Character implements CharacterInterface {
     public List<Talent> playerTalents;
     public List<Talent> possibleTalents;
     public List<Talent> allTalents;
+    public static int questPosX;
+    public static int questPosY;
+    public static int banditsKilled, djinnisKilled, dragonsKilled, goblinsKilled, krakensKilled, minotaursKilled, mummysKilled, orcsKilled, sharksKilled, trollsKilled, wargsKilled;
+
 
     public Player(String n, String pClass, int ac, int bd, int maxHP, int maxMP, int currentHP, int currentMP, int xp, int gp, int sp, int st, int ag, int in, int lvl) {
         super(n, pClass, ac, bd, maxHP, maxMP, currentHP, currentMP, xp, gp, sp, st, ag, in, lvl);
@@ -109,6 +113,23 @@ public class Player extends Character implements CharacterInterface {
     public void setPosY(int pY){
         posY = pY;
     }
+
+    public int getQuestPosX(){
+        return questPosX;
+    }
+
+    public void setQuestPosX(int pX){
+        questPosX = pX;
+    }
+
+    public int getQuestPosY(){
+        return questPosY;
+    }
+
+    public void setQuestPosY(int pY){
+        questPosY = pY;
+    }
+
 
     public Monster getNextEnemy(){
         return nextEnemy;
@@ -258,6 +279,94 @@ public class Player extends Character implements CharacterInterface {
 
     public void addToAllTalents(Talent ta) {
         allTalents.add(ta);
+    }
+
+    public int getBanditsKilled(){
+        return banditsKilled;
+    }
+
+    public void setBanditsKilled(int bk){
+        banditsKilled = bk;
+    }
+
+    public int getDjinnisKilled(){
+        return djinnisKilled;
+    }
+
+    public void setDjinnisKilled(int dk){
+        djinnisKilled = dk;
+    }
+
+    public int getDragonsKilled(){
+        return dragonsKilled;
+    }
+
+    public void setDragonsKilled(int dk){
+        dragonsKilled = dk;
+    }
+
+    public int getGoblinsKilled(){
+        return goblinsKilled;
+    }
+
+    public void setGoblinsKilled(int gk){
+        goblinsKilled = gk;
+    }
+
+    public int getKrakensKilled(){
+        return krakensKilled;
+    }
+
+    public void setKrakensKilled(int bk){
+        krakensKilled = bk;
+    }
+
+    public int getMummysKilled(){
+        return mummysKilled;
+    }
+
+    public void setMummysKilled(int bk){
+        mummysKilled = bk;
+    }
+
+    public int getOrcsKilled(){
+        return orcsKilled;
+    }
+
+    public void setOrcsKilled(int bk){
+        orcsKilled = bk;
+    }
+
+    public int getSharksKilled(){
+        return sharksKilled;
+    }
+
+    public void setSharksKilled(int bk){
+        sharksKilled = bk;
+    }
+
+    public int getTrollsKilled(){
+        return trollsKilled;
+    }
+
+    public void setTrollsKilled(int bk){
+        trollsKilled = bk;
+    }
+
+    public int getWargsKilled(){
+        return wargsKilled;
+    }
+
+    public void setWargsKilled(int bk){
+        wargsKilled = bk;
+    }
+
+    public int getMinotaursKilled(){
+        return minotaursKilled;
+    }
+
+    public void setMinotaursKilled(int bk){
+        minotaursKilled = bk;
     }
 
 }

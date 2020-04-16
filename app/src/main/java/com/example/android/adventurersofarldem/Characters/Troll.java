@@ -9,5 +9,8 @@ public class Troll extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setTrollsKilled(Player.getInstance().getTrollsKilled() + 1);
+    }
 }

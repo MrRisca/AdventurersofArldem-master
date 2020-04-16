@@ -321,7 +321,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
         int experienceNeeded = check.experienceNeeded(Player.getInstance().level);
         if (experienceNeeded < Player.getInstance().getExperience()) {
             Player.getInstance().setLevel(Player.getInstance().getLevel() + 1);
-            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 5);
+            Player.getInstance().setAvailablePoints(Player.getInstance().getAvailablePoints() + 1);
 
         }
 
@@ -560,6 +560,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
     public void endLevel(View view) {
         if (levelComplete == 1) {
+            monster.updateKills();
             int goldDifference = playerNewGold - playerOldGold;
             int experienceDifference = playerNewExperience - playerOldExperience;
             Intent confirmIntent = new Intent(level1Activity.this, levelComplete.class);

@@ -7,6 +7,9 @@ public class Goblin extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setGoblinsKilled(Player.getInstance().getGoblinsKilled() + 1);
+    }
 }
 

@@ -5,6 +5,6 @@ import com.example.android.adventurersofarldem.R;
 
 public class HatOfGreaterWisdom extends Equippable {
     public HatOfGreaterWisdom() {
-        super("Hat of Greater Wisdom", "Grants even greaterer Wisdom to the wearer", true, 5, 2, R.drawable.noicon, "Head", "Intellect", 2);
+        super("Hat of Greater Wisdom", "Grants even greaterer Wisdom to the wearer", true, 5, 2, R.drawable.plustwoint, R.drawable.plustwointyes, "Head", "Intellect", 2);
     }
 }

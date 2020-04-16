@@ -14,6 +14,9 @@ import android.widget.Button;
 import com.example.android.adventurersofarldem.Activities.EquipmentActivity;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartTwoActivity;
+import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity;
+import com.example.android.adventurersofarldem.Quests.SlayTheLich.SlayTheLichActivity;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,10 @@ public class fight_launcher extends AppCompatActivity {
 
     public ArrayList<String> spellList;
     public String playerLocation = "Fo";
+    public String playerLocationGoNorth = "Fo";
+    public String playerLocationGoEast = "Fo";
+    public String playerLocationGoSouth = "Fo";
+    public String playerLocationGoWest = "Fo";
     public int posX;
     public int posY;
     public WorldMapClass theWorld;
@@ -43,16 +50,7 @@ public class fight_launcher extends AppCompatActivity {
         TextView confirmPlayerGold = findViewById(R.id.playerGold);
         confirmPlayerGold.setText(String.valueOf(Player.getInstance().getGold()));
 
-        TextView confirmPlayerAgility = findViewById(R.id.playerCurrentAgility);
-        confirmPlayerAgility.setText(String.valueOf(Player.getInstance().getAgility()));
 
-
-        TextView confirmPlayerStrength = findViewById(R.id.playerCurrentStrength);
-        confirmPlayerStrength.setText(String.valueOf(Player.getInstance().getStrength()));
-
-        //Set final TextView to have the goblin's current health.
-        TextView confirmPlayerIntellect = findViewById(R.id.playerCurrentIntellect);
-        confirmPlayerIntellect.setText(String.valueOf(Player.getInstance().getIntellect()));
 
         TextView confirmPlayerMaxHP = findViewById(R.id.playerMaxHealth);
         confirmPlayerMaxHP.setText(String.valueOf(Player.getInstance().getMaximumHealth()));
@@ -66,8 +64,7 @@ public class fight_launcher extends AppCompatActivity {
         TextView confirmPlayerCurrentMP = findViewById(R.id.playerCurrentMana);
         confirmPlayerCurrentMP.setText(String.valueOf(Player.getInstance().getCurrentMana()));
 
-        TextView confirmPlayerArmorClass = findViewById(R.id.playerCurrentArmor);
-        confirmPlayerArmorClass.setText(String.valueOf(Player.getInstance().getArmorClass()));
+
 
         TextView confirmPlayerLevel = findViewById(R.id.playerLevel);
         confirmPlayerLevel.setText(String.valueOf(Player.getInstance().getLevel()));
@@ -77,6 +74,7 @@ public class fight_launcher extends AppCompatActivity {
 
         TextView playerYPos = findViewById(R.id.playerYPos);
         playerYPos.setText(String.valueOf(Player.getInstance().getPosY()));
+        updateAllSceneryDirections();
     }
 
     public void refreshStats(){
@@ -331,8 +329,180 @@ public class fight_launcher extends AppCompatActivity {
         else if (playerLocation.equals("Oc")){
             sceneryView.setImageResource(R.drawable.oceans);
         }
+        updateAllSceneryDirections();
     }
 
+    public void updateNavigationSceneryGoNorth(){
+        ImageView sceneryViewGoNorth = findViewById(R.id.northScene);
+        ImageView sceneryViewGoEast = findViewById(R.id.eastScene);
+        ImageView sceneryViewGoSouth = findViewById(R.id.southScene);
+        ImageView sceneryViewGoWest = findViewById(R.id.westScene);
+        if (Player.getInstance().getPosX() > 0) {
+            playerLocationGoNorth = theWorld.worldMap[Player.getInstance().getPosX() - 1][Player.getInstance().getPosY()];
+            if (playerLocationGoNorth .equals("To")) {
+                sceneryViewGoNorth.setImageResource(R.drawable.town);
+            }
+            else if (playerLocationGoNorth .equals("Fo")){
+                sceneryViewGoNorth.setImageResource(R.drawable.forest);
+            }
+            else if (playerLocationGoNorth .equals("Fa")){
+                sceneryViewGoNorth.setImageResource(R.drawable.farmland);
+            }
+            else if (playerLocationGoNorth .equals("Mo")){
+                sceneryViewGoNorth.setImageResource(R.drawable.mountains);
+            }
+            else if (playerLocationGoNorth .equals("De")){
+                sceneryViewGoNorth.setImageResource(R.drawable.desert);
+            }
+            else if (playerLocationGoNorth .equals("Hi")){
+                sceneryViewGoNorth.setImageResource(R.drawable.hills);
+            }
+            else if (playerLocationGoNorth .equals("Ri")){
+                sceneryViewGoNorth.setImageResource(R.drawable.river);
+            }
+            else if (playerLocationGoNorth .equals("Ca")){
+                sceneryViewGoNorth.setImageResource(R.drawable.caves);
+            }
+            else if (playerLocationGoNorth .equals("Pl")){
+                sceneryViewGoNorth.setImageResource(R.drawable.plains);
+            }
+            else if (playerLocationGoNorth .equals("Oc")){
+                sceneryViewGoNorth.setImageResource(R.drawable.oceans);
+            }
+        }
+        else {
+            sceneryViewGoNorth.setImageResource(R.drawable.noicon);
+        }
+    }
+
+    public void updateNavigationSceneryGoSouth(){
+        ImageView sceneryViewGoSouth = findViewById(R.id.southScene);
+        if (Player.getInstance().getPosX() < 35) {
+            playerLocationGoSouth = theWorld.worldMap[Player.getInstance().getPosX() + 1][Player.getInstance().getPosY()];
+            if (playerLocationGoSouth .equals("To")) {
+                sceneryViewGoSouth.setImageResource(R.drawable.town);
+            }
+            else if (playerLocationGoSouth .equals("Fo")){
+                sceneryViewGoSouth.setImageResource(R.drawable.forest);
+            }
+            else if (playerLocationGoSouth .equals("Fa")){
+                sceneryViewGoSouth.setImageResource(R.drawable.farmland);
+            }
+            else if (playerLocationGoSouth .equals("Mo")){
+                sceneryViewGoSouth.setImageResource(R.drawable.mountains);
+            }
+            else if (playerLocationGoSouth .equals("De")){
+                sceneryViewGoSouth.setImageResource(R.drawable.desert);
+            }
+            else if (playerLocationGoSouth .equals("Hi")){
+                sceneryViewGoSouth.setImageResource(R.drawable.hills);
+            }
+            else if (playerLocationGoSouth .equals("Ri")){
+                sceneryViewGoSouth.setImageResource(R.drawable.river);
+            }
+            else if (playerLocationGoSouth .equals("Ca")){
+                sceneryViewGoSouth.setImageResource(R.drawable.caves);
+            }
+            else if (playerLocationGoSouth .equals("Pl")){
+                sceneryViewGoSouth.setImageResource(R.drawable.plains);
+            }
+            else if (playerLocationGoSouth .equals("Oc")){
+                sceneryViewGoSouth.setImageResource(R.drawable.oceans);
+            }
+        }
+        else {
+            sceneryViewGoSouth.setImageResource(R.drawable.noicon);
+        }
+    }
+
+    public void updateNavigationSceneryGoEast(){
+        ImageView sceneryViewGoEast = findViewById(R.id.eastScene);
+        if (Player.getInstance().getPosY() < 35) {
+            playerLocationGoEast = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY() + 1];
+            if (playerLocationGoEast .equals("To")) {
+                sceneryViewGoEast.setImageResource(R.drawable.town);
+            }
+            else if (playerLocationGoEast .equals("Fo")){
+                sceneryViewGoEast.setImageResource(R.drawable.forest);
+            }
+            else if (playerLocationGoEast .equals("Fa")){
+                sceneryViewGoEast.setImageResource(R.drawable.farmland);
+            }
+            else if (playerLocationGoEast .equals("Mo")){
+                sceneryViewGoEast.setImageResource(R.drawable.mountains);
+            }
+            else if (playerLocationGoEast .equals("De")){
+                sceneryViewGoEast.setImageResource(R.drawable.desert);
+            }
+            else if (playerLocationGoEast .equals("Hi")){
+                sceneryViewGoEast.setImageResource(R.drawable.hills);
+            }
+            else if (playerLocationGoEast .equals("Ri")){
+                sceneryViewGoEast.setImageResource(R.drawable.river);
+            }
+            else if (playerLocationGoEast .equals("Ca")){
+                sceneryViewGoEast.setImageResource(R.drawable.caves);
+            }
+            else if (playerLocationGoEast .equals("Pl")){
+                sceneryViewGoEast.setImageResource(R.drawable.plains);
+            }
+            else if (playerLocationGoEast .equals("Oc")){
+                sceneryViewGoEast.setImageResource(R.drawable.oceans);
+            }
+        }
+        else {
+            sceneryViewGoEast.setImageResource(R.drawable.noicon);
+        }
+    }
+
+
+    public void updateNavigationSceneryGoWest(){
+        ImageView sceneryViewGoWest = findViewById(R.id.westScene);
+        if (Player.getInstance().getPosY() > 0) {
+            playerLocationGoWest = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY() - 1];
+            if (playerLocationGoWest .equals("To")) {
+                sceneryViewGoWest.setImageResource(R.drawable.town);
+            }
+            else if (playerLocationGoWest .equals("Fo")){
+                sceneryViewGoWest.setImageResource(R.drawable.forest);
+            }
+            else if (playerLocationGoWest .equals("Fa")){
+                sceneryViewGoWest.setImageResource(R.drawable.farmland);
+            }
+            else if (playerLocationGoWest .equals("Mo")){
+                sceneryViewGoWest.setImageResource(R.drawable.mountains);
+            }
+            else if (playerLocationGoWest .equals("De")){
+                sceneryViewGoWest.setImageResource(R.drawable.desert);
+            }
+            else if (playerLocationGoWest .equals("Hi")){
+                sceneryViewGoWest.setImageResource(R.drawable.hills);
+            }
+            else if (playerLocationGoWest .equals("Ri")){
+                sceneryViewGoWest.setImageResource(R.drawable.river);
+            }
+            else if (playerLocationGoWest .equals("Ca")){
+                sceneryViewGoWest.setImageResource(R.drawable.caves);
+            }
+            else if (playerLocationGoWest .equals("Pl")){
+                sceneryViewGoWest.setImageResource(R.drawable.plains);
+            }
+            else if (playerLocationGoWest .equals("Oc")){
+                sceneryViewGoWest.setImageResource(R.drawable.oceans);
+            }
+        }
+        else {
+            sceneryViewGoWest.setImageResource(R.drawable.noicon);
+        }
+    }
+
+
+    public void updateAllSceneryDirections(){
+        updateNavigationSceneryGoEast();
+        updateNavigationSceneryGoNorth();
+        updateNavigationSceneryGoWest();
+        updateNavigationSceneryGoSouth();
+    }
 
     public void fightEnemy(View view){
         monsterTypeSelected();
@@ -371,6 +541,23 @@ public class fight_launcher extends AppCompatActivity {
 
     public void changeTalents(View view){
         Intent confirmIntent = new Intent(fight_launcher.this, TalentTreeActivity.class);
+
+        Button button = findViewById(R.id.change_talents_button);
+        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startAnimation(myAnim);
+
+        // Use bounce interpolator with amplitude 0.2 and frequency 20
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+
+        button.startAnimation(myAnim);
+        if (confirmIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(confirmIntent); }
+
+    }
+
+    public void launchQuest(View view){
+        Intent confirmIntent = new Intent(fight_launcher.this, SlayTheLichActivity.class);
 
         Button button = findViewById(R.id.change_talents_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);

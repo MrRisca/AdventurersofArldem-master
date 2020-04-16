@@ -9,4 +9,8 @@ public class Orc extends Monster {
     }
 
 
+    @Override
+    public void updateKills() {
+        Player.getInstance().setOrcsKilled(Player.getInstance().getOrcsKilled() + 1);
+    }
 }
