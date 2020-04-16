@@ -6,5 +6,8 @@ public class Dragon extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setDragonsKilled(Player.getInstance().getDragonsKilled() + 1);
+    }
 }

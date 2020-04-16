@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Quests.SlayTheBigRatQuests.SlayTheBigRatPartTwoActivity"></activity>
+        <activity android:name=".Quests.SlayTheLich.SlayTheLichActivity"></activity>
+        <activity android:name=".townActivity" />
+        <activity android:name=".Quests.SlayTheBigRatQuests.SlayTheBigRatPartTwoActivity" />
         <activity android:name=".Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity" />
         <activity android:name=".TalentTreeActivity" />
         <activity android:name=".Activities.EquipmentActivity" />
@@ -23,7 +25,6 @@
         <activity android:name=".Quests.ExploreTheMine.ExploreTheMineFightOrc" />
         <activity android:name=".spellSelectActivity" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,6 +1,6 @@
 package com.example.android.adventurersofarldem;
 
-class MyBounceInterpolator implements android.view.animation.Interpolator {
+public class MyBounceInterpolator implements android.view.animation.Interpolator {
     private double mAmplitude = 1;
     private double mFrequency = 10;
 

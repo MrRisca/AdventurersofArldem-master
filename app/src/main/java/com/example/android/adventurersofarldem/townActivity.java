@@ -5,23 +5,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.adventurersofarldem.Activities.EquipmentActivity;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.MyBounceInterpolator;
 import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartTwoActivity;
-import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity;
-import com.example.android.adventurersofarldem.Quests.SlayTheLich.SlayTheLichActivity;
+import com.example.android.adventurersofarldem.R;
+import com.example.android.adventurersofarldem.StatChoice;
+import com.example.android.adventurersofarldem.TalentTreeActivity;
+import com.example.android.adventurersofarldem.WorldMapClass;
+import com.example.android.adventurersofarldem.fight_launcher;
+import com.example.android.adventurersofarldem.level1Activity;
+import com.example.android.adventurersofarldem.monsterTableClass;
 
 import java.util.ArrayList;
 
-
-public class fight_launcher extends AppCompatActivity {
+public class townActivity extends AppCompatActivity {
 
     public ArrayList<String> spellList;
     public String playerLocation = "Fo";
@@ -42,7 +47,7 @@ public class fight_launcher extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fight_launcher);
+        setContentView(R.layout.activity_town);
         theWorld = new WorldMapClass();
         playerLocation = theWorld.worldMap[Player.getInstance().getPosX()][Player.getInstance().getPosY()];
         System.out.println("OLI " + playerLocation);
@@ -507,7 +512,7 @@ public class fight_launcher extends AppCompatActivity {
     public void fightEnemy(View view){
         monsterTypeSelected();
         Player.getInstance().setNextEnemy(monsterType);
-        Intent confirmIntent = new Intent(fight_launcher.this, level1Activity.class);
+        Intent confirmIntent = new Intent(townActivity.this, level1Activity.class);
 
         Button button = findViewById(R.id.find_enemy_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
@@ -523,7 +528,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void openInventory(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, EquipmentActivity.class);
+        Intent confirmIntent = new Intent(townActivity.this, EquipmentActivity.class);
 
         Button button = findViewById(R.id.bag_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
@@ -540,7 +545,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void changeTalents(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, TalentTreeActivity.class);
+        Intent confirmIntent = new Intent(townActivity.this, TalentTreeActivity.class);
 
         Button button = findViewById(R.id.change_talents_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
@@ -557,7 +562,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void launchQuest(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, SlayTheLichActivity.class);
+        Intent confirmIntent = new Intent(townActivity.this, ExploreTheMinePartTwoActivity.class);
 
         Button button = findViewById(R.id.change_talents_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
@@ -576,10 +581,27 @@ public class fight_launcher extends AppCompatActivity {
 
 
     public void StatChoiceSelected(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, StatChoice.class);
+        Intent confirmIntent = new Intent(townActivity.this, StatChoice.class);
         if (confirmIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(confirmIntent); }
-        }
     }
 
+    public void visitInn(View view) {
+    }
+
+    public void fightQuest(View view) {
+    }
+
+    public void visitMarket(View view) {
+    }
+
+    public void visitChurch(View view) {
+    }
+
+    public void visitTrainer(View view) {
+    }
+
+    public void visitCastle(View view) {
+    }
+}
 

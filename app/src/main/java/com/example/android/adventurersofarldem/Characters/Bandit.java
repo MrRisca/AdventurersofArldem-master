@@ -7,4 +7,8 @@ public class Bandit extends Monster {
     }
 
 
+    @Override
+    public void updateKills() {
+        Player.getInstance().setBanditsKilled(Player.getInstance().getBanditsKilled() + 1);
+    }
 }

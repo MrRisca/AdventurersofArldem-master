@@ -390,6 +390,7 @@ public class ExploreTheMineFightGoblin extends Fragment {
         playerNewGold = Player.getInstance().gold + monster.getGold();
         Player.getInstance().setExperience(playerNewExperience);
         Player.getInstance().setGold(playerNewGold);
+        monster.updateKills();
         levelUp check = new levelUp(playerNewExperience, Player.getInstance().getExperience());
         int experienceNeeded = check.experienceNeeded(Player.getInstance().level);
         if (experienceNeeded < Player.getInstance().getExperience()) {

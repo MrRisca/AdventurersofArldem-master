@@ -392,6 +392,7 @@ public class ExploreTheMineFightBigGhost extends Fragment {
         Player.getInstance().setExperience(playerNewExperience);
         Player.getInstance().setGold(playerNewGold);
         levelUp check = new levelUp(playerNewExperience, Player.getInstance().getExperience());
+        monster.updateKills();
         int experienceNeeded = check.experienceNeeded(Player.getInstance().level);
         if (experienceNeeded < Player.getInstance().getExperience()) {
             Player.getInstance().setLevel(Player.getInstance().getLevel() + 1);

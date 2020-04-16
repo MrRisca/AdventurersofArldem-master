@@ -560,6 +560,7 @@ public class level1Activity extends AppCompatActivity implements spellListFragme
 
     public void endLevel(View view) {
         if (levelComplete == 1) {
+            monster.updateKills();
             int goldDifference = playerNewGold - playerOldGold;
             int experienceDifference = playerNewExperience - playerOldExperience;
             Intent confirmIntent = new Intent(level1Activity.this, levelComplete.class);
