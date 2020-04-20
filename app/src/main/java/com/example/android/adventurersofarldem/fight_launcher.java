@@ -14,6 +14,7 @@ import android.widget.Button;
 import com.example.android.adventurersofarldem.Activities.EquipmentActivity;
 import com.example.android.adventurersofarldem.Characters.Monster;
 import com.example.android.adventurersofarldem.Characters.Player;
+import com.example.android.adventurersofarldem.Quests.DungeonActivity;
 import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartTwoActivity;
 import com.example.android.adventurersofarldem.Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity;
 import com.example.android.adventurersofarldem.Quests.SlayTheLich.SlayTheLichActivity;
@@ -557,7 +558,7 @@ public class fight_launcher extends AppCompatActivity {
     }
 
     public void launchQuest(View view){
-        Intent confirmIntent = new Intent(fight_launcher.this, SlayTheLichActivity.class);
+        Intent confirmIntent = new Intent(fight_launcher.this, DungeonActivity.class);
 
         Button button = findViewById(R.id.change_talents_button);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);

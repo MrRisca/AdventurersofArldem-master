@@ -1,11 +1,10 @@
-package com.example.android.adventurersofarldem.Quests.SlayTheLich;
+package com.example.android.adventurersofarldem.Quests;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,13 +23,7 @@ import com.example.android.adventurersofarldem.Characters.Player;
 import com.example.android.adventurersofarldem.Characters.Troll;
 import com.example.android.adventurersofarldem.Characters.Warg;
 import com.example.android.adventurersofarldem.MazeGenerator;
-import com.example.android.adventurersofarldem.Quests.DungeonRewardFragment;
 import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMineFightBigGhost;
-import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMineFightGoblin;
-import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMineFightMummy;
-import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMineFightOrc;
-import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartFourFragment;
-import com.example.android.adventurersofarldem.Quests.ExploreTheMine.ExploreTheMinePartTwoFragment;
 import com.example.android.adventurersofarldem.R;
 import com.example.android.adventurersofarldem.Room;
 import com.example.android.adventurersofarldem.RoomContent;
@@ -42,8 +35,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class SlayTheLichActivity extends AppCompatActivity {
+public class DungeonActivity extends AppCompatActivity {
 
+
+    private static Monster monsterSelected;
     public int playerOldExperience;
     public int playerNewExperience;
     public int playerOldGold;
@@ -57,7 +52,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
     public int bossY;
     public int difficultyLevel = 1;
     public MazeGenerator questMaze;
-    public Monster monsterSelected;
+    //public Monster monsterSelected;
     public int playerPosX;
     public int playerPosY;
     HashMap<Room, List<RoomContent>> roomContents= new HashMap<>();
@@ -66,7 +61,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slay_the_lich);
+        setContentView(R.layout.activity_dungeon);
         questMaze = new MazeGenerator(x,y);
         questMaze.display();
         playerOldExperience = Player.getInstance().getExperience();
@@ -78,7 +73,11 @@ public class SlayTheLichActivity extends AppCompatActivity {
 
         selectEnemies();
         updateNavigation();
-        loadFragment(new ExploreTheMinePartTwoFragment());
+        Bundle bundle = new Bundle();
+        bundle.putString("edttext", "From Activity");
+        DungeonFragment fragobj = new DungeonFragment();
+        fragobj.setArguments(bundle);
+        loadFragment(fragobj);
         System.out.println("X in Act " +playerPosX+ " Y in Act "+playerPosY);
         addTreasurechests(numberOfTreasures);
         ArrayList<RoomContent> treasureContent = new ArrayList<>();
@@ -107,6 +106,17 @@ public class SlayTheLichActivity extends AppCompatActivity {
 
     }
 
+    public static Monster getMonsterSelected(){
+        return monsterSelected;
+    }
+
+    private void loadFragment(Fragment fragment) {
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+    }
 
     public void setStartingPositions(){
         Random rand = new Random();
@@ -207,7 +217,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
         ImageView rightButton = findViewById(R.id.goEast);
         ImageView upButton = findViewById(R.id.goNorth);
         ImageView downButton = findViewById(R.id.goSouth);
-       locX.setText(String.valueOf(playerPosX));
+        locX.setText(String.valueOf(playerPosX));
         locY.setText(String.valueOf(playerPosY));
         if (questMaze.canMoveWestFrom((playerPosX), (playerPosY))){
             leftButton.setImageResource(R.drawable.west);
@@ -246,13 +256,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
 
     }
 
-    private void loadFragment(Fragment fragment) {
 
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-    }
 
     private void checkRoomForMonster() {
 
@@ -265,7 +269,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
 
                 if (content instanceof Monster) {
                     System.out.println("yes is instance of monster");
-                    loadFragment(new ExploreTheMineFightOrc());
+                    loadFragment(new DungeonBattleFragment());
                 }
         }
     }
@@ -325,7 +329,7 @@ public class SlayTheLichActivity extends AppCompatActivity {
                 System.out.print((questMaze.maze[j][i] & 1) == 0 ? "+---" : "+   ");
                 if (j == playerPosX && i == playerPosY){
                     System.out.println("X");
-            }
+                }
             }
             System.out.println("+");
             // draw the west edge

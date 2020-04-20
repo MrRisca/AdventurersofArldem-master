@@ -1,6 +1,5 @@
-package com.example.android.adventurersofarldem.Quests.ExploreTheMine;
+package com.example.android.adventurersofarldem.Quests;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,18 +10,18 @@ import android.widget.TextView;
 
 import com.example.android.adventurersofarldem.R;
 
-public class ExploreTheMinePartTwoFragment extends Fragment {
+public class DungeonFragment extends Fragment {
 
     public String textToDisplay;
     public TextView textView;
 
-    public ExploreTheMinePartTwoFragment() {
+    public DungeonFragment() {
 
 
     }
 
-    public static ExploreTheMinePartTwoFragment newInstance(String text) {
-        ExploreTheMinePartTwoFragment fragment = new ExploreTheMinePartTwoFragment();
+    public static DungeonFragment newInstance(String text) {
+        DungeonFragment fragment = new DungeonFragment();
         Bundle args = new Bundle();
         args.putString("KEY", text);
         fragment.setArguments(args);
@@ -44,14 +43,14 @@ public class ExploreTheMinePartTwoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         String strtext = getArguments().getString("edttext");
-        View view = inflater.inflate(R.layout.fragment_explore_the_mine_two, container, false);
+        View view = inflater.inflate(R.layout.fragment_dungeon_textdisplay, container, false);
         textView = (TextView)view.findViewById(R.id.dungeonTextInFragment);
         textView.setText(strtext);
         Button exitFragment = (Button)view.findViewById(R.id.confirmButton);
         exitFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().remove(ExploreTheMinePartTwoFragment.this).commit();
+                getFragmentManager().beginTransaction().remove(DungeonFragment.this).commit();
                 //getActivity().finish();
             }
         });
