@@ -1,4 +1,4 @@
-package com.example.android.adventurersofarldem.Quests.ExploreTheMine;
+package com.example.android.adventurersofarldem.Quests;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import com.example.android.adventurersofarldem.Abilities.Ability;
 import com.example.android.adventurersofarldem.Abilities.MeleeStrike;
-import com.example.android.adventurersofarldem.Characters.BigGhost;
 import com.example.android.adventurersofarldem.Characters.Monster;
-import com.example.android.adventurersofarldem.Characters.Mummy;
+import com.example.android.adventurersofarldem.Characters.Orc;
 import com.example.android.adventurersofarldem.Characters.Player;
 import com.example.android.adventurersofarldem.R;
 import com.example.android.adventurersofarldem.RollDice;
@@ -25,7 +24,7 @@ import com.example.android.adventurersofarldem.youDead;
 import java.util.List;
 import java.util.Random;
 
-public class ExploreTheMineFightBigGhost extends Fragment {
+public class DungeonBattleFragment extends Fragment {
 
     public int levelComplete = 0;
 
@@ -36,10 +35,10 @@ public class ExploreTheMineFightBigGhost extends Fragment {
     public int playerNewGold;
     public int playerOldLevel;
     List<Ability> spellList = Player.getInstance().getSpellList();
-    private Monster monster = new BigGhost();
+    private Monster monster = DungeonActivity.getMonsterSelected();
     private View view;
 
-    public ExploreTheMineFightBigGhost() {
+    public DungeonBattleFragment() {
     }
 
 
@@ -54,14 +53,15 @@ public class ExploreTheMineFightBigGhost extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_explore_the_mine_fight_big_ghost, container, false);
+        view = inflater.inflate(R.layout.fragment_explore_the_mine_fight_orc, container, false);
 
         Button exitFragment = (Button)view.findViewById(R.id.completeLevel);
         exitFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 endLevel();
-
+                //getFragmentManager().beginTransaction().remove(ExploreTheMineFightGoblin.this).commit();
+                //getActivity().finish();
             }
 
         });
@@ -71,7 +71,8 @@ public class ExploreTheMineFightBigGhost extends Fragment {
             @Override
             public void onClick(View v) {
                 attackOne();
-
+                //getFragmentManager().beginTransaction().remove(ExploreTheMineFightGoblin.this).commit();
+                //getActivity().finish();
             }
 
         });
@@ -81,7 +82,8 @@ public class ExploreTheMineFightBigGhost extends Fragment {
             @Override
             public void onClick(View v) {
                 attackTwo();
-
+                //getFragmentManager().beginTransaction().remove(ExploreTheMineFightGoblin.this).commit();
+                //getActivity().finish();
             }
 
         });
@@ -91,7 +93,8 @@ public class ExploreTheMineFightBigGhost extends Fragment {
             @Override
             public void onClick(View v) {
                 attackThree();
-
+                //getFragmentManager().beginTransaction().remove(ExploreTheMineFightGoblin.this).commit();
+                //getActivity().finish();
             }
 
         });
@@ -101,7 +104,8 @@ public class ExploreTheMineFightBigGhost extends Fragment {
             @Override
             public void onClick(View v) {
                 attackFour();
-
+                //getFragmentManager().beginTransaction().remove(ExploreTheMineFightGoblin.this).commit();
+                //getActivity().finish();
             }
 
         });
@@ -386,8 +390,8 @@ public class ExploreTheMineFightBigGhost extends Fragment {
         playerNewGold = Player.getInstance().gold + monster.getGold();
         Player.getInstance().setExperience(playerNewExperience);
         Player.getInstance().setGold(playerNewGold);
-        levelUp check = new levelUp(playerNewExperience, Player.getInstance().getExperience());
         monster.updateKills();
+        levelUp check = new levelUp(playerNewExperience, Player.getInstance().getExperience());
         int experienceNeeded = check.experienceNeeded(Player.getInstance().level);
         if (experienceNeeded < Player.getInstance().getExperience()) {
             Player.getInstance().setLevel(Player.getInstance().getLevel() + 1);
@@ -628,7 +632,7 @@ public class ExploreTheMineFightBigGhost extends Fragment {
 
     public void endLevel() {
         if (levelComplete == 1) {
-            getFragmentManager().beginTransaction().remove(ExploreTheMineFightBigGhost.this).commit();
+            getFragmentManager().beginTransaction().remove(DungeonBattleFragment.this).commit();
             }
         }
     }
