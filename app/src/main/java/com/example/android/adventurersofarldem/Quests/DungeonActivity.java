@@ -38,7 +38,7 @@ import java.util.Random;
 public class DungeonActivity extends AppCompatActivity {
 
 
-    private static Monster monsterSelected;
+    private Monster monsterSelected;
     public int playerOldExperience;
     public int playerNewExperience;
     public int playerOldGold;
@@ -52,7 +52,6 @@ public class DungeonActivity extends AppCompatActivity {
     public int bossY;
     public int difficultyLevel = 1;
     public MazeGenerator questMaze;
-    //public Monster monsterSelected;
     public int playerPosX;
     public int playerPosY;
     HashMap<Room, List<RoomContent>> roomContents= new HashMap<>();
@@ -72,9 +71,11 @@ public class DungeonActivity extends AppCompatActivity {
         int numberOfTreasures = 5;
 
         selectEnemies();
+        //monsterSelected = new Dragon();
         updateNavigation();
         Bundle bundle = new Bundle();
-        bundle.putString("edttext", "From Activity");
+        String testString = "YOU ARE IN A DUNGEON RAWR";
+        bundle.putString("edttext", testString);
         DungeonFragment fragobj = new DungeonFragment();
         fragobj.setArguments(bundle);
         loadFragment(fragobj);
@@ -83,10 +84,18 @@ public class DungeonActivity extends AppCompatActivity {
         ArrayList<RoomContent> treasureContent = new ArrayList<>();
         ArrayList<RoomContent> aRoomContent = new ArrayList<>();
         ArrayList<RoomContent> bRoomContent = new ArrayList<>();
+        ArrayList<RoomContent> cRoomContent = new ArrayList<>();
+        ArrayList<RoomContent> dRoomContent = new ArrayList<>();
+        ArrayList<RoomContent> eRoomContent = new ArrayList<>();
+        ArrayList<RoomContent> bossRoomContent = new ArrayList<>();
         Room treasureRoom = new Room(1,1);
         roomContents.put(treasureRoom, treasureContent);
         aRoomContent.add(monsterSelected);
-        bRoomContent.add(new BigGhost());
+        bRoomContent.add(monsterSelected);
+        cRoomContent.add(monsterSelected);
+        dRoomContent.add(monsterSelected);
+        eRoomContent.add(monsterSelected);
+        bossRoomContent.add(new BigGhost());
         Room room1 = new Room(1,1);
         Room room2 = new Room(2,3);
         Room room3 = new Room(3,1);
@@ -94,11 +103,11 @@ public class DungeonActivity extends AppCompatActivity {
         Room room5 = new Room(3,3);
         Room bossRoom = new Room(bossX, bossY);
         roomContents.put(room1, aRoomContent);
-        roomContents.put(room2, aRoomContent);
-        roomContents.put(room3, aRoomContent);
-        roomContents.put(room4, aRoomContent);
-        roomContents.put(room5, aRoomContent);
-        roomContents.put(bossRoom, bRoomContent);
+        roomContents.put(room2, bRoomContent);
+        roomContents.put(room3, cRoomContent);
+        roomContents.put(room4, dRoomContent);
+        roomContents.put(room5, eRoomContent);
+        roomContents.put(bossRoom, bossRoomContent);
 
 
         System.out.println("Room1 = "+roomContents.get(room1));
@@ -106,9 +115,7 @@ public class DungeonActivity extends AppCompatActivity {
 
     }
 
-    public static Monster getMonsterSelected(){
-        return monsterSelected;
-    }
+
 
     private void loadFragment(Fragment fragment) {
 

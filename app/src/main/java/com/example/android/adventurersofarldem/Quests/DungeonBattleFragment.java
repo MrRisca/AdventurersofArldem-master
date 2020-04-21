@@ -35,7 +35,7 @@ public class DungeonBattleFragment extends Fragment {
     public int playerNewGold;
     public int playerOldLevel;
     List<Ability> spellList = Player.getInstance().getSpellList();
-    private Monster monster = DungeonActivity.getMonsterSelected();
+    private Monster monster = new Orc();
     private View view;
 
     public DungeonBattleFragment() {
@@ -45,7 +45,6 @@ public class DungeonBattleFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         }
 
 
@@ -53,7 +52,7 @@ public class DungeonBattleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_explore_the_mine_fight_orc, container, false);
+        view = inflater.inflate(R.layout.fragment_dungeon_fight, container, false);
 
         Button exitFragment = (Button)view.findViewById(R.id.completeLevel);
         exitFragment.setOnClickListener(new View.OnClickListener() {
