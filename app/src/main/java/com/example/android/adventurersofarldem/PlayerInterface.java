@@ -5,62 +5,62 @@ public interface PlayerInterface {
 
 
     //return the name of the human
-    public String getName();
+    String getName();
 
     //change the name of the human
-    public void setName(String name);
+    void setName(String name);
 
     //get the strength of the player
-    public int getStrength();
+    int getStrength();
 
-    public void setStrength(int strength);
+    void setStrength(int strength);
 
     //return the agility of the player
-    public int getAgility();
+    int getAgility();
 
 
-    public void setAgility(int agility);
+    void setAgility(int agility);
 
     //return the intellect of the player
-    public int getIntellect();
+    int getIntellect();
 
 
-    public void setIntellect(int intellect);
+    void setIntellect(int intellect);
 
     //return the max HP of the player
-    public int getMaximumHealth();
+    int getMaximumHealth();
 
-    public void setMaximumHealth(int maximumHealth);
+    void setMaximumHealth(int maximumHealth);
 
     //return the max MP of the player
-    public int getMaximumMana();
+    int getMaximumMana();
 
-    public void setMaximumMana(int maximumMana);
+    void setMaximumMana(int maximumMana);
 
     //return the current HP of the player
-    public int getCurrentHealth();
+    int getCurrentHealth();
 
-    public void setCurrentHealth(int currentHealth);
+    void setCurrentHealth(int currentHealth);
 
     //return the current MP of the player
-    public int getCurrentMana();
+    int getCurrentMana();
 
-    public void setCurrentMana(int currentMana);
+    void setCurrentMana(int currentMana);
 
-    public int getArmorClass();
+    int getArmorClass();
 
-    public void setArmorClass(int armorClass);
+    void setArmorClass(int armorClass);
 
-    public int getPlayerExperience();
+    int getPlayerExperience();
 
-    public void setPlayerExperience(int playerExperience);
+    void setPlayerExperience(int playerExperience);
 
-    public int getPlayerLevel();
+    int getPlayerLevel();
 
-    public void setPlayerLevel(int playerLevel);
+    void setPlayerLevel(int playerLevel);
 
     //return a string representation of the player
-    public String toString();
+    String toString();
 
 }
 

@@ -30,18 +30,17 @@
             android:layout_weight="1"
             android:minHeight="0dp"
 
-            android:onClick="fightGoblin"
+            android:onClick="openInventory"
             android:text="BAG"/>
 
         <Button
-            android:id="@+id/search_area_button"
+            android:id="@+id/change_talents_button"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:minHeight="0dp"
-
-            android:onClick="fightDragon"
-            android:text="Search Area"/>
+            android:onClick="changeTalents"
+            android:text="Talents"/>
 
         <Button
             android:id="@+id/spells_button"
@@ -61,12 +60,15 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="200dp"
-            android:src="@drawable/forrest" />
+            android:src="@drawable/town"
+            android:id="@+id/sceneryImage"
+            android:onClick="launchQuest"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
 
         <Button
             android:id="@+id/go_north_button"
@@ -109,18 +111,45 @@
             android:onClick="goWest"
             android:text="Go West"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/town"
+            android:id="@+id/northScene"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/town"
+            android:id="@+id/eastScene"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/town"
+            android:id="@+id/southScene"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/town"
+            android:id="@+id/westScene"
+            />
+    </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:text="CHARACTER STATS"
-                android:textSize="18sp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -175,87 +204,7 @@
                     android:layout_weight="2"
                     android:id="@+id/playerMaxMana"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Strength:"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:id="@+id/playerStrength"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:gravity="center"
-                    android:layout_weight="2"
-                    android:id="@+id/playerCurrentStrength"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Agility:"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:id="@+id/playerAgility"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:gravity="center"
-                    android:layout_weight="2"
-                    android:id="@+id/playerCurrentAgility"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Intellect:"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:id="@+id/playerIntellect"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:gravity="center"
-                    android:layout_weight="2"
-                    android:id="@+id/playerCurrentIntellect"/>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Armor Class:"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:id="@+id/playerArmor"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:gravity="center"
-                    android:layout_weight="2"
-                    android:id="@+id/playerCurrentArmor"/>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -386,10 +335,6 @@
                     android:text="+1 INT (10GP)"/>
             </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/status"
-        android:text="Status of update will post here"/>
+
 
 </LinearLayout>

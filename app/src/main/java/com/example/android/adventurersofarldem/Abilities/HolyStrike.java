@@ -1,13 +1,11 @@
 package com.example.android.adventurersofarldem.Abilities;
 
-import android.util.Log;
-
 import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.FlameAttack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.StatusEffect;
-import com.example.android.adventurersofarldem.StatusEffects.Burn;
+import com.example.android.adventurersofarldem.StatusEffects.DelayedDamage;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 import com.example.android.adventurersofarldem.StatusEffects.Smite;
 
 public class HolyStrike extends Ability {
@@ -32,13 +30,19 @@ public class HolyStrike extends Ability {
         int duration = 5;
         int periodicDamage = spellLevel * 1;
         StatusAttack attack = new StatusAttack(duration, periodicDamage);
-        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage);
-        statusEffect.addToList(character, new Smite(duration, periodicDamage));
+        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage, duration);
+        statusEffect.addToList(character, new DelayedDamage(duration, periodicDamage, duration));
         return attack;
     }
 
     @Override
     public StatusAttack addStunEffect(Character character) {
+        return null;
+    }
+
+    @Override
+    public StatusEffect addWeakenEffect(Character character) {
+
         return null;
     }
 
@@ -60,5 +64,20 @@ public class HolyStrike extends Ability {
     @Override
     public boolean hasStunEffect() {
         return false;
+    }
+
+    @Override
+    public boolean hasWeakenEffect() {
+        return false;
+    }
+
+    @Override
+    public boolean hasLeachEffect() {
+        return false;
+    }
+
+    @Override
+    public void addLeachEffect(Character caster) {
+
     }
 }

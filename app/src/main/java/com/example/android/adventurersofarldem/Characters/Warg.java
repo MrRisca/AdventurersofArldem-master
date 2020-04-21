@@ -9,5 +9,8 @@ public class Warg extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setWargsKilled(Player.getInstance().getWargsKilled()+ 1);
+    }
 }

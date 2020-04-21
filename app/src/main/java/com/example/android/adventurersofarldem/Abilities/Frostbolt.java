@@ -4,8 +4,7 @@ import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.FrostAttack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.StatusEffect;
-import com.example.android.adventurersofarldem.StatusEffects.Burn;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 import com.example.android.adventurersofarldem.StatusEffects.Stun;
 
 public class Frostbolt extends Ability {
@@ -34,10 +33,16 @@ public class Frostbolt extends Ability {
         int duration = 3;
         int periodicDamage = 0;
         StatusAttack attack = new StatusAttack(duration, periodicDamage);
-        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage);
+        StatusEffect statusEffect = new StatusEffect(duration, periodicDamage, duration);
         statusEffect.addToList(character, new Stun(duration, periodicDamage));
         statusEffect.applyStunDuration(character, duration);
         return attack;
+    }
+
+    @Override
+    public StatusEffect addWeakenEffect(Character character) {
+
+        return null;
     }
 
     @Override
@@ -60,6 +65,20 @@ public class Frostbolt extends Ability {
         return true;
     }
 
+    @Override
+    public boolean hasWeakenEffect() {
+        return false;
+    }
+
+    @Override
+    public boolean hasLeachEffect() {
+        return false;
+    }
+
+    @Override
+    public void addLeachEffect(Character caster) {
+
+    }
 
 
 }

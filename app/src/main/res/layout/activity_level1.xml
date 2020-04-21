@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.7"
+            android:layout_weight="1.5"
             android:orientation="horizontal">
 
             <TextView
@@ -137,13 +137,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="CHARACTER STATS"
-                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -327,13 +320,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.3"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:padding="4dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="301dp"
                 android:layout_weight="50"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -357,7 +350,7 @@
                     android:text="Enemy Attack Results here" />
 
                 <TextView
-                    android:id="@+id/attackResults3"
+                    android:id="@+id/dotResults"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -366,7 +359,7 @@
                     android:text="Was dot applied?" />
 
                 <TextView
-                    android:id="@+id/attackResults4"
+                    android:id="@+id/dotResults2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -375,13 +368,49 @@
                     android:text="Dot damage info" />
 
                 <TextView
-                    android:id="@+id/attackResults5"
+                    android:id="@+id/stunResults"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:text="Stun info here" />
+
+                <TextView
+                    android:id="@+id/weakenResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Weaken info here" />
+
+                <TextView
+                    android:id="@+id/playerDotResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player dot here" />
+
+                <TextView
+                    android:id="@+id/playerStunResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player stun here" />
+
+                <TextView
+                    android:id="@+id/playerWeakenResults"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="4dp"
+                    android:text="Player weaken here" />
 
             </LinearLayout>
 
@@ -398,11 +427,5 @@
 
     </LinearLayout>
 
-
-    <!--<FrameLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:id="@+id/spellListFragment">-->
-    <!--</FrameLayout>-->
 </RelativeLayout>
 

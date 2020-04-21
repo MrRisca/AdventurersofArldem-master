@@ -7,5 +7,8 @@ public class Kraken extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setKrakensKilled(Player.getInstance().getKrakensKilled() + 1);
+    }
 }

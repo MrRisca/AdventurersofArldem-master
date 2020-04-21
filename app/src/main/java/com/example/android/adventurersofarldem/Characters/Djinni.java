@@ -7,5 +7,8 @@ public class Djinni extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setDjinnisKilled(Player.getInstance().getDjinnisKilled() + 1);
+    }
 }

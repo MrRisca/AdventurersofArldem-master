@@ -9,7 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actionSelectorActivity"></activity>
+        <activity android:name=".Quests.DungeonActivity"></activity>
+        <activity android:name=".Quests.SlayTheLich.SlayTheLichActivity" />
+        <activity android:name=".townActivity" />
+        <activity android:name=".Quests.SlayTheBigRatQuests.SlayTheBigRatPartTwoActivity" />
+        <activity android:name=".Quests.SlayTheBigRatQuests.SlayTheBigRatPartOneActivity" />
+        <activity android:name=".TalentTreeActivity" />
+        <activity android:name=".Activities.EquipmentActivity" />
+        <activity android:name=".Activities.actionSelectorActivity" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMinePartOneActivity" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMinePartTwoActivity" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMinePartThreeActivity" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMineFightBigGhost" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMineFightGoblin" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMineFightMummy" />
+        <activity android:name=".Quests.ExploreTheMine.ExploreTheMineFightOrc" />
         <activity android:name=".spellSelectActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -18,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CharacterSelection" />
+        <activity android:name=".Activities.CharacterSelection" />
         <activity android:name=".playerConfirm" />
         <activity android:name=".StatChoice" />
         <activity android:name=".level1Activity" />

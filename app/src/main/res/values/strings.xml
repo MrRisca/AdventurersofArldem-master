@@ -2,5 +2,9 @@
     <string name="app_name">Adventurers of Arldem</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="slay_the_big_rat_text_one">Ahhhh! OH NO A BIG RAT! The Quest never told you how big it was!</string>
+    <string name="slay_the_big_rat_text_two">From the shadows emerges a scruffy, rough looking man. He looks down at the slain rat and his eyes begin to fill with tears.
+    He wipes them roughly away with one dirty hand and coughs. "What have you done to Muffin? He was my only friend. You will pay for what you did!"</string>
+    <string name="slay_the_big_rat_text_three">You have completed the Quest. Please select your reward.</string>
+    <string name="explore_the_mine_text_one">You are charged with finding the cause of the spookiness emanating from the mine.</string>
 </resources>

@@ -9,5 +9,8 @@ public class Mummy extends Monster {
     }
 
 
-
+    @Override
+    public void updateKills() {
+        Player.getInstance().setMummysKilled(Player.getInstance().getMummysKilled() + 1);
+    }
 }

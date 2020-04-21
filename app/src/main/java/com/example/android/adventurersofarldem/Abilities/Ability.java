@@ -3,6 +3,7 @@ package com.example.android.adventurersofarldem.Abilities;
 import com.example.android.adventurersofarldem.Attacks.Attack;
 import com.example.android.adventurersofarldem.Attacks.StatusAttack;
 import com.example.android.adventurersofarldem.Characters.Character;
+import com.example.android.adventurersofarldem.StatusEffects.StatusEffect;
 
 public abstract class Ability {
 
@@ -18,6 +19,8 @@ public abstract class Ability {
 
     public abstract StatusAttack addStunEffect(Character character);
 
+    public abstract StatusEffect addWeakenEffect(Character character);
+
     public abstract String getName();
 
     public abstract String getDescription();
@@ -26,4 +29,9 @@ public abstract class Ability {
 
     public abstract boolean hasStunEffect();
 
+    public abstract boolean hasWeakenEffect();
+
+    public abstract boolean hasLeachEffect();
+
+    public abstract void addLeachEffect(Character caster);
 }

@@ -53,14 +53,14 @@ public class StatChoice extends AppCompatActivity {
     // to use any or all of them, this will be updated at later time.
 
     public void statsDisplay(int stat) {
-        TextView statDisplay = (TextView) findViewById(R.id.statCounter);
+        TextView statDisplay = findViewById(R.id.statCounter);
         statDisplay.setText(String.valueOf(stat));
     }
 
     //strengthDisplay updates the number in between the two buttons to show the value of Strength
 
     public void strengthDisplay(int stat) {
-        TextView strengthView = (TextView) findViewById(R.id.strength_number);
+        TextView strengthView = findViewById(R.id.strength_number);
         strengthView.setText(String.valueOf(stat));
     }
 
@@ -97,7 +97,7 @@ public class StatChoice extends AppCompatActivity {
     //The above commands are then replicated below but for the different stats to be changed
 
     public void agilityDisplay(int stat) {
-        TextView agilityView = (TextView) findViewById(R.id.agility_number);
+        TextView agilityView = findViewById(R.id.agility_number);
         agilityView.setText(String.valueOf(stat));
     }
 
@@ -123,7 +123,7 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void intellectDisplay(int stat) {
-        TextView intellectView = (TextView) findViewById(R.id.intellect_number);
+        TextView intellectView = findViewById(R.id.intellect_number);
         intellectView.setText(String.valueOf(stat));
     }
 
@@ -149,7 +149,7 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void maxHPDisplay(int stat) {
-        TextView maxHPView = (TextView) findViewById(R.id.hp_number);
+        TextView maxHPView = findViewById(R.id.hp_number);
         maxHPView.setText(String.valueOf(stat));
     }
 
@@ -178,7 +178,7 @@ public class StatChoice extends AppCompatActivity {
     }
 
     public void maxMPDisplay(int stat) {
-        TextView maxMPView = (TextView) findViewById(R.id.mp_number);
+        TextView maxMPView = findViewById(R.id.mp_number);
         maxMPView.setText(String.valueOf(stat));
     }
 

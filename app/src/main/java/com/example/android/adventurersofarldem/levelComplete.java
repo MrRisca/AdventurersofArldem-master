@@ -20,9 +20,9 @@ public class levelComplete extends AppCompatActivity {
 
         playerGold = getIntent().getIntExtra("playerGold", playerGold);
         playerExperience = getIntent().getIntExtra("playerExperience", playerExperience);
-        TextView confirmExperienceDifference = (TextView) findViewById(R.id.experience_gained);
+        TextView confirmExperienceDifference = findViewById(R.id.experience_gained);
         confirmExperienceDifference.setText(String.valueOf(playerExperience));
-        TextView confirmPlayerGold = (TextView) findViewById(R.id.gold_count);
+        TextView confirmPlayerGold = findViewById(R.id.gold_count);
         confirmPlayerGold.setText(String.valueOf(playerGold));
     }
 

@@ -61,7 +61,7 @@ public class spellListFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_spell_list, container, false);
-        Button fireballButton = (Button) view.findViewById(R.id.fireballButton);
+        Button fireballButton = view.findViewById(R.id.fireballButton);
         fireballButton.setOnClickListener((View.OnClickListener) this);
                 return view;
     }

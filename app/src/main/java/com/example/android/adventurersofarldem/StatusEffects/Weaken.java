@@ -1,22 +1,28 @@
 package com.example.android.adventurersofarldem.StatusEffects;
 
-import com.example.android.adventurersofarldem.Attacks.StatusAttack;
+import android.util.Log;
+
 import com.example.android.adventurersofarldem.Characters.Character;
-import com.example.android.adventurersofarldem.StatusEffect;
 
 public class Weaken extends StatusEffect {
     public Weaken(int duration, int periodicDamage) {
-        super(duration, periodicDamage);
+        super(duration, periodicDamage, duration);
     }
 
     @Override
-    public void removeEffect(Character character) {
-        character.setBaseDamage(character.getBaseDamage() * 2);
+    public String getName() {
+        return "Weaken";
+    }
+
+    @Override
+    public void removeWeakenEffect(Character character) {
+        super.removeWeakenEffect(character);
         }
 
     @Override
-    public void applySpecificEffect(Character character) {
-        character.setBaseDamage(character.getBaseDamage() / 2);
+    public void addWeakenEffect(Character character, int durationOfWeaken) {
+        super.addWeakenEffect(character, durationOfWeaken);
+        Log.d("Weaken BD", String.valueOf(character.getBaseDamage()));
     }
 
 
